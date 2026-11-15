@@ -1,0 +1,541 @@
+[
+  {
+    "model": "core.skill",
+    "pk": 8,
+    "fields": {
+      "name": "Développement Web"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 9,
+    "fields": {
+      "name": "Développement Mobile"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 10,
+    "fields": {
+      "name": "DevOps"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 11,
+    "fields": {
+      "name": "Cloud Computing"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 12,
+    "fields": {
+      "name": "Machine Learning"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 13,
+    "fields": {
+      "name": "Big Data"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 14,
+    "fields": {
+      "name": "Sécurité informatique"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 15,
+    "fields": {
+      "name": "Réseaux"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 16,
+    "fields": {
+      "name": "Comptabilité"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 17,
+    "fields": {
+      "name": "Finance"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 18,
+    "fields": {
+      "name": "Ressources humaines"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 19,
+    "fields": {
+      "name": "Logistique"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 20,
+    "fields": {
+      "name": "Agriculture urbaine"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 21,
+    "fields": {
+      "name": "Pêche"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 22,
+    "fields": {
+      "name": "Transformation alimentaire"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 23,
+    "fields": {
+      "name": "Tourisme"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 24,
+    "fields": {
+      "name": "Hôtellerie"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 25,
+    "fields": {
+      "name": "Transport maritime"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 26,
+    "fields": {
+      "name": "Énergie solaire"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 27,
+    "fields": {
+      "name": "Gestion des déchets"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 28,
+    "fields": {
+      "name": "Construction"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 29,
+    "fields": {
+      "name": "Architecture"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 30,
+    "fields": {
+      "name": "Design graphique"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 31,
+    "fields": {
+      "name": "Photographie"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 32,
+    "fields": {
+      "name": "Vidéographie"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 33,
+    "fields": {
+      "name": "Journalisme"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 34,
+    "fields": {
+      "name": "Communication digitale"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 35,
+    "fields": {
+      "name": "Vente"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 36,
+    "fields": {
+      "name": "Négociation"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 37,
+    "fields": {
+      "name": "Service client"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 38,
+    "fields": {
+      "name": "Gestion de stock"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 6,
+    "fields": {
+      "name": "Travail en présentiel"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 7,
+    "fields": {
+      "name": "Travail hybride"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 8,
+    "fields": {
+      "name": "Startup"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 9,
+    "fields": {
+      "name": "Grande entreprise"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 10,
+    "fields": {
+      "name": "Secteur public"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 11,
+    "fields": {
+      "name": "ONG"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 12,
+    "fields": {
+      "name": "Freelance"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 13,
+    "fields": {
+      "name": "Entrepreneuriat"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 14,
+    "fields": {
+      "name": "Formation continue"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 15,
+    "fields": {
+      "name": "Mentorat"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 16,
+    "fields": {
+      "name": "Réseautage"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 17,
+    "fields": {
+      "name": "International"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 8,
+    "fields": {
+      "name": "Pêche et Aquaculture"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 9,
+    "fields": {
+      "name": "Agriculture et Élevage"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 10,
+    "fields": {
+      "name": "Agroalimentaire"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 11,
+    "fields": {
+      "name": "BTP et Construction"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 12,
+    "fields": {
+      "name": "Mines et Géologie"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 13,
+    "fields": {
+      "name": "Énergie et Environnement"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 14,
+    "fields": {
+      "name": "Télécommunications"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 15,
+    "fields": {
+      "name": "Banque et Assurance"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 16,
+    "fields": {
+      "name": "Commerce et Distribution"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 17,
+    "fields": {
+      "name": "Transport et Logistique"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 18,
+    "fields": {
+      "name": "Tourisme et Hôtellerie"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 19,
+    "fields": {
+      "name": "Santé et Pharmacie"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 20,
+    "fields": {
+      "name": "Éducation et Formation"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 21,
+    "fields": {
+      "name": "Culture et Arts"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 22,
+    "fields": {
+      "name": "Sport et Loisirs"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 23,
+    "fields": {
+      "name": "Services aux entreprises"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 24,
+    "fields": {
+      "name": "Administration publique"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 25,
+    "fields": {
+      "name": "Développement durable"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 8,
+    "fields": {
+      "name": "Développement local"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 9,
+    "fields": {
+      "name": "Innovation sociale"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 10,
+    "fields": {
+      "name": "Économie numérique"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 11,
+    "fields": {
+      "name": "Agriculture intelligente"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 12,
+    "fields": {
+      "name": "Pêche durable"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 13,
+    "fields": {
+      "name": "Énergie renouvelable"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 14,
+    "fields": {
+      "name": "Gestion des risques"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 15,
+    "fields": {
+      "name": "Résilience climatique"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 16,
+    "fields": {
+      "name": "Inclusion financière"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 17,
+    "fields": {
+      "name": "E-santé"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 18,
+    "fields": {
+      "name": "E-gouvernance"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 19,
+    "fields": {
+      "name": "Smart city"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 20,
+    "fields": {
+      "name": "Mobilité urbaine"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 21,
+    "fields": {
+      "name": "Économie circulaire"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 22,
+    "fields": {
+      "name": "Commerce équitable"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 23,
+    "fields": {
+      "name": "Artisanat digital"
+    }
+  }
+]
