@@ -1,0 +1,1699 @@
+<!doctype html>
+<html lang="fr" data-space="superadmin" data-console="administration">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#325cf2">
+<meta name="robots" content="noindex,nofollow">
+<title>Administration · G-Connect</title>
+<style>
+:root{font-family:Inter,Manrope,"Segoe UI",sans-serif;color:#132448;background:#f2f5fc;font-synthesis:none;--brand:#335cf0;--dark:#102b7f;--ink:#14264a;--muted:#6f7d99;--line:#e0e7f5;--card:#fff}
+*{box-sizing:border-box}body{margin:0;min-width:320px}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8fb5ff;outline-offset:3px}a{color:inherit;text-decoration:none}button:disabled{cursor:not-allowed;opacity:.5}
+.layout{display:flex;min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;z-index:50;width:260px;overflow-y:auto;padding:29px 16px 22px;background:rgba(255,255,255,.94);border-right:1px solid #dfe6f5;box-shadow:12px 0 40px rgba(39,66,125,.035)}
+.brand-mark{position:relative}.brand-mark img{position:absolute;inset:0;width:42px;height:42px;object-fit:contain;border-radius:12px;background:white}
+.brand{display:flex;align-items:center;gap:11px;margin:0 10px 38px}.brand-mark{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,#315df1,#7daafb);color:white;font-size:25px;font-weight:900;box-shadow:0 9px 23px #315df12c}.brand-copy{display:flex;flex-direction:column;gap:3px}.brand-copy strong{font-size:20px;font-weight:800;color:#153cba;letter-spacing:-.9px}.brand-copy small{font-size:9px;font-weight:800;letter-spacing:2px;color:#8d9ab7}
+.nav-label{font-size:10px;color:#9aa6bf;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;margin:0 14px 12px}.nav{display:flex;flex-direction:column;gap:4px}.nav-btn{display:flex;align-items:center;gap:13px;width:100%;min-height:45px;padding:11px 13px;border:1px solid transparent;background:transparent;border-radius:13px;text-align:left;font-size:12px;font-weight:650;color:#637392;transition:background .2s,color .2s,transform .2s}.nav-btn svg{width:19px;height:19px;flex:none}.nav-btn:hover{background:#eff4ff;color:#3159d3;transform:translateX(2px)}.nav-btn.active{background:#edf2ff;color:#244be3;border-color:#dfe7ff;box-shadow:inset 3px 0 #315deb}.nav-section{margin-top:28px;padding-top:24px;border-top:1px solid #e8edf7}.nav-foot{margin:35px 8px 0;padding:18px 14px;border-radius:15px;background:#f3f6ff;border:1px solid #e7edff}.nav-foot strong{display:block;font-size:11px;color:#294ab1}.nav-foot p{font-size:10px;line-height:1.75;color:#8190ad;margin:8px 0 0}
+.main{min-width:0;flex:1;margin-left:260px;padding:28px clamp(20px,3.5vw,52px) 20px;max-width:2200px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:38px}.crumb{display:flex;align-items:center;gap:11px;font-size:12px;color:#8d9bb5}.crumb strong{font-weight:800;color:#293e66}.top-actions{display:flex;align-items:center;gap:13px}.preview-pill{font-weight:900;letter-spacing:.8px;font-size:10px;color:#335ce6;background:#edf2ff;border-radius:999px;padding:9px 13px}.icon-btn{display:grid;place-items:center;width:36px;height:36px;border:1px solid #e3e9f7;border-radius:11px;background:white;color:#46608c;font-size:16px}.icon-btn:hover,.smallbtn:hover{background:#edf3ff;border-color:#c2d2fd}.mobile-toggle{display:none}.avatar{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:#2547b7;color:white;font-size:11px;font-weight:900}
+.page-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:24px}.page-head h1{font-size:clamp(24px,2.1vw,34px);font-weight:800;letter-spacing:-1.3px;color:#152b52;margin:4px 0 8px}.eyebrow{font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#315fea;margin:0}.subtext{color:#7b8aa6;font-size:12px;line-height:1.6;margin:0;max-width:750px}.action{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid #315df1;border-radius:12px;background:#315df1;color:white;padding:12px 16px;white-space:nowrap;font-size:11px;font-weight:800;box-shadow:0 10px 24px #345cef24;transition:transform .22s,box-shadow .22s}.action:hover{transform:translateY(-2px);box-shadow:0 13px 27px #345cef35}.action svg{width:16px;height:16px}
+.panel{min-width:0;background:white;border:1px solid #e5ebf7;border-radius:19px;box-shadow:0 7px 25px #263f7709;overflow:hidden;animation:rise .45s ease both}.grid{display:grid;gap:17px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:17px}.split{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}.sec-layout{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:175px;padding:28px 32px;margin-bottom:18px;background:linear-gradient(118deg,#142f86,#2f58da 82%,#5c87fa);color:white;border-color:#1d43b7;overflow:hidden}.hero:after{content:"";position:absolute;z-index:-1;width:340px;height:340px;right:-95px;top:-190px;border:70px solid #ffffff12;border-radius:50%}.hero-tag{font-size:9px;letter-spacing:2px;font-weight:800;color:#c8d8ff}.hero h2{margin:11px 0 8px;color:white;font-size:clamp(23px,2.4vw,35px);letter-spacing:-1.2px;line-height:1.14}.hero p{max-width:530px;color:#d3dfff;line-height:1.6;font-size:11px;margin:0}.hero .action{background:white;color:#2446b6;border-color:white;flex:none;box-shadow:0 10px 22px #0e257035}
+.kpi{display:flex;flex-direction:column;justify-content:space-between;padding:19px 20px;min-height:169px}.kpi-top{display:flex;justify-content:space-between;align-items:center}.kpi-icon,.bubble{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:#edf3ff;color:#3661dd;flex:none}.kpi-icon svg,.bubble svg{width:19px;height:19px}.kpi small{display:block;color:#8796b1;font-size:10px;font-weight:650;margin-bottom:5px}.kpi strong{display:block;color:#192f56;font-size:29px;font-weight:800;letter-spacing:-1.2px}.kpi em{font-size:10px;font-style:normal;color:#3e9b76}.panel-title{padding:20px 22px;border-bottom:1px solid #eef2f9;display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-title h2{font-size:13px;font-weight:800;letter-spacing:-.1px;margin:0;color:#1b315b}.panel-title p{font-size:10px;color:#99a5ba;margin:6px 0 0}.panel-body{padding:22px}.chart-wrap{padding:22px 26px 19px}.legend{display:flex;gap:21px;font-size:10px;color:#8b99b2;font-weight:650}.legend span{display:flex;align-items:center;gap:7px}.legend i{display:block;width:9px;height:9px;border-radius:3px;background:#345cf0}.legend i.alt{background:#a1bafa}.chart{display:flex;align-items:flex-end;gap:14px;height:216px;padding:30px 0 0;border-bottom:1px solid #e6edfa}.bar-col{flex:1;min-width:0;height:100%;display:flex;align-items:stretch;flex-direction:column;justify-content:end}.bar-pair{display:flex;align-items:flex-end;justify-content:center;gap:7px;height:100%}.bar{height:var(--size);width:clamp(10px,35%,25px);background:linear-gradient(180deg,#3767f4,#203fb2);border-radius:7px 7px 0 0;transform-origin:bottom;animation:grow .85s cubic-bezier(.22,1,.36,1) both}.bar.alt{background:linear-gradient(180deg,#b3c9ff,#80a1ed)}.bar-col label{text-align:center;transform:translateY(23px);font-size:9px;font-weight:700;color:#9dabc2}.chart-wrap{padding-bottom:41px}
+.queue{display:flex;flex-direction:column}.queue-item{display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:1px solid #f1f4fa;color:inherit}.queue-item:last-child{border-bottom:0}.queue-item strong{display:block;font-size:11px;font-weight:800;color:#203658}.queue-item p{font-size:10px;color:#9ca8bd;margin:4px 0 0}.queue-item:hover{background:#f8faff!important}.queue-item .bubble{width:35px;height:35px;background:#eff4ff}.queue-item .bubble svg{width:17px;height:17px}.badge{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border-radius:999px;padding:7px 10px;background:#eaf8f1;color:#28916b;font-size:9px;font-weight:800}.badge.pending{color:#b77923;background:#fff3dc}.badge.suspended{color:#c9515a;background:#fff0f2}.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:20px}.quick{display:flex;align-items:center;gap:9px;text-align:left;background:#f6f8fe;border:1px solid #edf1fa;color:#476187;border-radius:13px;padding:16px 12px;font-size:11px;font-weight:750;transition:background .2s,transform .2s}.quick:hover{background:#eaf0ff;transform:translateY(-2px)}.quick svg{width:20px;height:20px;color:#315deb}
+.notice{padding:13px 16px;margin:0 0 18px;border:1px solid #dce7ff;background:#edf3ff;border-radius:12px;color:#536b9c;font-size:11px;line-height:1.6}.filters{display:flex;align-items:center;gap:12px;padding:17px 22px}.search{flex:1;min-width:0}.filters input,.filters select,.field input,.field select{width:100%;height:40px;padding:0 13px;border:1px solid #dce5f5;border-radius:10px;background:#fff;color:#213456;font-size:11px}.filters select{width:auto;min-width:138px}.table-scroll{overflow-x:auto}.table{width:100%;border-collapse:collapse;text-align:left}.table th{text-transform:uppercase;letter-spacing:.7px;font-size:9px;color:#99a6bc;font-weight:800;background:#f9fbfe;padding:14px 20px;white-space:nowrap}.table td{font-size:11px;color:#73839d;padding:14px 20px;border-top:1px solid #f1f4fa;white-space:nowrap}.org{display:flex;align-items:center;gap:11px}.org strong{display:block;font-size:11px;color:#273d61}.org small{display:block;color:#98a6bc;font-size:10px;margin-top:4px}.monogram{display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:11px;background:#eaf1ff;color:#315fdf;font-weight:800;font-size:11px}.smallbtn{border:1px solid #d8e2fa;border-radius:9px;background:#fff;color:#355cba;padding:8px 12px;font-size:10px;font-weight:750}.empty{text-align:center;color:#8190a8;font-size:12px;padding:27px}.form{padding:22px}.field{margin-bottom:17px}.field label{display:block;margin-bottom:8px;font-size:11px;font-weight:800;color:#334769}.form small{display:block;color:#97a4b9;font-size:10px;margin-top:16px}.form .action{margin-top:3px}.switch{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border:0;border-bottom:1px solid #edf1fa;background:transparent;text-align:left}.switch:last-child{border-bottom:0}.switch strong{display:block;font-size:11px;color:#31415c}.switch small{display:block;font-size:10px;color:#95a2b7;margin-top:4px}.toggle{width:36px;height:21px;background:#d0d9ec;border-radius:999px;padding:3px;flex:none;transition:background .2s}.toggle:before{content:"";display:block;width:15px;height:15px;border-radius:50%;background:white;transition:transform .2s;box-shadow:0 1px 3px #263f7750}.switch[aria-checked="true"] .toggle{background:#315deb}.switch[aria-checked="true"] .toggle:before{transform:translateX(15px)}
+.foot{display:flex;justify-content:space-between;gap:14px;margin:30px 0 0;color:#a2aec2;font-size:10px}.toast{position:fixed;z-index:90;right:23px;bottom:23px;max-width:min(370px,calc(100vw - 46px));background:#15337f;color:white;border-radius:13px;padding:14px 18px;box-shadow:0 14px 40px #0c23574d;font-size:11px;font-weight:700;line-height:1.5;opacity:0;pointer-events:none;transform:translateY(13px);transition:opacity .2s,transform .2s}.toast.visible{opacity:1;transform:translateY(0)}.overlay{display:none}#view{min-height:440px}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes grow{from{transform:scaleY(.08);opacity:.1}to{transform:scaleY(1);opacity:1}}
+@media(max-width:1170px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.split,.sec-layout{grid-template-columns:1fr}}
+@media(max-width:850px){.sidebar{transform:translateX(-100%);transition:transform .25s;box-shadow:20px 0 50px rgba(21,40,94,.15)}.sidebar.open{transform:translateX(0)}.mobile-toggle{display:inline-grid}.main{margin-left:0;padding:19px 16px}.topbar{gap:9px}.crumb{flex:1}.page-head{align-items:flex-start}.hero{flex-direction:column;align-items:flex-start}.preview-pill{font-size:9px}.overlay{position:fixed;z-index:40;inset:0;background:rgba(12,29,67,.28);display:none}.overlay.open{display:block}}
+@media(max-width:540px){.metrics{grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:14px;min-height:144px}.kpi strong{font-size:23px}.hero{padding:22px;min-height:190px}.page-head{flex-direction:column;align-items:flex-start}.chart-wrap{padding:14px}.chart{gap:6px}.bar-pair{gap:3px}.top-actions .avatar{display:none}.top-actions{gap:6px}.filters{padding:12px}.panel-title{padding:15px}.panel-body{padding:15px}}
+@media(prefers-reduced-motion:reduce){html:not([data-motion="on"]) *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* E20 Institution analytics — measured data and campus-specific dashboard. */
+.e20-campus-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr);align-items:center;gap:22px;min-height:250px;margin-bottom:22px;padding:30px clamp(24px,3vw,48px);overflow:hidden;position:relative;border-radius:30px;background:linear-gradient(117deg,#123b9b,#3761ff 72%,#4a91f9);box-shadow:0 22px 44px rgba(20,64,156,.19);color:#fff}
+.e20-campus-hero:before{content:"";position:absolute;inset:-150px -220px auto auto;width:530px;height:530px;border:1px solid rgba(255,255,255,.22);border-radius:50%;pointer-events:none}
+.e20-campus-copy{position:relative;z-index:1}.e20-campus-kicker{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.15);font-size:10px;letter-spacing:.11em;font-weight:800;color:#e6efff}
+.e20-campus-copy h2{max-width:630px;font-size:clamp(26px,2.5vw,43px);letter-spacing:-.045em;line-height:1.14;margin:17px 0 12px;color:#fff}
+.e20-campus-copy h2 span{color:#bfd6ff}.e20-campus-copy p{max-width:490px;color:#e2eaff;line-height:1.65;font-size:12px;margin:0 0 20px}
+.e20-campus-actions{display:flex;gap:10px;flex-wrap:wrap}.e20-campus-actions button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(255,255,255,.7);border-radius:13px;padding:11px 15px;font-size:11px;font-weight:800;transition:transform .2s,background .2s;cursor:pointer}
+.e20-campus-actions button:hover{transform:translateY(-2px)}.e20-campus-primary{background:#fff;color:#2250bc}.e20-campus-secondary{background:rgba(255,255,255,.11);color:#fff}
+.e20-campus-actions svg{width:16px;height:16px}.e20-campus-art{height:205px;display:grid;place-items:center;position:relative}
+.e20-campus-orbit{width:192px;height:192px;border-radius:50%;border:1px solid rgba(255,255,255,.33);display:grid;place-items:center;position:relative;box-shadow:0 0 0 30px rgba(255,255,255,.045),0 0 0 61px rgba(255,255,255,.035)}
+.e20-campus-center{width:112px;height:112px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:rgba(255,255,255,.95);color:#1b4bc6;box-shadow:0 15px 48px rgba(9,35,106,.22);font-weight:900;font-size:15px}
+.e20-campus-center img{width:31px;height:31px;object-fit:contain}.e20-orbit-tag{position:absolute;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:#fff;color:#34547e;padding:9px 12px;font-size:10px;font-weight:800;border-radius:13px;box-shadow:0 8px 22px rgba(8,34,102,.14)}
+.e20-orbit-tag svg{width:15px;height:15px;color:#3761ff}.e20-orbit-tag:nth-child(2){top:0;left:-18px}.e20-orbit-tag:nth-child(3){top:20px;right:-40px}.e20-orbit-tag:nth-child(4){bottom:10px;left:-25px}.e20-orbit-tag:nth-child(5){bottom:-9px;right:-30px}
+.e20-section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:27px 0 13px}.e20-section-head h2{font-size:17px;font-weight:850;color:#1d3564;letter-spacing:-.025em;margin:0}.e20-section-head p{font-size:11px;color:#8192af;margin:0}
+.e20-stat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:99px;background:#eaf1ff;color:#2855cf;font-size:10px;font-weight:750}
+.e20-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eaf0fa}.e20-row:last-child{border-bottom:none}.e20-row-label{font-size:12px;color:#34486d;font-weight:780}.e20-row-value{font-size:13px;color:#17325f;font-weight:850}
+.e20-mini-sub{color:#8296b6;font-size:10px;display:block;margin-top:3px}
+.e20-chart-body{padding:18px 22px 21px}.e20-chart-body svg{display:block;width:100%;height:auto;overflow:visible}.e20-chart-legend{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;color:#7486a6;margin:0 0 9px}.e20-chart-legend strong{color:#213c70;font-size:14px}
+.e20-graph-grid{stroke:#dee8f9;stroke-width:1;stroke-dasharray:4 5}.e20-graph-line{fill:none;stroke:#3761ff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}.e20-graph-dot{fill:#3761ff;stroke:#fff;stroke-width:2.5}.e20-graph-label{font-size:11px;fill:#8091ae;font-family:Manrope,Inter,sans-serif}
+.e20-chart-note{font-size:11px;color:#7288aa;line-height:1.5;margin:9px 0 0}.e20-chart-data{font-size:10px;color:#4b68a0;padding:9px 0}.e20-chart-data summary{cursor:pointer}.e20-chart-data ol{columns:3;padding-left:18px;line-height:1.9}
+.e20-donut-wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:27px 20px;min-height:235px}.e20-donut{display:grid;place-items:center;flex:none;width:158px;height:158px;border-radius:50%;position:relative}
+.e20-donut:before{content:"";position:absolute;inset:23px;background:#fff;border-radius:50%}.e20-donut-label{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;gap:4px}.e20-donut-label strong{font-size:23px;color:#244174}.e20-donut-label small{font-size:10px;color:#8496b2}
+.e20-donut-legend{display:grid;gap:13px;min-width:130px}.e20-donut-legend div{display:flex;align-items:center;gap:9px;color:#31496e;font-size:11px}.e20-donut-legend b{margin-left:auto;color:#193869}.e20-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.e20-bars{padding:22px 24px}.e20-bar-item{margin-bottom:20px}.e20-bar-item:last-child{margin-bottom:0}.e20-bar-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;margin-bottom:9px}.e20-bar-heading strong{color:#31486f}.e20-bar-heading span{color:#476188;font-weight:850}.e20-track{height:10px;background:#e7eefb;border-radius:99px;overflow:hidden}.e20-fill{height:100%;background:linear-gradient(90deg,#3761ff,#80bdff);border-radius:99px;min-width:0}
+html[data-theme="dark"] .e20-section-head h2,html[data-theme="dark"] .e20-row-label,html[data-theme="dark"] .e20-donut-label strong{color:#e2eaff}
+html[data-theme="dark"] .e20-row-value,html[data-theme="dark"] .e20-donut-legend b{color:#dbe8ff}
+html[data-theme="dark"] .e20-donut:before{background:#233557}
+@media(max-width:1120px){.e20-campus-hero{grid-template-columns:1fr}.e20-campus-art{display:none}}
+@media(max-width:600px){.e20-campus-hero{padding:25px 20px;min-height:0;border-radius:22px}.e20-campus-copy h2{font-size:28px}.e20-campus-actions button{width:100%}.e20-section-head{align-items:flex-start;flex-direction:column}.e20-chart-body{padding:15px}.e20-chart-data ol{columns:2}.e20-donut-wrap{gap:18px}.e20-donut{width:135px;height:135px}.e20-donut:before{inset:20px}}
+
+</style>
+<link rel="stylesheet" href="/superadmin-establishment-theme.css?v=e22-pricing-20261026a">
+<link rel="stylesheet" href="/superadmin-premium.css?v=e22-pricing-20261026a">
+<link rel="stylesheet" href="/admin-rounding-e13.css?v=e22-pricing-20261026a">
+<link rel="stylesheet" href="/subscriptions-e22.css?v=e22-pricing-20261026a">
+<link rel="stylesheet" href="/enterprise-e24.css?v=e24-identity-20261027b">
+<link rel="stylesheet" href="/professional-shell-e28.css?v=e28-shell-1">
+<link rel="stylesheet" href="/professional-shell-e29.css?v=e29-shell-1">
+<link rel="stylesheet" href="/professional-shell-e30.css?v=e30-search-1">
+<link rel="stylesheet" href="/institutions-e31.css?v=e31-campus-1">
+<link rel="stylesheet" href="/enterprises-e32.css?v=e32-business-1">
+<link rel="stylesheet" href="/module-identities-e31.css?v=e31-identities-1">
+<link rel="stylesheet" href="/floating-hero-e33.css?v=e33-floating-1">
+<link rel="stylesheet" href="/users-e34.css?v=e34-community-1">
+<link rel="stylesheet" href="/finance-e36.css?v=e37-motion-20261106">
+<link rel="stylesheet" href="/invoices-e38.css?v=e38-invoices-1">
+<script src="/subscriptions-e22.js?v=e22-pricing-20261026a"></script>
+<script src="/enterprise-e24.js?v=e24-enterprise-20261027a"></script>
+<script src="/institutions-e31.js?v=e31-campus-1"></script>
+<script src="/enterprises-e32.js?v=e32-business-1"></script>
+<script src="/users-e34.js?v=e35-security-sync-20261106"></script>
+<script src="/finance-e36.js?v=e38-invoices-1"></script>
+<script src="/invoices-e38.js?v=e38-invoices-1"></script>
+<link rel="stylesheet" href="/invitations-e54.css?v=e56-invite-cards-1">
+<link rel="stylesheet" href="/contents-e57.css?v=e57-editorial-1">
+<link rel="stylesheet" href="/imports-e58.css?v=e58-studio-2">
+<link rel="stylesheet" href="/moderation-e59.css?v=e59-trust-1">
+<link rel="stylesheet" href="/statistics-e60.css?v=e60-observatory-1">
+<link rel="stylesheet" href="/audit-e61.css?v=e61-trust-1">
+<link rel="stylesheet" href="/security-e62.css?v=e62-guardian-1">
+<link rel="stylesheet" href="/settings-e63.css?v=e63-personal-1">
+<script src="/invitations-e54.js?v=e56-invite-cards-1"></script>
+<script src="/contents-e57.js?v=e57-editorial-1"></script>
+<script src="/imports-e58.js?v=e58-studio-1"></script>
+<script src="/moderation-e59.js?v=e59-trust-1"></script>
+<script src="/statistics-e60.js?v=e60-observatory-1"></script>
+<script src="/audit-e61.js?v=e61-trust-1"></script>
+<script src="/security-e62.js?v=e62-guardian-1"></script>
+<script src="/settings-e63.js?v=e63-personal-1"></script>
+<script src="/recruiter-e54.js?v=e54-recruiter-1"></script>
+<script src="/superadmin-motion.js?v=e37-motion-20261106" defer></script>
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Navigation du Superadmin">
+    <div class="brand"><img class="sidebar-monogram" src="/assets/logo_icon.png" alt="G-Connect" onerror="this.hidden=true"><button type="button" class="collapse-toggle" id="collapse-toggle" aria-label="Réduire le menu" aria-expanded="true">‹</button></div>
+    <label class="sidebar-search" for="module-search"><span aria-hidden="true">⌕</span><input type="search" id="module-search" readonly placeholder="Rechercher un module..." aria-label="Ouvrir la recherche de modules" aria-haspopup="dialog" aria-controls="professional-search-dialog" title="Rechercher dans votre espace (Ctrl+K)"></label>
+    <p class="nav-label">Pilotage du réseau</p><nav class="nav" id="primary-nav"></nav>
+    <div class="nav-section"><p class="nav-label">Accès et revenus</p><nav class="nav" id="commerce-nav"></nav></div>
+    <div class="nav-section"><p class="nav-label">Contrôle et opérations</p><nav class="nav" id="secondary-nav"></nav></div>
+    <button class="sa-sidebar-identity" type="button" id="sidebar-profile-open" aria-label="Ouvrir mon profil" aria-haspopup="dialog" aria-controls="professional-profile-dialog" title="Afficher mon profil"><span class="sa-sidebar-avatar" aria-hidden="true">SA</span><span class="sa-sidebar-identity-details"><strong>Console Superadmin</strong><small>Compte connecté</small></span><span class="sa-sidebar-profile-arrow" aria-hidden="true">↗</span></button>
+    <div class="nav-foot"><strong>Session sécurisée</strong><p>Accès professionnel G-Connect protégé par une authentification renforcée.</p></div>
+  </aside>
+  <main class="main" id="main-content">
+    <header class="topbar">
+      <button class="icon-btn mobile-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <div class="top-brand"><img src="/assets/logo.png" alt="G-Connect" onerror="this.hidden=true"><span class="fallback-brand">G-connect</span></div>
+      <div class="crumb"><span>G-Connect</span><span>/</span><strong id="crumb-name">Superadmin</strong></div>
+      <time class="topbar-date" id="topbar-date" aria-label="Date et heure actuelles"><span class="clock-date" id="clock-date">Jeu. 5 nov. 2026</span><span class="clock-divider" aria-hidden="true"></span><span class="clock-time" id="clock-time">23:41</span></time>
+      <button class="topbar-search-pill" type="button" id="topbar-search-toggle" aria-label="Rechercher dans la navigation" title="Rechercher un module (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>Rechercher un module...</span><kbd>Ctrl K</kbd></button>
+      
+      <div class="top-actions">
+        <div class="topbar-popover-wrap">
+          <button class="icon-btn topbar-tool" type="button" id="notification-toggle" aria-label="Ouvrir les notifications" aria-expanded="false" aria-controls="notification-popover" title="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 9h18c0-1-3-2-3-9M10 21h4"/></svg>
+          </button>
+          <section id="notification-popover" class="topbar-popover notification-popover" aria-label="Notifications" hidden>
+            <div class="topbar-popover-head"><strong>Notifications</strong><span class="popover-minor">Messages</span></div>
+            <div class="notification-empty">
+              <span class="notification-empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 9h18c0-1-3-2-3-9M10 21h4"/></svg></span>
+              <strong>Aucune notification chargée</strong>
+              <p>Le service de notifications n’est pas encore raccordé.</p>
+            </div>
+          </section>
+        </div>
+        <div class="topbar-popover-wrap">
+          <button class="profile-trigger" type="button" id="profile-toggle" aria-label="Ouvrir le menu Superadmin" aria-expanded="false" aria-controls="profile-popover">
+            <span class="avatar" aria-hidden="true">SA</span><span class="profile-label">Superadmin</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <section id="profile-popover" class="topbar-popover profile-popover" aria-label="Options de la console" hidden>
+            <button type="button" class="profile-menu-link profile-menu-link-primary" id="profile-open">Mon profil <span aria-hidden="true">→</span></button>
+            <button type="button" class="profile-menu-link" id="about-open">À propos <span aria-hidden="true">ⓘ</span></button>
+            <button type="button" class="profile-menu-link" id="live-logout-profile">Se déconnecter <span aria-hidden="true">↗</span></button>
+          </section>
+        </div>
+      </div>
+    </header>
+    <div id="view"></div>
+    <footer class="foot"><span>© 2026 G-Connect · Votre réseau, votre avenir</span><span>Administration sécurisée · G-Connect</span></footer>
+  </main>
+</div>
+<dialog id="professional-search-dialog" class="professional-search-dialog" aria-labelledby="professional-search-title" aria-modal="true">
+  <div class="professional-search-shell">
+    <div class="professional-search-top">
+      <span class="professional-search-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.8 4.8"/></svg></span>
+      <div class="professional-search-caption"><span>RECHERCHE RAPIDE</span><h2 id="professional-search-title">Où souhaitez-vous aller ?</h2></div>
+      <button type="button" class="professional-search-close" id="professional-search-close" aria-label="Fermer la recherche">×</button>
+    </div>
+    <div class="professional-search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.8 4.8"/></svg>
+      <input type="search" id="professional-search-input" placeholder="Rechercher un module, une rubrique..." autocomplete="off" spellcheck="false" aria-label="Rechercher un module dans mon espace" aria-controls="professional-search-results" aria-autocomplete="list">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="professional-search-body" id="professional-search-results" aria-live="polite"></div>
+    <div class="professional-search-footer">
+      <span><kbd>↑</kbd><kbd>↓</kbd> Naviguer</span>
+      <span><kbd>↵</kbd> Ouvrir</span>
+      <span><kbd>Échap</kbd> Fermer</span>
+      <small>G-Connect · <span id="professional-search-scope">Mon espace</span></small>
+    </div>
+  </div>
+</dialog>
+<dialog id="professional-profile-dialog" class="professional-profile-dialog" aria-labelledby="professional-profile-title">
+  <div class="profile-modal-shell">
+    <div class="profile-modal-header">
+      <span class="profile-modal-glyph" aria-hidden="true">◉</span>
+      <div class="profile-modal-heading"><span>G-CONNECT · ESPACE PROFESSIONNEL</span><h2 id="professional-profile-title">Mon profil</h2><p>Vos informations et préférences, dans votre espace sécurisé.</p></div>
+      <button type="button" class="profile-modal-close" id="professional-profile-close" aria-label="Fermer la fenêtre">×</button>
+    </div>
+    <div class="profile-modal-layout">
+      <aside class="profile-modal-identity">
+        <div class="profile-modal-picture"><span class="profile-modal-initials" aria-hidden="true">SA</span><img id="professional-profile-photo" alt="Votre photo de profil" hidden></div>
+        <strong id="professional-profile-display-name">Compte G-Connect</strong>
+        <span id="professional-profile-role" class="profile-modal-role">Compte professionnel</span>
+        <small id="professional-profile-organisation">G-Connect</small>
+        <div class="profile-modal-security-pill">✓ Session avec MFA</div>
+      </aside>
+      <section class="profile-modal-main">
+        <div class="profile-modal-tabs" role="tablist" aria-label="Profil et paramètres">
+          <button type="button" class="active" data-profile-tab="profile" id="profile-tab-profile" role="tab" aria-selected="true" aria-controls="profile-panel-profile">Mon profil</button>
+          <button type="button" data-profile-tab="settings" id="profile-tab-settings" role="tab" aria-selected="false" aria-controls="profile-panel-settings">Paramètres</button>
+          <button type="button" data-profile-tab="security" id="profile-tab-security" role="tab" aria-selected="false" aria-controls="profile-panel-security">Sécurité</button>
+        </div>
+        <section id="profile-panel-profile" role="tabpanel" aria-labelledby="profile-tab-profile">
+          <form id="professional-profile-form" enctype="multipart/form-data">
+            <div class="profile-form-heading"><h3>Informations personnelles</h3><p>Ces informations appartiennent uniquement à votre compte.</p></div>
+            <div class="profile-photo-actions">
+              <div class="profile-photo-thumb"><span class="profile-photo-thumb-fallback" aria-hidden="true">SA</span><img id="professional-profile-thumb" alt="" hidden></div>
+              <div><label for="professional-profile-upload" class="profile-photo-upload">＋ Ajouter ou changer la photo</label>
+                <input id="professional-profile-upload" name="photo" type="file" class="profile-file-input" accept="image/jpeg,image/png,image/webp">
+                <button id="professional-profile-remove" class="profile-photo-remove" type="button">Retirer la photo</button>
+                <p>JPG, PNG ou WEBP · 5 Mo maximum</p>
+              </div>
+            </div>
+            <div class="profile-form-grid">
+              <label>Prénom <input id="professional-profile-first-name" name="first_name" maxlength="150" autocomplete="given-name"></label>
+              <label>Nom <input id="professional-profile-last-name" name="last_name" maxlength="150" autocomplete="family-name"></label>
+              <label>E-mail <input id="professional-profile-email" type="email" readonly aria-readonly="true"></label>
+              <label>Téléphone <input id="professional-profile-phone" name="phone_number" maxlength="20" autocomplete="tel"></label>
+            </div>
+            <p id="professional-profile-feedback" class="profile-modal-feedback" role="status" aria-live="polite"></p>
+            <div class="profile-form-footer"><button type="submit" id="professional-profile-save" class="profile-modal-primary">Enregistrer les modifications →</button></div>
+          </form>
+        </section>
+        <section id="profile-panel-settings" role="tabpanel" aria-labelledby="profile-tab-settings" hidden>
+          <div class="profile-form-heading"><h3>Préférences de l’interface</h3><p>Un visuel G-Connect cohérent dans tous les espaces.</p></div>
+          <div class="profile-modal-setting"><div><strong>Animations</strong><p>Adaptez les mouvements selon votre confort.</p></div>
+            <select id="professional-motion-preference" aria-label="Préférence d’animation"><option value="system">Selon le système</option><option value="on">Activées</option><option value="off">Désactivées</option></select></div>
+          <div class="profile-modal-setting"><div><strong>Apparence</strong><p>Le thème clair G-Connect est harmonisé sur les trois interfaces.</p></div><span class="profile-modal-locked">Style commun</span></div>
+          <div class="profile-modal-note">Les préférences d’animation sont enregistrées dans ce navigateur. Les informations du profil sont enregistrées sur votre compte.</div>
+        </section>
+        <section id="profile-panel-security" role="tabpanel" aria-labelledby="profile-tab-security" hidden>
+          <div class="profile-form-heading"><h3>Accès et sécurité</h3><p>Vos droits sont validés par le serveur, pas par les paramètres visuels.</p></div>
+          <div class="profile-modal-setting"><div><strong>Double authentification</strong><p>Protection obligatoire pour cet espace.</p></div><span class="profile-modal-secure">Activée</span></div>
+          <div class="profile-modal-setting"><div><strong>Type de compte</strong><p id="professional-profile-role-description">Compte professionnel</p></div><span class="profile-modal-locked">Protégé</span></div>
+          <div class="profile-modal-note">La déconnexion ferme votre session professionnelle. Aucun code de secours ni secret MFA n’est affiché ici.</div>
+          <form id="professional-password-form" class="professional-password-form" autocomplete="off">
+            <div class="profile-form-heading"><h3>Modifier mon mot de passe</h3><p>Utilisez un mot de passe unique. La modification déconnecte les appareils et nécessite une nouvelle connexion avec 2FA.</p></div>
+            <label for="professional-password-current">Mot de passe actuel</label>
+            <div class="professional-password-control"><input id="professional-password-current" name="current_password" type="password" autocomplete="current-password" required maxlength="128"><button type="button" data-password-visibility="professional-password-current" aria-label="Afficher le mot de passe actuel">Afficher</button></div>
+            <label for="professional-password-new">Nouveau mot de passe</label>
+            <div class="professional-password-control"><input id="professional-password-new" name="new_password" type="password" autocomplete="new-password" required minlength="8" maxlength="128"><button type="button" data-password-visibility="professional-password-new" aria-label="Afficher le nouveau mot de passe">Afficher</button></div>
+            <label for="professional-password-confirm">Confirmer le nouveau mot de passe</label>
+            <div class="professional-password-control"><input id="professional-password-confirm" name="confirm_password" type="password" autocomplete="new-password" required minlength="8" maxlength="128"><button type="button" data-password-visibility="professional-password-confirm" aria-label="Afficher la confirmation">Afficher</button></div>
+            <p class="profile-password-hint">Au moins 8 caractères, sans mot de passe courant ni mot de passe trop simple.</p>
+            <p id="professional-password-feedback" class="profile-modal-feedback" role="status" aria-live="polite"></p>
+            <div class="profile-form-footer"><button type="submit" id="professional-password-save" class="profile-modal-primary">Changer mon mot de passe →</button></div>
+          </form>
+
+        </section>
+      </section>
+    </div>
+  </div>
+</dialog>
+<dialog id="professional-about-dialog" class="professional-profile-dialog professional-about-dialog" aria-labelledby="professional-about-title">
+  <div class="profile-modal-shell">
+    <div class="profile-modal-header">
+      <span class="profile-modal-glyph"><img src="/assets/logo_icon.png" alt="" aria-hidden="true"></span>
+      <div class="profile-modal-heading"><span>G-CONNECT · LA PLATEFORME</span><h2 id="professional-about-title">À propos de G-Connect</h2><p>Un réseau, des opportunités.</p></div>
+      <button type="button" class="profile-modal-close" id="professional-about-close" aria-label="Fermer la fenêtre">×</button>
+    </div>
+    <div class="professional-about-content">
+      <img class="professional-about-logo" src="/assets/logo.png" alt="G-Connect">
+      <h3>Une plateforme. Trois espaces professionnels.</h3>
+      <p>G-Connect facilite les connexions entre étudiants, alumni, établissements et entreprises. Les accès et fonctionnalités dépendent du rôle et des habilitations de chaque compte.</p>
+      <div class="professional-about-facts">
+        <div><span>Votre espace</span><strong id="professional-about-role">Compte professionnel</strong></div>
+        <div><span>Organisation</span><strong id="professional-about-organisation">G-Connect</strong></div>
+        <div><span>Sécurité</span><strong>Session professionnelle protégée par MFA</strong></div>
+      </div>
+      <p class="professional-about-footer">G-Connect · Votre réseau, votre avenir</p>
+    </div>
+  </div>
+</dialog>
+<div class="toast" role="status" aria-live="polite" id="toast"></div>
+<script>
+(()=>{'use strict';
+// A single approved design for both privileged web roles; Django remains the authority.
+const accountApi=window.parent!==window?window.parent.GConnectEstablishmentApi:null;
+const account=accountApi?.getCurrent?.();
+const accountRole=account?.profile?.role;
+const isPlatformAdmin=accountRole==='superAdmin';
+const isInstitutionAdmin=accountRole==='etablissement' && !!account?.profile?.institution_id && account?.stats?.scope==='institution';
+const isEnterpriseAdmin=accountRole==='enterprise' && !!account?.profile?.enterprise_id && account?.stats?.scope==='enterprise' && account?.stats?.enterprise_id===account?.profile?.enterprise_id;
+const isRecruiter=isEnterpriseAdmin && account?.profile?.enterprise_role==='recruiter';
+if(!accountApi?.isConnected() || (!isPlatformAdmin && !isInstitutionAdmin && !isEnterpriseAdmin)){
+  document.body.innerHTML='<main style="font:16px system-ui;padding:4rem;color:#243d73"><h1>Connexion administrative requise</h1><p>Connectez-vous et confirmez votre double authentification.</p></main>';
+  return;
+}
+const iconPaths={home:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',school:'<path d="m2 10 10-6 10 6-10 6-10-6Z"/><path d="M6 12v6c4 3 8 3 12 0v-6"/>',building:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h2m3 0h2M9 11h2m3 0h2M9 15h2m3 0h2M10 21v-3h4v3"/>',users:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v2"/>',mail:'<rect x="2" y="5" width="20" height="14" rx="3"/><path d="m3 7 9 7 9-7"/>',flag:'<path d="M5 21V4m0 1c7-4 9 4 16 0v11c-7 4-9-4-16 0"/>',chart:'<path d="M3 20V4m0 16h18M7 15l4-4 4 2 5-7"/>',shield:'<path d="M12 2 4 5v7c0 5 3 8 8 10 5-2 8-5 8-10V5l-8-3Z"/><path d="m9 12 2 2 4-4"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/>',right:'<path d="M5 12h14m-6-6 6 6-6 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',check:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>'};
+function icon(name){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[name]||iconPaths.home}</svg>`}
+Object.assign(iconPaths,{bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 9h18c0-1-3-2-3-9M10 21h4"/>',briefcase:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12c5 3 13 3 18 0"/>',file:'<path d="M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h8"/>',upload:'<path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/>',devices:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/>',history:'<path d="M3 10a9 9 0 1 1 2 7M3 4v6h6M12 7v6l4 2"/>',billing:'<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h5"/>',receipt:'<path d="M5 3h14v18l-3-2-4 2-4-2-3 2V3Zm4 5h6m-6 5h6"/>',lock:'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/>'});
+const nav=isPlatformAdmin
+ ?[['dashboard','Vue d’ensemble','home'],['etablissements','Établissements','school'],['entreprises','Entreprises','building'],['utilisateurs','Utilisateurs','users']]
+ :isEnterpriseAdmin
+ ?(isRecruiter ? [['dashboard','Vue d’ensemble','home'],['offers','Offres à consulter','briefcase'],['applications','Candidatures','users']] : [['dashboard','Vue d’ensemble','home'],['offers','Mes offres','briefcase'],['applications','Candidatures','users'],['publications','Publications','file']])
+ :[['dashboard','Vue d’ensemble','home'],['promotions','Promotions & filières','school'],['members','Étudiants & Alumni','users'],['events','Événements & annonces','file']];
+const commerce=isPlatformAdmin
+ ?[['abonnements','Abonnements','billing'],['facturation','Factures & paiements','receipt'],['invitations','Invitations','mail'],['contenus','Offres & contenus','file']]
+ :isEnterpriseAdmin
+ ?(isRecruiter ? [['team','Équipe & accès','shield']] : [['subscription','Abonnement','billing'],['team','Équipe & accès','shield']])
+ :[['team','Équipe administrative','shield'],['subscription','Abonnement','billing']];
+const secondary=isPlatformAdmin
+ ?[['moderation','Modération','flag'],['imports','Imports','upload'],['statistiques','Statistiques','chart'],['audit','Journal d’audit','history'],['sessions','Sessions & sécurité','devices'],['parametres','Paramètres','settings']]
+ :isEnterpriseAdmin
+ ?(isRecruiter ? [['settings','Paramètres','settings']] : [['statistics','Statistiques','chart'],['notifications','Notifications','bell'],['settings','Paramètres','settings']])
+ :[['statistics','Statistiques','chart'],['settings','Paramètres','settings']];
+const allowedRoutes=new Set([...nav,...commerce,...secondary].map(([id])=>id));
+const schoolSeed=[{name:'Institut Horizon',code:'IH',type:'Université partenaire',city:'Dakar',count:426,status:'Vérifié'},{name:'Campus Teranga',code:'CT',type:'Établissement supérieur',city:'Thiès',count:218,status:'En attente'},{name:'École Avenir',code:'EA',type:'École professionnelle',city:'Dakar',count:163,status:'Actif'},{name:'Académie du Sahel',code:'AS',type:'Établissement supérieur',city:'Saint-Louis',count:94,status:'Suspendu'}];
+const companySeed=[{name:'Baobab Digital',code:'BD',type:'Numérique',city:'Dakar',count:18,status:'Vérifié'},{name:'Sunu Conseil',code:'SC',type:'Conseil & services',city:'Dakar',count:11,status:'En attente'},{name:'Teranga Solutions',code:'TS',type:'Technologie',city:'Thiès',count:7,status:'Actif'},{name:'Ndar Industrie',code:'NI',type:'Industrie',city:'Saint-Louis',count:4,status:'En attente'}];
+const users=[{name:'Aminata Diallo',code:'AD',type:'Établissement',city:'Institut Horizon',status:'Actif'},{name:'Mamadou Ba',code:'MB',type:'Entreprise',city:'Baobab Digital',status:'Actif'},{name:'Fatou Ndiaye',code:'FN',type:'Étudiant · mobile',city:'Application mobile',status:'Actif'},{name:'Ibrahima Fall',code:'IF',type:'Alumni · mobile',city:'Application mobile',status:'En attente'},{name:'Awa Sarr',code:'AS',type:'Recruteur',city:'Teranga Solutions',status:'Actif'}];
+let schools=schoolSeed.map(x=>({...x})),companies=companySeed.map(x=>({...x})),invites=[{email:'direction@campus-exemple.sn',role:'Établissement',date:'24 oct. 2026',status:'En attente'},{email:'contact@sunu-exemple.sn',role:'Entreprise',date:'23 oct. 2026',status:'En attente'},{email:'partenariat@horizon-exemple.sn',role:'Établissement',date:'21 oct. 2026',status:'Activée'}],reports=[{title:'Signalement d’une offre',detail:'Annonce · Entreprise',time:'Il y a 12 min',status:'À traiter'},{title:'Demande de vérification',detail:'Document · Établissement',time:'Il y a 42 min',status:'À traiter'},{title:'Réclamation de profil',detail:'Compte mobile',time:'Hier',status:'Résolu'}];
+const settings={mfa:true,validation:true,alerts:true};let view='dashboard',filter='',statusFilter='Tous',toastTimer;
+let academicE31=null;
+let corporateE32=null;
+let peopleE34=null;
+let financeE36=null;
+let invoiceE38=null;
+let clientInvoiceE38=null;
+const $=(id)=>document.getElementById(id);const safe=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function notify(message){const el=$('toast');el.textContent=message;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3100)}
+function panel(title,subtitle,body,action=''){return `<section class="panel"><div class="panel-title"><div><h2>${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div>${action}</div>${body}</section>`}
+function metric(title,value,hint,symbol){return `<article class="panel kpi"><div class="kpi-top"><span class="kpi-icon">${icon(symbol)}</span><span style="color:#9babcb">↗</span></div><div><small>${title}</small><strong>${value}</strong></div><div><em>${hint}</em></div></article>`}
+function intro(title,desc,action=''){return `<div class="page-head"><div><p class="eyebrow">${isPlatformAdmin?'Console de supervision':isEnterpriseAdmin?'Espace entreprise':'Espace établissement'}</p><h1>${title}</h1><p class="subtext">${desc}</p></div>${action}</div>`}
+function badge(status){return `<span class="badge ${['En attente','À traiter'].includes(status)?'pending':['Suspendu','Révoquée'].includes(status)?'suspended':''}">${safe(status)}</span>`}
+function chart(){const values=[[43,26],[65,38],[59,43],[82,54],[73,66],[91,72]];return panel('Croissance du réseau','Évolution fictive · six derniers mois',`<div class="chart-wrap"><div class="legend"><span><i></i>Établissements</span><span><i class="alt"></i>Entreprises</span></div><div class="chart">${values.map(([a,b],i)=>`<div class="bar-col"><div class="bar-pair"><div class="bar" style="--size:${a}%"></div><div class="bar alt" style="--size:${b}%"></div></div><label>${['Mai','Juin','Juil.','Août','Sept.','Oct.'][i]}</label></div>`).join('')}</div></div>`)}
+function trendChart(){
+ return panel('Tendance des partenariats','Représentation fictive sur six mois',
+  '<div class="sa-trend-wrap">'+
+   '<div class="legend"><span><i></i>Établissements</span><span><i class="alt"></i>Entreprises</span></div>'+
+   '<svg class="sa-trend-svg" viewBox="0 0 640 218" role="img" aria-label="Évolution indicative des établissements et entreprises de mai à octobre">'+
+     '<defs><linearGradient id="sa-trend-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#397df1" stop-opacity=".2"/><stop offset="1" stop-color="#397df1" stop-opacity="0"/></linearGradient></defs>'+
+     '<path class="sa-trend-grid" d="M20 50H620M20 94H620M20 138H620M20 182H620"/>'+
+     '<path class="sa-trend-fill" d="M25 170C75 164 93 132 145 129S207 149 263 143S338 93 382 90S444 112 495 102S565 78 614 63L614 195L25 195Z"/>'+
+     '<path class="sa-trend-line sa-trend-line-main" pathLength="100" d="M25 170C75 164 93 132 145 129S207 149 263 143S338 93 382 90S444 112 495 102S565 78 614 63"/>'+
+     '<path class="sa-trend-line sa-trend-line-alt" pathLength="100" d="M25 187C75 181 94 174 145 174S210 166 263 155S329 153 382 139S451 129 495 120S561 112 614 101"/>'+
+   '</svg>'+
+   '<div class="sa-trend-labels"><span>Mai</span><span>Juin</span><span>Juil.</span><span>Août</span><span>Sept.</span><span>Oct.</span></div>'+
+  '</div>');
+}
+function queue(){const items=[['Établissements à vérifier','04','etablissements','school'],['Entreprises en attente','03','entreprises','building'],['Signalements ouverts','02','moderation','flag']];return panel('Votre attention est requise','Actions prioritaires · simulation',`<div class="queue">${items.map(([label,num,route,symbol])=>`<button class="queue-item" data-route="${route}" style="background:none;border:0;text-align:left;width:100%"><span class="bubble">${icon(symbol)}</span><div style="flex:1"><strong>${label}</strong><p>Accéder aux demandes</p></div><span class="badge pending">${num}</span></button>`).join('')}</div>`)}
+function dashboard(){return intro('Bonjour, Superadmin.','Gardez une vue claire sur les accès, les partenariats et la confiance au sein de G-Connect.')+`<section class="panel hero"><div><span class="hero-tag">G-CONNECT · LE RÉSEAU QUI RELIE</span><h2>Un réseau grandit.<br>Vous gardez le cap.</h2><p>Une vision centrale de la communauté et des organisations, dans le langage visuel de la première maquette.</p></div><button class="action" data-route="invitations">Gérer les invitations ${icon('right')}</button></section><div class="grid metrics">${metric('Établissements partenaires','128','+12,8 % · démo','school')}${metric('Entreprises inscrites','86','+8,4 % · démo','building')}${metric('Comptes plateforme','4 892','+16,2 % · démo','users')}${metric('Vérifications en attente','09','À examiner','shield')}</div><div class="grid split">${chart()}${queue()}</div><div class="grid sec-layout" style="margin-top:16px">${panel('Activité récente','Journal fictif',`<div class="queue"><div class="queue-item"><span class="bubble">${icon('check')}</span><div><strong>Un établissement a été vérifié</strong><p>Il y a 8 minutes</p></div></div><div class="queue-item"><span class="bubble">${icon('mail')}</span><div><strong>Une invitation a été préparée</strong><p>Il y a 35 minutes</p></div></div><div class="queue-item"><span class="bubble">${icon('shield')}</span><div><strong>Session de démonstration ouverte</strong><p>Aucun compte connecté</p></div></div></div>`)}${panel('Accès rapides','Explorer les modules',`<div class="quick-grid">${[['Établissements','etablissements','school'],['Entreprises','entreprises','building'],['Invitations','invitations','mail'],['Sécurité','securite','shield']].map(([label,route,symbol])=>`<button class="quick" data-route="${route}">${icon(symbol)}<span>${label} ↗</span></button>`).join('')}</div>`)}</div>`}
+function directory(type){const isSchool=type==='etablissements';const rows=isSchool?schools:companies;const title=isSchool?'Établissements partenaires':'Entreprises partenaires';const desc=isSchool?'Gérez la validation des institutions et consultez leurs profils de démonstration.':'Supervisez les entreprises, leurs recruteurs et leurs demandes d’accès.';const matches=rows.map((row,index)=>({...row,index})).filter(row=>(row.name+' '+row.city+' '+row.type).toLowerCase().includes(filter.toLowerCase())&&(statusFilter==='Tous'||row.status===statusFilter));return intro(title,desc,`<button class="action" data-route="invitations">${icon('mail')} Inviter un responsable</button>`)+`<div class="grid metrics">${metric('Organisations',''+(isSchool?128:86),'Total fictif',isSchool?'school':'building')}${metric('Accès validés',''+(isSchool?114:77),'Confirmés','check')}${metric('En attente',''+(isSchool?4:3),'À vérifier','clock')}${metric('Événements récents','12','Ce mois','chart')}</div><div class="notice">Ces données et changements de statut sont simulés localement : aucun compte ni établissement réel n'est modifié.</div>`+panel('Annuaire des organisations',`${matches.length} résultat(s)`, `<div class="filters"><div class="search"><input id="list-search" type="search" placeholder="Rechercher un nom ou une ville..." value="${safe(filter)}" aria-label="Rechercher une organisation"></div><select id="list-status" aria-label="Filtrer par statut">${['Tous','Vérifié','Actif','En attente','Suspendu'].map(s=>`<option ${statusFilter===s?'selected':''}>${s}</option>`).join('')}</select></div><div class="table-scroll"><table class="table"><thead><tr><th>Organisation</th><th>Ville</th><th>${isSchool?'Apprenants':'Offres'}</th><th>Statut</th><th>Action (démo)</th></tr></thead><tbody>${matches.map(row=>`<tr><td><div class="org"><span class="monogram">${safe(row.code)}</span><div><strong>${safe(row.name)}</strong><small>${safe(row.type)}</small></div></div></td><td>${safe(row.city)}</td><td>${row.count}</td><td>${badge(row.status)}</td><td><button class="smallbtn" data-change="${type}:${row.index}">${row.status==='En attente'?'Valider':row.status==='Suspendu'?'Réactiver':'Suspendre'}</button></td></tr>`).join('')}</tbody></table>${matches.length?'':'<div class="empty">Aucun résultat.</div>'}</div>`)}
+function peoplePage(){const matches=users.filter(row=>(row.name+' '+row.type+' '+row.city).toLowerCase().includes(filter.toLowerCase())&&(statusFilter==='Tous'||row.type.startsWith(statusFilter)));return intro('Comptes et identités','Vue globale des acteurs. Étudiants et alumni utilisent uniquement l’application mobile.')+`<div class="grid metrics">${metric('Comptes inscrits','4 892','Démo','users')}${metric('Professionnels','268','Web','building')}${metric('Superadmins','04','Accès protégés','shield')}${metric('Comptes mobiles','4 624','Étudiants / alumni','users')}</div><div class="notice">L’annuaire ci-dessous est fictif. Aucun accès aux profils réels.</div>`+panel('Annuaire des comptes',`${matches.length} profil(s)`, `<div class="filters"><div class="search"><input id="list-search" type="search" placeholder="Rechercher un utilisateur..." aria-label="Rechercher un utilisateur" value="${safe(filter)}"></div><select id="list-status" aria-label="Filtrer par rôle">${['Tous','Étudiant','Alumni','Entreprise','Établissement','Recruteur'].map(s=>`<option ${statusFilter===s?'selected':''}>${s}</option>`).join('')}</select></div><div class="table-scroll"><table class="table"><thead><tr><th>Compte</th><th>Rôle</th><th>Rattachement</th><th>Statut</th></tr></thead><tbody>${matches.map(r=>`<tr><td><div class="org"><span class="monogram">${r.code}</span><div><strong>${safe(r.name)}</strong><small>Compte fictif</small></div></div></td><td>${safe(r.type)}</td><td>${safe(r.city)}</td><td>${badge(r.status)}</td></tr>`).join('')}</tbody></table>${matches.length?'':'<div class="empty">Aucun résultat.</div>'}</div>`)}
+function invitationPage(){return intro('Invitations professionnelles','Parcours prévu : invitation Superadmin → lien e-mail → activation du compte → MFA.')+`<div class="notice">Formulaire de démonstration : aucune invitation n'est envoyée et aucun compte n'est créé.</div><div class="grid split">${panel('Inviter un responsable','Prévisualisation du processus',`<form class="form" id="invite-form"><div class="field"><label for="invite-email">Adresse e-mail professionnelle</label><input id="invite-email" type="email" name="email" required placeholder="responsable@organisation.sn"></div><div class="field"><label for="invite-role">Organisation</label><select id="invite-role" name="role"><option>Établissement</option><option>Entreprise</option></select></div><button type="submit" class="action">${icon('mail')} Ajouter à la maquette</button><small>Le véritable parcours reste protégé par le backend G-Connect.</small></form>`)}${panel('Invitations récentes','Échantillon fictif',`<div class="queue">${invites.map((inv,i)=>`<div class="queue-item"><span class="bubble">${icon('mail')}</span><div style="flex:1;min-width:0"><strong style="overflow-wrap:anywhere">${safe(inv.email)}</strong><p>${safe(inv.role)} · ${safe(inv.date)}</p></div>${badge(inv.status)}${inv.status==='En attente'?`<button class="smallbtn" data-revoke="${i}">Révoquer</button>`:''}</div>`).join('')}</div>`)}</div>`}
+function moderationPage(){return intro('Modération & conformité','Surveillez les signalements et les demandes de contrôle.')+`<div class="grid metrics">${metric('À traiter',''+reports.filter(r=>r.status==='À traiter').length,'Démo','flag')}${metric('Résolus',''+reports.filter(r=>r.status==='Résolu').length,'Démo','check')}${metric('Contrôles','12','Aujourd’hui','shield')}${metric('Alertes','03','À examiner','clock')}</div>`+panel('File de signalements','Les décisions restent locales',`<div class="queue">${reports.map((r,i)=>`<div class="queue-item"><span class="bubble">${icon('flag')}</span><div style="flex:1"><strong>${safe(r.title)}</strong><p>${safe(r.detail)} · ${safe(r.time)}</p></div>${badge(r.status)}${r.status==='À traiter'?`<button class="smallbtn" data-resolve="${i}">Résoudre</button>`:''}</div>`).join('')}</div>`)}
+function statisticsPage(){return intro('Statistiques globales','Une lecture synthétique de l’activité et du développement du réseau G-Connect.')+`<div class="grid metrics">${metric('Croissance des comptes','+16,2 %','Six mois','chart')}${metric('Entreprises actives','77','Démo','building')}${metric('Établissements actifs','114','Démo','school')}${metric('Contrôles réussis','38','Ce mois','check')}</div>${trendChart()}${chart()}<div class="grid split" style="margin-top:16px">${panel('Répartition des comptes','Chiffres fictifs',`<div class="panel-body">${[['Étudiants','2 680','76%'],['Alumni','1 944','55%'],['Professionnels','268','25%']].map(([n,c,p])=>`<div style="margin-bottom:20px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px"><strong>${n}</strong><span>${c}</span></div><div style="height:9px;border-radius:12px;background:#edf1fa;overflow:hidden"><div style="height:100%;width:${p};background:linear-gradient(90deg,#315deb,#77b5fa);border-radius:12px"></div></div></div>`).join('')}</div>`)}${queue()}</div>`}
+function securityPage(){const logs=[['Authentification renforcée','MFA obligatoire dans la vraie plateforme','Politique'],['Invitation professionnelle','Un lien unique est géré par le backend','Prévu'],['Journal d’accès','Événements sensibles conservés côté serveur','Prévu'],['Protection des rôles','Permissions validées avant chaque opération','Règle']];return intro('Sécurité et journal d’audit','Représentation visuelle des mécanismes de protection du Superadmin.')+`<div class="grid metrics">${metric('Double authentification','MFA','Requise','shield')}${metric('Comptes privilégiés','04','Démo','users')}${metric('Alertes à suivre','01','Démo','flag')}${metric('Accès réels','Aucun','Aperçu','check')}</div><div class="notice">Cette page n’établit aucune session, ne lit pas de véritables journaux et ne contourne aucun contrôle d’accès.</div>`+panel('Événements et politiques','Échantillon de présentation',`<div class="queue">${logs.map(([title,description,status])=>`<div class="queue-item"><span class="bubble">${icon('shield')}</span><div style="flex:1"><strong>${title}</strong><p>${description}</p></div><span class="badge">${status}</span></div>`).join('')}</div>`)}
+function dashboardV2(){return intro('Bonjour, Superadmin.','Pilotez les accès, les établissements et la confiance sur votre réseau G-Connect.')+`<section class="panel hero campus-hero"><div class="hero-content"><span class="hero-tag">PORTAIL DE SUPERVISION</span><h2>Votre réseau.<br>Une communauté qui grandit.</h2><p>Établissements, entreprises, recruteurs et utilisateurs : une vision centrale de la plateforme, dans la continuité de votre espace Établissement.</p><button class="action" data-route="invitations">Gérer les invitations ${icon('right')}</button></div><div class="hero-picture" role="img" aria-label="Étudiant travaillant sur son ordinateur"><img src="/assets/hero-gconnect.jpg" alt="Étudiant au travail" onerror="this.hidden=true"></div></section><div class="notice">Prévisualisation indépendante : les indicateurs ci-dessous illustrent le design. Les données réelles et les actions sensibles exigent la connexion Superadmin et le MFA.</div><h2 class="overview-title">Votre plateforme en un coup d’œil</h2><div class="grid metrics">${metric('Établissements partenaires','128','Données de présentation','school')}${metric('Entreprises inscrites','86','Données de présentation','building')}${metric('Comptes plateforme','4 892','Données de présentation','users')}${metric('Vérifications en attente','09','Données de présentation','shield')}</div><div class="grid split">${chart()}${queue()}</div><div class="grid sec-layout" style="margin-top:16px">${panel('Parcours administratifs','Les modules prévus dans le backend',`<div class="quick-grid">${[['Établissements','etablissements','school'],['Entreprises','entreprises','building'],['Recruteurs','recruteurs','briefcase'],['Utilisateurs','utilisateurs','users'],['Modération','moderation','flag'],['Imports','imports','upload']].map(([label,route,symbol])=>`<button class="quick" data-route="${route}">${icon(symbol)}<span>${label} ↗</span></button>`).join('')}</div>`)}${panel('Sécurité de la console','Accès professionnel sécurisé',`<div class="queue"><div class="queue-item"><span class="bubble">${icon('shield')}</span><div><strong>Authentification à deux facteurs</strong><p>Obligatoire sur la véritable console</p></div><span class="badge">MFA</span></div><div class="queue-item"><span class="bubble">${icon('history')}</span><div><strong>Traçabilité des actions</strong><p>Journal d’audit prévu côté serveur</p></div></div><div class="queue-item"><span class="bubble">${icon('devices')}</span><div><strong>Sessions de navigateur</strong><p>Révocation disponible après connexion</p></div></div></div>`)}</div>`}
+function recruitersPage(){const people=users.filter(p=>p.type==='Recruteur');return intro('Recruteurs & responsables RH','Distinguez les profils recruteurs des entreprises auxquelles ils sont rattachés.')+`<div class="grid metrics">${metric('Recruteurs','—','Données à charger','briefcase')}${metric('Entreprises liées','—','Données à charger','building')}${metric('Accès actifs','—','Données à charger','check')}${metric('Comptes à examiner','—','Données à charger','clock')}</div><div class="notice">Vue de préparation : le backend expose la gestion des utilisateurs, mais les données des recruteurs ne sont pas chargées dans cette maquette.</div>`+panel('Répertoire des recruteurs','Structure de présentation uniquement',`<div class="table-scroll"><table class="table"><thead><tr><th>Responsable</th><th>Entreprise</th><th>Fonction</th><th>Statut</th></tr></thead><tbody>${people.map(p=>`<tr><td><div class="org"><span class="monogram">${safe(p.code)}</span><strong>${safe(p.name)}</strong></div></td><td>${safe(p.city)}</td><td>Recruteur</td><td>${badge(p.status)}</td></tr>`).join('')}</tbody></table></div>`)}
+function contentPage(){return intro('Offres, publications & événements','Surveillez les contenus de la communauté et accédez à la modération quand c’est nécessaire.')+`<div class="grid metrics">${metric('Publications','—','API Posts','file')}${metric('Offres d’emploi & stages','—','API Posts','briefcase')}${metric('Événements','—','API Posts','clock')}${metric('Contenus masqués','—','API Backoffice','shield')}</div><div class="grid split">${panel('Flux éditorial','Espace prêt pour les publications réelles',`<div class="panel-body"><p class="empty">Aucune publication chargée dans cet aperçu. Les offres, événements et projets seront affichés depuis l’API après authentification.</p><button class="action" data-route="moderation">Ouvrir la modération ${icon('right')}</button></div>`)}${panel('Catégories de contenus','Structure métier du backend',`<div class="queue">${[['Opportunités et stages','briefcase'],['Événements et annonces','clock'],['Projets et collaborations','file'],['Signalements','flag']].map(([label,symbol])=>`<div class="queue-item"><span class="bubble">${icon(symbol)}</span><div><strong>${label}</strong><p>Consultation prévue dans la console</p></div></div>`).join('')}</div>`)}</div>`}
+function importsPage(){return intro('Imports & opérations groupées','Accompagnez l’intégration des données avec un suivi clair et contrôlable.')+`<div class="grid metrics">${metric('Imports terminés','—','Historique serveur','upload')}${metric('Lignes intégrées','—','Après traitement','check')}${metric('Anomalies','—','À corriger','flag')}${metric('Établissements','—','Scope global','school')}</div><div class="notice">Le backend possède les endpoints d’import CSV/XLSX et d’historique. Aucun fichier n’est envoyé depuis cette prévisualisation.</div><div class="grid split">${panel('Nouvel import','Parcours de préparation',`<div class="panel-body"><div class="import-types">${[['Étudiants','users'],['Alumni','users'],['Promotions','school'],['Établissements','building']].map(([label,symbol])=>`<div class="import-tile">${icon(symbol)}<strong>${label}</strong><small>CSV ou XLSX</small></div>`).join('')}</div><button class="action" type="button" data-demo-note="L’import réel nécessite une session authentifiée et un contrôle des permissions.">Préparer un import ${icon('right')}</button></div>`)}${panel('Historique des traitements','API /backoffice/imports/',`<div class="empty-state">${icon('history')}<strong>En attente des données du serveur</strong><p>Aucun import fictif n’est présenté.</p></div>`)}</div>`}
+function auditPage(){return intro('Journal d’audit','Retrouvez les connexions, révocations, modérations et actions sensibles de la plateforme.')+`<div class="grid metrics">${metric('Événements','—','Journal réel requis','history')}${metric('Invitations','—','Traçabilité','mail')}${metric('Modérations','—','Traçabilité','flag')}${metric('Connexions','—','Traçabilité','shield')}</div><div class="notice">Lecture réelle via GET /api/v1/backoffice/audit-log/ après connexion avec les droits Superadmin. Aucun journal réel dans cet aperçu.</div>`+panel('Événements de sécurité','Structure prévue par l’API',`<div class="table-scroll"><table class="table"><thead><tr><th>Date</th><th>Acteur</th><th>Action</th><th>Adresse IP</th></tr></thead></table><div class="empty">Connectez-vous pour consulter les événements enregistrés.</div></div>`)}
+function sessionsPage(){return intro('Sessions & sécurité','Surveillez les appareils connectés et protégez les accès professionnels.')+`<div class="grid metrics">${metric('MFA','Obligatoire','Établissement & Superadmin','shield')}${metric('Sessions actives','—','Connexion nécessaire','devices')}${metric('Codes de secours','Privés','Gérés par l’authentification','check')}${metric('Révocations','—','Connexion nécessaire','history')}</div><div class="grid split">${panel('Appareils connectés','Endpoints WebToken /web-sessions/',`<div class="empty-state">${icon('devices')}<strong>Aucune session chargée dans l’aperçu</strong><p>La véritable console liste les sessions du compte et peut révoquer un appareil.</p><a class="action" href="/etablissement.html#login/superadmin">Se connecter avec MFA ${icon('right')}</a></div>`)}${panel('Protections appliquées','Des contrôles maintenus dans le backend',`<div class="queue">${[['Double authentification TOTP','shield'],['Codes de secours à usage unique','check'],['Révocation à la déconnexion','history']].map(([label,symbol])=>`<div class="queue-item"><span class="bubble">${icon(symbol)}</span><div><strong>${label}</strong><p>Actif uniquement dans le parcours authentifié</p></div></div>`).join('')}</div>`)}</div>`}
+function settingsPage(){
+ const switches=[['mfa','Double authentification','Protection des accès privilégiés'],['validation','Vérification des organisations','Vérification avant activation'],['alerts','Alertes de sécurité','Suivi des événements sensibles']];
+ const dark=document.documentElement.dataset.theme==='dark';
+ return intro('Paramètres de la plateforme','Une console claire et structurée, dans la continuité de l’espace Établissement.')+
+ '<section class="sa-settings-grid" aria-label="Paramètres de la console">'+
+  '<article class="panel"><p class="settings-kicker">Compte</p><h2 class="settings-title">Profil de la console</h2><p class="settings-subtitle">Identité de cet espace de prévisualisation.</p>'+
+   '<div class="settings-profile-row"><span class="avatar" aria-hidden="true">SA</span><div><strong>Superadmin G-Connect</strong><small>Interface de supervision</small></div></div>'+
+   '<div class="settings-property"><span>Type de compte</span><strong>Superadmin</strong></div>'+
+   '<div class="settings-property"><span>Environnement</span><strong>Aperçu local</strong></div>'+
+   '<div class="settings-property"><span>Accès aux données</span><strong>Aucune donnée réelle</strong></div></article>'+
+  '<article class="panel"><p class="settings-kicker">Personnalisation</p><h2 class="settings-title">Apparence</h2><p class="settings-subtitle">Choisissez les tons clairs ou le bleu nuit de votre espace.</p>'+
+   '<div class="settings-appearance-choices" role="group" aria-label="Choix du thème">'+
+     '<button type="button" data-preview-theme="light" aria-pressed="'+(!dark)+'">Clair</button>'+
+     '<button type="button" data-preview-theme="dark" aria-pressed="'+dark+'">Sombre</button>'+
+   '</div><p class="settings-note">Les préférences de thème et d’animation sont accessibles également depuis le menu profil.</p></article>'+
+  '<article class="panel"><p class="settings-kicker">Supervision</p><h2 class="settings-title">Notifications</h2><p class="settings-subtitle">Aperçu des préférences, sans notifications simulées.</p>'+
+   '<div class="settings-property"><span>Alertes de la plateforme</span><strong>Après connexion sécurisée</strong></div>'+
+   '<div class="settings-property"><span>Événements sensibles</span><strong>Journal côté serveur</strong></div>'+
+   '<p class="settings-note">La cloche ne lit encore aucune notification réelle dans cette maquette.</p></article>'+
+  '<article class="panel"><p class="settings-kicker">Contrôle</p><h2 class="settings-title">Politiques de sécurité</h2><p class="settings-subtitle">Commutateurs uniquement visuels, jamais appliqués au backend.</p>'+
+   switches.map(([key,title,description])=>'<button class="switch" type="button" role="switch" aria-checked="'+settings[key]+'" data-setting="'+key+'"><span><strong>'+title+'</strong><small>'+description+'</small></span><i class="toggle"></i></button>').join('')+
+   '<p class="settings-note">La MFA réelle reste obligatoire. Ce panneau ne peut ni modifier les droits ni désactiver une protection.</p></article>'+
+ '</section>';
+}
+function dashboardV3(){const visual=`<div class="hero-network" aria-label="Réseau G-Connect : établissements, entreprises et recruteurs"><div class="ambient-glow"></div><div class="ambient-glow"></div><div class="ambient-glow"></div><div class="particles" aria-hidden="true"></div><div class="network-orbit orbit-one" aria-hidden="true"></div><div class="network-orbit orbit-two" aria-hidden="true"></div><div class="network-center" data-parallax="0.02"><img src="/assets/logo_icon.png" alt="" onerror="this.hidden=true"><span>G</span><strong>G-Connect</strong><small>Un réseau, des opportunités</small></div><div class="network-node node-school" data-parallax="0.015">${icon('school')}<span>Établissements</span></div><div class="network-node node-business" data-parallax="0.01">${icon('building')}<span>Entreprises</span></div><div class="network-node node-recruiter" data-parallax="0.012">${icon('briefcase')}<span>Recruteurs</span></div><div class="network-legend">UN ÉCOSYSTÈME CONNECTÉ</div></div></section>`;return dashboardV2().replace(/<div class="hero-picture"[\s\S]*?<\/div><\/section>/,visual)}
+function dashboardV4(){
+  const shortcuts=`<div class="command-strip" aria-label="Accès rapides de supervision">
+    <button type="button" class="command-link" data-route="etablissements"><span class="command-symbol">${icon('school')}</span><span><strong>Réseau partenaire</strong><small>Établissements et entreprises</small></span>${icon('right')}</button>
+    <button type="button" class="command-link" data-route="abonnements"><span class="command-symbol">${icon('billing')}</span><span><strong>Contrats et abonnements</strong><small>Périodes de 1, 6 ou 12 mois</small></span>${icon('right')}</button>
+    <button type="button" class="command-link" data-route="sessions"><span class="command-symbol">${icon('shield')}</span><span><strong>Accès et sécurité</strong><small>Invitations et connexions</small></span>${icon('right')}</button>
+  </div>`;
+  return dashboardV3()
+    .replace('Bonjour, Superadmin.','Vue globale de G-Connect')
+    .replace('Pilotez les accès, les établissements et la confiance sur votre réseau G-Connect.','Une vision claire des organisations, des droits, de la facturation et de la communauté.')
+    .replace('Vérifications en attente</small><strong>09</strong>','Échéances partenaires</small><strong>—</strong>')
+    .replace('<div class="notice">',shortcuts+'<div class="notice">');
+}
+function subscriptionsPage(){
+  const tiers=[
+    ['Mensuel','1 mois',['Démarrage sans engagement long','Échéance et renouvellement mensuels','Droits définis selon le contrat']],
+    ['Semestriel','6 mois',['Continuité sur un semestre','Échéance semestrielle','Facture et période de validité']],
+    ['Annuel','12 mois',['Cycle annuel complet','Échéance de renouvellement annuelle','Suivi des quotas et des accès']],
+  ];
+  const steps=[
+    ['1','Choisir une formule','Le Superadmin prépare un contrat pour une organisation.','billing'],
+    ['2','Demander le règlement','Facture ou lien de paiement émis par le futur module de facturation.','receipt'],
+    ['3','Confirmer côté serveur','Paiement vérifié auprès du prestataire, jamais depuis le navigateur.','shield'],
+    ['4','Inviter & activer','L’invitation est autorisée puis les fonctionnalités de l’abonnement sont ouvertes.','mail'],
+  ];
+  return intro('Abonnements & facturation','Pilotez les formules, contrats, paiements et autorisations des organisations partenaires.')
+    +`<div class="notice"><strong>Module en préparation.</strong> Cette page représente le fonctionnement attendu. Le backend actuel ne fournit pas encore d’API d’abonnement ou de paiement : aucune somme n’est encaissée et aucun accès payant n’est accordé ici.</div>`
+    +`<div class="grid metrics">${metric('Abonnements actifs','—','Données réelles à connecter','check')}${metric('Paiements en attente','—','Validation serveur requise','clock')}${metric('Factures à régler','—','Facturation à développer','receipt')}${metric('Revenus (FCFA)','—','Aucun encaissement simulé','chart')}</div>`
+    +`<div class="billing-head"><div><p class="eyebrow">DURÉES PARTENAIRES</p><h2>Les mêmes périodes que l’espace Établissement</h2></div><button class="smallbtn" type="button" data-demo-note="Les prix et les modalités commerciales devront être enregistrés dans le backend avant toute commercialisation.">Paramétrer les tarifs ${icon('right')}</button></div>`
+    +`<div class="grid billing-tiers">${tiers.map(([name,duration,features],i)=>`<section class="billing-tier ${i===2?'featured':''}"><div class="billing-tier-top"><span class="tier-symbol">${icon(i===0?'clock':i===1?'building':'shield')}</span>${i===2?'<span class="tier-tag">CYCLE ANNUEL</span>':''}</div><h3>${name}</h3><p>Contrat de ${duration}</p><div class="tier-price">${duration} <small>· tarif en FCFA à définir</small></div><ul>${features.map(feature=>`<li>${icon('check')}<span>${feature}</span></li>`).join('')}</ul><button type="button" class="smallbtn" data-demo-note="Cette durée est une présentation visuelle : aucun paiement n’est initié.">Consulter la période ${icon('right')}</button></section>`).join('')}</div>`
+    +`<div class="billing-head"><div><p class="eyebrow">PARCOURS COMMERCIAL</p><h2>Du contrat à la création du compte</h2></div></div>`
+    +`<div class="grid billing-steps">${steps.map(([num,title,desc,symbol])=>`<div class="billing-step"><span class="billing-step-num">${num}</span><span class="billing-step-icon">${icon(symbol)}</span><h3>${title}</h3><p>${desc}</p></div>`).join('')}</div>`
+    +`<div class="grid split billing-bottom">${panel('Organisations & échéances','Tableau de suivi à connecter',`<div class="billing-placeholder">${icon('lock')}<strong>Aucun contrat réel chargé</strong><p>À connecter : organisation, durée, statut de règlement, date de renouvellement et fonctionnalités autorisées.</p><button class="smallbtn" data-route="etablissements">Voir les organisations ${icon('right')}</button></div>`)}${panel('Règlements & invitations','Contrôle avant activation',`<div class="queue"><div class="queue-item"><span class="bubble">${icon('receipt')}</span><div><strong>Factures et reçus</strong><p>Historique des montants, devises et remboursements à intégrer.</p></div></div><div class="queue-item"><span class="bubble">${icon('shield')}</span><div><strong>Validation du règlement</strong><p>Seul un événement serveur vérifié peut activer un abonnement.</p></div></div><div class="queue-item"><span class="bubble">${icon('mail')}</span><div><strong>Création des comptes</strong><p>Invitation rattachée à l’organisation et à ses droits d’accès.</p></div></div><div class="billing-panel-actions"><button class="action" type="button" data-route="facturation">Voir la facturation ${icon('right')}</button></div></div>`)}</div>`;
+}
+function facturationPage(){
+  return intro('Factures & paiements','Consultez les règlements, rapprochements et justificatifs financiers de G-Connect.')
+    +`<div class="grid metrics">${metric('Factures émises','—','Connecter la facturation','receipt')}${metric('Paiements confirmés','—','Source serveur uniquement','check')}${metric('Impayés','—','Échéances à suivre','clock')}${metric('Chiffre d’affaires','—','FCFA · montant réel requis','chart')}</div>`
+    +`<div class="grid split">${panel('Registre de facturation','À alimenter par le backend',`<div class="billing-placeholder">${icon('receipt')}<strong>Registre en attente d’intégration</strong><p>Chaque facture devra être liée à une organisation, un abonnement, une période et une opération de paiement vérifiable.</p><button class="smallbtn" data-route="abonnements">Accéder aux abonnements ${icon('right')}</button></div>`)}${panel('Contrôles de paiement','Séparation entre le visuel et la validation',`<div class="queue"><div class="queue-item"><span class="bubble">${icon('lock')}</span><div><strong>Paiement confirmé</strong><p>Confirmation signée et contrôlée côté serveur.</p></div></div><div class="queue-item"><span class="bubble">${icon('history')}</span><div><strong>Historique inaltérable</strong><p>Montants, dates, opérations et acteur vérificateur.</p></div></div><div class="queue-item"><span class="bubble">${icon('shield')}</span><div><strong>Reprise sans doublons</strong><p>Un événement de paiement ne doit jamais activer deux contrats.</p></div></div></div>`)}</div>`
+    +`<div class="billing-head"><div><p class="eyebrow">RAPPROCHEMENT</p><h2>Des pièces financières traçables</h2></div></div>`
+    +`<div class="grid billing-steps">${[['1','Facture établie','Une référence unique accompagne chaque échéance.','receipt'],['2','Paiement reçu','Référence du prestataire ou preuve bancaire.','billing'],['3','Validation contrôlée','Montant, devise, statut et signature vérifiés.','shield'],['4','Accès mis à jour','Les droits sont rattachés au contrat concerné.','check']].map(([num,title,desc,symbol])=>`<div class="billing-step"><span class="billing-step-num">${num}</span><span class="billing-step-icon">${icon(symbol)}</span><h3>${title}</h3><p>${desc}</p></div>`).join('')}</div>`
+    +`<div class="notice" style="margin-top:21px">Aucune transaction n’est exécutée dans cet aperçu. Les API de facturation et les contrôles de droits restent à développer avant une utilisation réelle.</div>`;
+}
+function invitationPageWithBilling(){
+  return invitationPage().replace('<div class="notice">','<div class="notice billing-invite-note"><strong>À prévoir avant production :</strong> vérifier côté serveur l’abonnement actif de l’organisation avant de permettre l’accès aux services. <button class="inline-link" data-route="abonnements" type="button">Consulter Abonnements →</button></div><div class="notice">');
+}
+let enterpriseE24=null;
+let invitationsE54=null;
+let contentsE57=null;
+let importsE58=null;
+let moderationE59=null;
+let statisticsE60=null;
+let auditE61=null;
+let securityE62=null;
+let settingsE63=null;
+let recruiterE54=null;
+const pages={dashboard:dashboardV4,etablissements:()=>directory('etablissements'),entreprises:()=>directory('entreprises'),utilisateurs:peoplePage,abonnements:subscriptionsPage,facturation:facturationPage,invitations:invitationPageWithBilling,contenus:contentPage,moderation:moderationPage,imports:importsPage,statistiques:statisticsPage,audit:auditPage,sessions:sessionsPage,parametres:settingsPage};
+function closeMenu(){$('sidebar').classList.remove('open');$('overlay').classList.remove('open');$('menu-toggle').setAttribute('aria-expanded','false')}
+function renderNav(){const render=(items)=>items.map(([id,label,symbol])=>`<button type="button" class="nav-btn ${view===id?'active':''}" data-route="${id}" title="${label}" ${view===id?'aria-current="page"':''}>${icon(symbol)}<span>${label}</span></button>`).join('');$('primary-nav').innerHTML=render(nav);$('commerce-nav').innerHTML=render(commerce);$('secondary-nav').innerHTML=render(secondary);$('commerce-nav').closest('.nav-section').hidden=commerce.length===0}
+let lastRenderedRoute='';
+function render(){
+  document.documentElement.dataset.module=view;
+  const routeChanged=lastRenderedRoute!==view;
+  renderNav();
+  const all=[...nav,...commerce,...secondary];
+  const current=all.find(item=>item[0]===view);
+  $('crumb-name').textContent=current?current[1]:'Vue d’ensemble';
+  const previousSubscriptionScroll=$('view').querySelector('.e22-dialog-content')?.scrollTop||0;
+  $('view').innerHTML=pages[view]();
+  // Preserve in-dialog scrolling when viewing details or switching request filters.
+  const refreshedSubscriptionScroll=$('view').querySelector('.e22-dialog-content');
+  if(refreshedSubscriptionScroll)refreshedSubscriptionScroll.scrollTop=previousSubscriptionScroll;
+  // Native modal keeps focus inside the chosen pricing configuration. Its
+  // Escape/backdrop close actions use the existing safe "back" handler.
+  const subscriptionDialog=$('view').querySelector('.e22-dialog');
+  if(subscriptionDialog){
+    const closeSubscriptionDialog=()=>subscriptionDialog.querySelector('[data-sub-action="back"]')?.click();
+    subscriptionDialog.addEventListener('cancel',event=>{event.preventDefault();closeSubscriptionDialog()});
+    subscriptionDialog.addEventListener('click',event=>{
+      if(event.target===subscriptionDialog)closeSubscriptionDialog();
+    });
+    subscriptionDialog.showModal();
+    const reviewDialog=subscriptionDialog.querySelector('.e26-review-dialog');
+    if(reviewDialog){
+      const closeReview=()=>reviewDialog.querySelector('[data-sub-action="close-review"]')?.click();
+      reviewDialog.addEventListener('cancel',event=>{event.preventDefault();closeReview()});
+      reviewDialog.addEventListener('click',event=>{if(event.target===reviewDialog)closeReview()});
+      reviewDialog.showModal();
+    }
+  }
+  const clientSubscriptionDialog=$('view').querySelector('.e27-client-dialog');
+  if(clientSubscriptionDialog){
+    const closeClient=()=>clientSubscriptionDialog.querySelector('[data-sub-action="client-close"]')?.click();
+    clientSubscriptionDialog.addEventListener('cancel',event=>{event.preventDefault();closeClient()});
+    clientSubscriptionDialog.addEventListener('click',event=>{
+      if(event.target===clientSubscriptionDialog)closeClient();
+    });
+    clientSubscriptionDialog.showModal();
+  }
+  if(isEnterpriseAdmin&&!isRecruiter&&enterpriseE24)enterpriseE24.ensure(view);
+  if(recruiterE54)recruiterE54.ensure(view);
+  if(isPlatformAdmin&&view==='etablissements')academicE31?.ensure();
+  if(isPlatformAdmin&&view==='entreprises')corporateE32?.ensure();
+  if(isPlatformAdmin&&view==='utilisateurs')peopleE34?.ensure();
+  if(isPlatformAdmin&&view==='facturation')financeE36?.ensure();
+  if(!isPlatformAdmin&&view==='subscription')clientInvoiceE38?.ensure();
+  if(invitationsE54)invitationsE54.ensure(view);
+  if(isPlatformAdmin&&view==='contenus')contentsE57?.ensure();
+  if(isPlatformAdmin&&view==='imports')importsE58?.ensure();
+  if(isPlatformAdmin&&view==='moderation')moderationE59?.ensure();
+  if(isPlatformAdmin&&view==='statistiques')statisticsE60?.ensure();
+  if(isPlatformAdmin&&view==='audit')auditE61?.ensure();
+  if(isPlatformAdmin&&view==='sessions')securityE62?.ensure();
+  if(isPlatformAdmin&&view==='parametres')settingsE63?.ensure();
+  if(routeChanged){
+    $('view').classList.remove('sa-route-change');
+    void $('view').offsetWidth;
+    $('view').classList.add('sa-route-change');
+    lastRenderedRoute=view;
+  }
+  bind();closeMenu();window.SuperadminMotion?.afterRender();
+}
+function goto(route){if(!pages[route] || !allowedRoutes.has(route))return;view=route;filter='';statusFilter='Tous';location.hash='#'+route;render();window.scrollTo({top:0,behavior:'smooth'})}
+function bind(){document.querySelectorAll('[data-route]').forEach(el=>el.addEventListener('click',()=>goto(el.dataset.route)));document.querySelectorAll('[data-demo-note]').forEach(el=>el.addEventListener('click',()=>notify(el.dataset.demoNote)));const search=$('list-search'),select=$('list-status');if(search){search.addEventListener('input',()=>{filter=search.value;render();const input=$('list-search');input.focus();input.setSelectionRange(filter.length,filter.length)})}if(select)select.addEventListener('change',()=>{statusFilter=select.value;render()});document.querySelectorAll('[data-change]').forEach(button=>button.addEventListener('click',()=>{const [kind,n]=button.dataset.change.split(':');const arr=kind==='etablissements'?schools:companies;const row=arr[+n];row.status=row.status==='En attente'?'Vérifié':row.status==='Suspendu'?'Actif':'Suspendu';render();notify('Statut changé uniquement dans cette maquette.') }));const form=$('invite-form');if(form)form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const data=new FormData(form);invites.unshift({email:String(data.get('email')).trim(),role:String(data.get('role')),date:'Aujourd’hui',status:'En attente'});render();notify('Invitation ajoutée localement. Aucun e-mail envoyé.')});document.querySelectorAll('[data-revoke]').forEach(b=>b.addEventListener('click',()=>{invites.splice(Number(b.dataset.revoke),1);render();notify('Invitation retirée de la démonstration.') }));document.querySelectorAll('[data-resolve]').forEach(b=>b.addEventListener('click',()=>{reports[Number(b.dataset.resolve)].status='Résolu';render();notify('Signalement marqué résolu dans la maquette.') }));document.querySelectorAll('[data-setting]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.setting;if(key==='mfa'){notify('Le MFA est obligatoire et ne peut pas être désactivé ici.');return}settings[key]=!settings[key];b.setAttribute('aria-checked',String(settings[key]));notify('Préférence modifiée pour cet aperçu uniquement.') }))}
+$('menu-toggle').addEventListener('click',()=>{const open=!$('sidebar').classList.contains('open');$('sidebar').classList.toggle('open',open);$('overlay').classList.toggle('open',open);$('menu-toggle').setAttribute('aria-expanded',String(open))});$('collapse-toggle').addEventListener('click',()=>{const collapsed=document.body.classList.toggle('sidebar-collapsed');$('collapse-toggle').textContent=collapsed?'›':'‹';$('collapse-toggle').setAttribute('aria-expanded',String(!collapsed));$('collapse-toggle').setAttribute('aria-label',collapsed?'Déployer le menu':'Réduire le menu')});$('module-search').addEventListener('click',()=>openProfessionalSearch('module-search'));
+$('module-search').addEventListener('keydown',event=>{
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfessionalSearch('module-search');}
+});$('overlay').addEventListener('click',closeMenu);window.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(pages[v]&&allowedRoutes.has(v)&&v!==view){view=v;filter='';statusFilter='Tous';render()}});
+window.addEventListener('keydown',event=>{
+  if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){
+    event.preventDefault();
+    openProfessionalSearch('topbar-search-toggle');
+  }
+});
+
+/* E30: live, local date and time in the shared professional header. */
+const topDate=$('topbar-date');
+const clockDate=$('clock-date');
+const clockTime=$('clock-time');
+function updateProfessionalClock(){
+  const current=new Date();
+  const pad=value=>String(value).padStart(2,'0');
+  const localDate=[current.getFullYear(),pad(current.getMonth()+1),pad(current.getDate())].join('-');
+  const localTime=pad(current.getHours())+':'+pad(current.getMinutes());
+  topDate.dateTime=localDate+'T'+localTime;
+  clockDate.textContent=new Intl.DateTimeFormat('fr-SN',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).format(current);
+  clockTime.textContent=localTime;
+  topDate.setAttribute('aria-label','Date et heure actuelles : '+clockDate.textContent+' à '+localTime);
+}
+updateProfessionalClock();
+setInterval(updateProfessionalClock,30_000);
+window.addEventListener('focus',updateProfessionalClock);
+document.documentElement.dataset.theme='light';
+function closeTopbarPopovers(){
+  for(const [buttonId,popoverId] of [['notification-toggle','notification-popover'],['profile-toggle','profile-popover']]){
+    $(popoverId).hidden=true;$(buttonId).setAttribute('aria-expanded','false');
+  }
+}
+function toggleTopbarPopover(buttonId,popoverId){
+  const shouldOpen=$(popoverId).hidden;
+  closeTopbarPopovers();
+  if(shouldOpen){$(popoverId).hidden=false;$(buttonId).setAttribute('aria-expanded','true')}
+}
+$('notification-toggle').addEventListener('click',()=>toggleTopbarPopover('notification-toggle','notification-popover'));
+$('profile-toggle').addEventListener('click',()=>toggleTopbarPopover('profile-toggle','profile-popover'));
+/* E30: private, role-scoped navigation history and full-screen search palette.
+   Search only opens routes this account is authorized to see. No backend secrets
+   or free-form personal data is stored as search history. */
+const professionalSearchDialog=$('professional-search-dialog');
+const professionalSearchInput=$('professional-search-input');
+const professionalSearchResults=$('professional-search-results');
+const professionalSearchHistoryKey='gconnect-recent-modules-'+accountRole+'-'+String(account.profile?.id||account.profile?.user_id||'account');
+const professionalSearchLinks=[...nav,...commerce,...secondary]
+  .filter(([route])=>allowedRoutes.has(route));
+const searchNormalise=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr').trim();
+let professionalSearchActive=0;
+let professionalSearchRows=[];
+let professionalSearchPreviousFocus=null;
+function readProfessionalSearchHistory(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(professionalSearchHistoryKey)||'[]');
+    return Array.isArray(raw)?raw.filter(route=>typeof route==='string'&&allowedRoutes.has(route)).slice(0,6):[];
+  }catch(error){return [];}
+}
+function writeProfessionalSearchHistory(route){
+  if(!allowedRoutes.has(route))return;
+  const next=[route,...readProfessionalSearchHistory().filter(value=>value!==route)].slice(0,6);
+  try{localStorage.setItem(professionalSearchHistoryKey,JSON.stringify(next));}catch(error){}
+}
+function activateProfessionalSearchRow(index,scroll=false){
+  professionalSearchRows.forEach((button,position)=>{
+    const selected=position===index;
+    button.classList.toggle('is-selected',selected);
+    button.setAttribute('aria-selected',String(selected));
+    if(selected&&scroll)button.scrollIntoView({block:'nearest'});
+  });
+  professionalSearchActive=index;
+}
+function appendProfessionalSearchSection(title,items,kind){
+  if(!items.length)return;
+  const section=document.createElement('section');
+  section.className='professional-search-section';
+  const heading=document.createElement('div');
+  heading.className='professional-search-section-label';
+  const label=document.createElement('h3');
+  label.textContent=title;
+  heading.appendChild(label);
+  if(kind==='recent'){
+    const clear=document.createElement('button');
+    clear.type='button';clear.className='professional-search-clear';
+    clear.textContent='Effacer';clear.setAttribute('aria-label','Effacer les recherches récentes');
+    clear.addEventListener('click',()=>{
+      try{localStorage.removeItem(professionalSearchHistoryKey);}catch(error){}
+      renderProfessionalSearch();
+    });
+    heading.appendChild(clear);
+  }
+  section.appendChild(heading);
+  for(const [route,title,symbol] of items){
+    const button=document.createElement('button');
+    button.type='button';button.className='professional-search-row';
+    button.dataset.searchRoute=route;
+    const pictogram=document.createElement('span');
+    pictogram.className='professional-search-result-icon';
+    pictogram.innerHTML=icon(kind==='recent'?'history':symbol);
+    const words=document.createElement('span');
+    words.className='professional-search-result-copy';
+    const strong=document.createElement('strong');strong.textContent=title;
+    const small=document.createElement('small');
+    small.textContent=kind==='recent'?'Consulté récemment':'Ouvrir le module';
+    words.append(strong,small);
+    const arrow=document.createElement('span');arrow.className='professional-search-result-arrow';
+    arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');
+    button.append(pictogram,words,arrow);
+    button.addEventListener('mouseenter',()=>activateProfessionalSearchRow(professionalSearchRows.indexOf(button)));
+    button.addEventListener('click',()=>visitProfessionalSearchRoute(route));
+    professionalSearchRows.push(button);
+    section.appendChild(button);
+  }
+  professionalSearchResults.appendChild(section);
+}
+function renderProfessionalSearch(){
+  const needle=searchNormalise(professionalSearchInput.value);
+  professionalSearchResults.replaceChildren();
+  professionalSearchRows=[];
+  const recentIds=readProfessionalSearchHistory();
+  const recent=recentIds.map(route=>professionalSearchLinks.find(item=>item[0]===route)).filter(Boolean);
+  const matches=professionalSearchLinks.filter(([route,title])=>searchNormalise(title).includes(needle)||searchNormalise(route).includes(needle));
+  if(needle){
+    if(matches.length)appendProfessionalSearchSection('Résultats de la recherche',matches,'result');
+    else{
+      const none=document.createElement('div');none.className='professional-search-empty';
+      const bold=document.createElement('strong');bold.textContent='Aucun module trouvé';
+      const sub=document.createElement('p');sub.textContent='Essayez un autre terme ou parcourez les suggestions de votre espace.';
+      none.append(bold,sub);professionalSearchResults.appendChild(none);
+      appendProfessionalSearchSection('Suggestions',professionalSearchLinks.slice(0,4),'suggestion');
+    }
+  }else{
+    if(recent.length)appendProfessionalSearchSection('Recherches récentes',recent,'recent');
+    else{
+      const hint=document.createElement('p');
+      hint.className='professional-search-empty-hint';
+      hint.textContent='Vos derniers modules recherchés apparaîtront ici.';
+      professionalSearchResults.appendChild(hint);
+    }
+    const suggestions=professionalSearchLinks.filter(item=>!recentIds.includes(item[0]));
+    appendProfessionalSearchSection('Suggestions pour votre espace',(suggestions.length?suggestions:professionalSearchLinks).slice(0,6),'suggestion');
+  }
+  if(professionalSearchRows.length)activateProfessionalSearchRow(0);
+  $('professional-search-scope').textContent=isPlatformAdmin?'Superadmin':isEnterpriseAdmin?'Entreprise':'Établissement';
+}
+function openProfessionalSearch(sourceId){
+  if(professionalSearchDialog.open){professionalSearchInput.focus();return;}
+  if(document.querySelector('dialog[open]'))return;
+  closeTopbarPopovers();
+  professionalSearchPreviousFocus=document.getElementById(sourceId)||document.activeElement;
+  professionalSearchInput.value='';
+  renderProfessionalSearch();
+  professionalSearchDialog.showModal();
+  professionalSearchInput.focus();
+}
+function visitProfessionalSearchRoute(route){
+  if(!allowedRoutes.has(route)||!pages[route])return;
+  writeProfessionalSearchHistory(route);
+  professionalSearchDialog.close();
+  goto(route);
+}
+$('professional-search-close').addEventListener('click',()=>professionalSearchDialog.close());
+professionalSearchDialog.addEventListener('click',event=>{
+  if(event.target===professionalSearchDialog)professionalSearchDialog.close();
+});
+professionalSearchDialog.addEventListener('close',()=>{
+  const restore=professionalSearchPreviousFocus;
+  professionalSearchPreviousFocus=null;
+  if(restore?.isConnected)restore.focus({preventScroll:true});
+});
+professionalSearchInput.addEventListener('input',renderProfessionalSearch);
+professionalSearchInput.addEventListener('keydown',event=>{
+  if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+    event.preventDefault();
+    if(!professionalSearchRows.length)return;
+    const direction=event.key==='ArrowDown'?1:-1;
+    const next=(professionalSearchActive+direction+professionalSearchRows.length)%professionalSearchRows.length;
+    activateProfessionalSearchRow(next,true);
+  }
+  if(event.key==='Enter'){
+    event.preventDefault();
+    const target=professionalSearchRows[professionalSearchActive];
+    if(target)visitProfessionalSearchRoute(target.dataset.searchRoute);
+  }
+});
+/* E28: one MFA-bound professional profile window for all three spaces. */
+const professionalDialog=$('professional-profile-dialog');
+const professionalPhotoInput=$('professional-profile-upload');
+const profileSave=$('professional-profile-save');
+let professionalState={...(account.profile||{})};
+let selectedProfileObjectUrl=null;
+let removeProfessionalPhoto=false;
+let professionalSaving=false;
+function activeProfessionalLabel(){
+  return isPlatformAdmin?'Superadmin':isEnterpriseAdmin?'Entreprise':'Établissement';
+}
+function activeOrganisationLabel(){
+  return isEnterpriseAdmin?String(account.stats?.company_name||'Mon entreprise')
+    :isInstitutionAdmin?String(account.stats?.institution_name||'Mon établissement')
+    :'G-Connect · Administration générale';
+}
+function safeProfileImage(value){
+  if(!value||typeof value!=='string')return null;
+  try{
+    const url=new URL(value,window.location.href);
+    if(value===selectedProfileObjectUrl ||
+        url.protocol==='https:' ||
+        (url.protocol==='http:'&&['localhost','127.0.0.1'].includes(url.hostname))){
+      return url.href;
+    }
+  }catch(error){}
+  return null;
+}
+function showProfileImage(img,url){
+  const address=safeProfileImage(url);
+  if(address){img.src=address;img.hidden=false}
+  else{img.removeAttribute('src');img.hidden=true}
+}
+function renderProfessionalIdentity(profile=professionalState){
+  const initials=activeProfessionalLabel()==='Superadmin'?'SA':activeProfessionalLabel()==='Entreprise'?'EN':'ET';
+  const photo=safeProfileImage(profile?.photo_url);
+  const full=String(profile?.full_name||[profile?.first_name,profile?.last_name].filter(Boolean).join(' ')||activeProfessionalLabel()).trim();
+  $('professional-profile-display-name').textContent=full;
+  $('professional-profile-role').textContent=activeProfessionalLabel();
+  $('professional-profile-organisation').textContent=activeOrganisationLabel();
+  $('professional-profile-role-description').textContent=activeProfessionalLabel();
+  for(const element of document.querySelectorAll('.top-actions .avatar,.sa-sidebar-avatar')){
+    element.textContent=initials;
+    if(photo){
+      const img=document.createElement('img');
+      img.src=photo;img.alt='';img.className='professional-avatar-photo';
+      element.appendChild(img);
+    }
+  }
+  document.querySelectorAll('.profile-modal-initials,.profile-photo-thumb-fallback')
+    .forEach(el=>{el.textContent=initials;el.hidden=!!photo});
+  showProfileImage($('professional-profile-photo'),photo);
+  showProfileImage($('professional-profile-thumb'),photo);
+}
+function fillProfessionalForm(profile){
+  professionalState={...professionalState,...profile};
+  $('professional-profile-first-name').value=String(professionalState.first_name||'');
+  $('professional-profile-last-name').value=String(professionalState.last_name||'');
+  $('professional-profile-email').value=String(professionalState.email||'');
+  $('professional-profile-phone').value=String(professionalState.phone_number||'');
+  renderProfessionalIdentity(professionalState);
+}
+function profileTab(tab){
+  for(const button of professionalDialog.querySelectorAll('[data-profile-tab]')){
+    const selected=button.dataset.profileTab===tab;
+    button.classList.toggle('active',selected);
+    button.setAttribute('aria-selected',String(selected));
+    $( 'profile-panel-'+button.dataset.profileTab ).hidden=!selected;
+  }
+}
+function clearProfessionalPreview(){
+  if(selectedProfileObjectUrl){URL.revokeObjectURL(selectedProfileObjectUrl);selectedProfileObjectUrl=null;}
+  professionalPhotoInput.value='';
+  removeProfessionalPhoto=false;
+}
+async function loadProfessionalProfile(){
+  if(!accountApi?.professionalProfile)return;
+  try{
+    const profile=await accountApi.professionalProfile();
+    if(profile){
+      fillProfessionalForm(profile);
+      if(isPlatformAdmin&&view==='parametres'&&settingsE63)render();
+    }
+  }catch(error){
+    if(professionalDialog.open){
+      $('professional-profile-feedback').textContent=error.message||'Impossible de charger votre profil.';
+    }
+  }
+}
+$('sidebar-profile-open').addEventListener('click',()=>$('profile-open').click());
+$('profile-open').addEventListener('click',()=>{
+  closeTopbarPopovers();
+  clearProfessionalPreview();
+  $('professional-profile-feedback').textContent='';
+  fillProfessionalForm(professionalState);
+  profileTab('profile');
+  if(!professionalDialog.open)professionalDialog.showModal();
+  void loadProfessionalProfile();
+});
+const aboutDialog=$('professional-about-dialog');
+$('about-open').addEventListener('click',()=>{
+  closeTopbarPopovers();
+  $('professional-about-role').textContent=activeProfessionalLabel();
+  $('professional-about-organisation').textContent=activeOrganisationLabel();
+  if(!professionalDialog.open && !aboutDialog.open)aboutDialog.showModal();
+});
+$('professional-about-close').addEventListener('click',()=>aboutDialog.close());
+aboutDialog.addEventListener('click',event=>{if(event.target===aboutDialog)aboutDialog.close();});
+$('professional-profile-close').addEventListener('click',()=>professionalDialog.close());
+professionalDialog.addEventListener('close',clearProfessionalPreview);
+professionalDialog.addEventListener('close',()=>{
+  $('professional-password-form').reset();
+  $('professional-password-feedback').textContent='';
+  for(const input of $('professional-password-form').querySelectorAll('input'))input.type='password';
+  for(const toggle of $('professional-password-form').querySelectorAll('[data-password-visibility]')){
+    toggle.textContent='Afficher';
+    toggle.setAttribute('aria-label','Afficher le mot de passe');
+  }
+});
+professionalDialog.addEventListener('click',event=>{if(event.target===professionalDialog)professionalDialog.close();});
+for(const button of professionalDialog.querySelectorAll('[data-profile-tab]')){
+  button.addEventListener('click',()=>profileTab(button.dataset.profileTab));
+}
+professionalPhotoInput.addEventListener('change',()=>{
+  const photo=professionalPhotoInput.files?.[0];
+  if(!photo)return;
+  if(!['image/jpeg','image/png','image/webp'].includes(photo.type)||photo.size>5*1024*1024){
+    $('professional-profile-feedback').textContent='Choisissez une image JPG, PNG ou WEBP de 5 Mo maximum.';
+    professionalPhotoInput.value='';return;
+  }
+  if(selectedProfileObjectUrl)URL.revokeObjectURL(selectedProfileObjectUrl);
+  selectedProfileObjectUrl=URL.createObjectURL(photo);
+  removeProfessionalPhoto=false;
+  $('professional-profile-feedback').textContent='Photo sélectionnée. Enregistrez les modifications pour la conserver.';
+  showProfileImage($('professional-profile-photo'),selectedProfileObjectUrl);
+  showProfileImage($('professional-profile-thumb'),selectedProfileObjectUrl);
+  document.querySelectorAll('.profile-modal-initials,.profile-photo-thumb-fallback').forEach(el=>el.hidden=true);
+});
+$('professional-profile-remove').addEventListener('click',()=>{
+  if(selectedProfileObjectUrl){URL.revokeObjectURL(selectedProfileObjectUrl);selectedProfileObjectUrl=null;}
+  professionalPhotoInput.value='';
+  removeProfessionalPhoto=true;
+  showProfileImage($('professional-profile-photo'),null);
+  showProfileImage($('professional-profile-thumb'),null);
+  document.querySelectorAll('.profile-modal-initials,.profile-photo-thumb-fallback').forEach(el=>el.hidden=false);
+  $('professional-profile-feedback').textContent='La suppression sera appliquée après enregistrement.';
+});
+$('professional-profile-form').addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(professionalSaving)return;
+  professionalSaving=true;
+  profileSave.disabled=true;
+  profileSave.textContent='Enregistrement…';
+  const feedback=$('professional-profile-feedback');
+  feedback.textContent='';
+  const data=new FormData();
+  data.append('first_name',$('professional-profile-first-name').value.trim());
+  data.append('last_name',$('professional-profile-last-name').value.trim());
+  data.append('phone_number',$('professional-profile-phone').value.trim());
+  if(professionalPhotoInput.files?.[0])data.append('photo',professionalPhotoInput.files[0]);
+  else if(removeProfessionalPhoto)data.append('remove_photo','true');
+  try{
+    const updated=await accountApi.professionalProfileUpdate(data);
+    clearProfessionalPreview();
+    fillProfessionalForm(updated);
+    if(isPlatformAdmin&&view==='parametres'&&settingsE63)render();
+    feedback.textContent='Vos informations ont été enregistrées sur votre compte.';
+    notify('Profil mis à jour.');
+  }catch(error){
+    feedback.textContent=error.message||'Enregistrement impossible. Vérifiez votre connexion.';
+  }finally{
+    professionalSaving=false;
+    profileSave.disabled=false;
+    profileSave.textContent='Enregistrer les modifications →';
+  }
+});
+/* E29: secure password rotation shared by Superadmin, Enterprise and Institution. */
+let professionalPasswordBusy=false;
+const passwordForm=$('professional-password-form');
+const passwordFeedback=$('professional-password-feedback');
+const passwordButton=$('professional-password-save');
+for(const toggle of passwordForm.querySelectorAll('[data-password-visibility]')){
+  toggle.addEventListener('click',()=>{
+    const input=$(toggle.dataset.passwordVisibility);
+    const reveal=input.type==='password';
+    input.type=reveal?'text':'password';
+    toggle.textContent=reveal?'Masquer':'Afficher';
+    toggle.setAttribute('aria-label',(reveal?'Masquer':'Afficher')+' le mot de passe');
+  });
+}
+passwordForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(professionalPasswordBusy)return;
+  const current=$('professional-password-current').value;
+  const next=$('professional-password-new').value;
+  const confirm=$('professional-password-confirm').value;
+  if(next!==confirm){
+    passwordFeedback.textContent='Les deux nouveaux mots de passe ne correspondent pas.';
+    $('professional-password-confirm').focus();
+    return;
+  }
+  if(next===current){
+    passwordFeedback.textContent='Choisissez un nouveau mot de passe différent de l’ancien.';
+    $('professional-password-new').focus();
+    return;
+  }
+  professionalPasswordBusy=true;
+  passwordButton.disabled=true;
+  passwordButton.textContent='Vérification sécurisée…';
+  passwordFeedback.textContent='';
+  try{
+    const result=await accountApi.professionalChangePassword(current,next);
+    if(!result?.requires_relogin)throw new Error('La confirmation de sécurité est indisponible.');
+    passwordForm.reset();
+    for(const input of passwordForm.querySelectorAll('input'))input.type='password';
+    for(const toggle of passwordForm.querySelectorAll('[data-password-visibility]')){
+      toggle.textContent='Afficher';
+      toggle.setAttribute('aria-label','Afficher le mot de passe');
+    }
+    passwordFeedback.textContent='Mot de passe modifié. Vous allez être déconnecté pour vous reconnecter avec votre nouveau mot de passe et le code 2FA.';
+    passwordButton.textContent='Modification réussie';
+    setTimeout(()=>{
+      professionalDialog.close();
+      window.parent.postMessage({type:'gconnect-admin-logout'},location.origin);
+    },950);
+  }catch(error){
+    passwordFeedback.textContent=error.message||'Impossible de modifier le mot de passe.';
+    passwordButton.disabled=false;
+    passwordButton.textContent='Changer mon mot de passe →';
+    professionalPasswordBusy=false;
+  }
+});
+const motionPreference=$('professional-motion-preference');
+try{
+  const saved=window.localStorage?.getItem('gconnect-motion-'+String(account.profile?.id||account.profile?.user_id||activeProfessionalLabel()));
+  if(['system','on','off'].includes(saved))motionPreference.value=saved;
+}catch(error){}
+document.documentElement.dataset.motion=motionPreference.value;
+motionPreference.addEventListener('change',()=>{
+  const value=motionPreference.value;
+  document.documentElement.dataset.motion=value;
+  try{window.localStorage?.setItem('gconnect-motion-'+String(account.profile?.id||account.profile?.user_id||activeProfessionalLabel()),value)}catch(error){}
+  window.SuperadminMotion?.preferenceChanged();
+});
+$('topbar-search-toggle').addEventListener('click',()=>openProfessionalSearch('topbar-search-toggle'));
+document.addEventListener?.('click',event=>{
+  if(!event.target.closest('.topbar-popover-wrap'))closeTopbarPopovers();
+});
+window.addEventListener('keydown',event=>{
+  if(event.key==='Escape')closeTopbarPopovers();
+});
+
+(function e18Addon(){
+ const liveApi=window.parent.GConnectEstablishmentApi;
+ let liveInvites=[],liveLoaded=false,liveBusy=false,liveError='',liveNotice='',liveSeq=0;
+ const connectedStatus=inv=>{
+   if(inv.accepted)return 'Activée';
+   if(inv.revoked)return 'Révoquée';
+   const end=Date.parse(inv.expires_at||'');
+   return Number.isFinite(end)&&end<=Date.now()?'Expirée':'En attente';
+ };
+ const pendingCount=()=>liveInvites.filter(inv=>connectedStatus(inv)==='En attente').length;
+ function connectedNavLinks(){
+   return `<div class="command-strip" aria-label="Accès rapides">
+    <button type="button" class="command-link" data-route="etablissements"><span class="command-symbol">${icon('school')}</span><span><strong>Réseau partenaire</strong><small>Établissements et entreprises</small></span>${icon('right')}</button>
+    <button type="button" class="command-link" data-route="abonnements"><span class="command-symbol">${icon('billing')}</span><span><strong>Abonnements</strong><small>Formules et contrats</small></span>${icon('right')}</button>
+    <button type="button" class="command-link" data-route="invitations"><span class="command-symbol">${icon('mail')}</span><span><strong>Invitations</strong><small>Accès professionnels</small></span>${icon('right')}</button>
+    </div>`;
+ }
+ function connectedDashboard(){
+   const reference=dashboardV3();
+   const cutoff=reference.indexOf('<div class="notice">');
+   const originalHero=reference.slice(0,cutoff)
+     .replace('Bonjour, Superadmin.','Vue globale de G-Connect')
+     .replace('Pilotez les accès, les établissements et la confiance sur votre réseau G-Connect.','Suivez vos partenaires, les accès et le développement du réseau dans votre espace sécurisé.')
+     .replace('Votre réseau.<br>Une communauté qui grandit.','Un réseau grandit.<br>Vous gardez le cap.');
+   const invites=!liveLoaded?'—':liveError?'—':String(pendingCount());
+   const recent=!liveLoaded?'<div class="empty">Chargement des invitations…</div>':liveError?`<div class="notice">${safe(liveError)}</div>`:liveInvites.length
+     ?`<div class="queue">${liveInvites.slice(0,4).map(inv=>`<div class="queue-item"><span class="bubble">${icon('mail')}</span><div style="flex:1;min-width:0"><strong>${safe(inv.institution_name||'Établissement')}</strong><p>${safe(inv.email||'')}</p></div>${badge(connectedStatus(inv))}</div>`).join('')}</div>`
+     :'<div class="empty">Aucune invitation enregistrée.</div>';
+   return originalHero+connectedNavLinks()
+    +'<h2 class="overview-title">Votre plateforme en un coup d’œil</h2>'
+    +`<div class="grid metrics">${metric('Invitations en attente',invites,liveLoaded&&!liveError?'Données du backend':'Chargement ou indisponible','mail')}${metric('Session sécurisée','MFA','Authentification validée','shield')}${metric('Établissements actifs','—','API à raccorder','school')}${metric('Abonnements actifs','—','Facturation à développer','billing')}</div>`
+    +`<div class="grid split">${trendChart()}${panel('Invitations récentes','Données chargées depuis Django',recent,'<button class="smallbtn" data-route="invitations">Tout voir ↗</button>')}</div>`
+    +`<div class="grid sec-layout" style="margin-top:16px">${panel('Parcours administratifs','Accès aux modules existants',`<div class="quick-grid">${[['Établissements','etablissements','school'],['Entreprises','entreprises','building'],['Recruteurs','recruteurs','briefcase'],['Utilisateurs','utilisateurs','users'],['Modération','moderation','flag'],['Imports','imports','upload']].map(([title,id,symbol])=>`<button class="quick" data-route="${id}">${icon(symbol)}<span>${title} ↗</span></button>`).join('')}</div>`)}${panel('Sécurité du compte','État vérifié',`<div class="queue"><div class="queue-item"><span class="bubble">${icon('shield')}</span><div><strong>Accès protégé par MFA</strong><p>La session Superadmin est validée côté serveur.</p></div>${badge('Actif')}</div><div class="queue-item"><span class="bubble">${icon('mail')}</span><div><strong>Invitations professionnelles</strong><p>Consultation et révocation via le backend.</p></div>${badge('Connecté')}</div></div>`)}</div>`;
+ }
+ function connectedEmpty(title,desc,keys){
+   return intro(title,desc)
+    +`<div class="grid metrics">${keys.map(([label,glyph])=>metric(label,'—','Connexion aux données à finaliser',glyph)).join('')}</div>`
+    +panel('Module en cours de raccordement','Les données de démonstration ne sont pas affichées après connexion.',`<div class="empty-state">${icon('shield')}<strong>Aucune donnée inventée</strong><p>Cette page conserve son emplacement dans la navigation. Ses fonctions seront reliées au backend avec les permissions correspondantes.</p></div>`);
+ }
+ function connectedDirectory(type){
+   const isSchool=type==='etablissements';
+   return intro(isSchool?'Établissements partenaires':'Entreprises partenaires','Annuaire et supervision des organisations autorisées.',`<button type="button" class="action" data-route="invitations">Inviter un responsable ${icon('right')}</button>`)
+    +`<div class="grid metrics">${metric('Organisations','—','API de répertoire en attente',isSchool?'school':'building')}${metric('Accès actifs','—','Données à connecter','check')}${metric('En attente','—','Données à connecter','clock')}${metric('Abonnements','—','Données à connecter','billing')}</div>`
+    +panel('Annuaire des organisations','Aucune organisation fictive',`<div class="empty-state">${icon(isSchool?'school':'building')}<strong>Répertoire à raccorder</strong><p>Cette liste sera alimentée par l’API des organisations dès que les autorisations et les contrats seront vérifiés.</p></div>`);
+ }
+ function connectedInvitesPage(){
+   const rows=!liveLoaded?'<div class="empty">Chargement…</div>':liveError?`<div class="notice" role="alert">${safe(liveError)}</div>`
+     :!liveInvites.length?'<div class="empty">Aucune invitation enregistrée.</div>'
+     :`<div class="table-scroll"><table class="table"><thead><tr><th>Établissement</th><th>Responsable</th><th>État</th><th>Action</th></tr></thead><tbody>${liveInvites.map(inv=>{
+       const s=connectedStatus(inv),id=Number(inv.id);
+       return `<tr><td><div class="org"><span class="monogram">${icon('school')}</span><div><strong>${safe(inv.institution_name||('Établissement #'+(inv.institution_id||'—')))}</strong><small>Identifiant : ${safe(inv.institution_id||'—')}</small></div></div></td><td>${safe(inv.email||'—')}</td><td>${badge(s)}</td><td>${s==='En attente'&&Number.isSafeInteger(id)&&id>0?`<button type="button" class="smallbtn" data-live-revoke="${id}" ${liveBusy?'disabled':''}>Révoquer</button>`:'—'}</td></tr>`;
+       }).join('')}</tbody></table></div>`;
+   return intro('Invitations professionnelles','Suivez les invitations réellement enregistrées par G-Connect.',`<button type="button" class="smallbtn" id="live-refresh" ${liveBusy?'disabled':''}>Actualiser</button>`)
+     +(liveNotice?`<div class="notice" role="status">${safe(liveNotice)}</div>`:'')
+     +`<div class="grid split">${panel('Inviter un responsable','Établissement déjà créé dans le backend',`<form class="form" id="live-invite-form"><div class="field"><label for="live-institution">Identifiant numérique de l’établissement</label><input id="live-institution" name="institution_id" type="number" min="1" step="1" required placeholder="Ex. : 12"></div><div class="field"><label for="live-email">E-mail professionnel</label><input id="live-email" name="email" type="email" maxlength="254" autocomplete="email" required placeholder="responsable@universite.sn"></div><div class="notice"><strong>Attention :</strong> l’API de paiement et d’abonnement reste à finaliser. N’envoyez une invitation que dans le cadre d’une opération autorisée.</div><button type="submit" class="action" ${liveBusy?'disabled':''}>${liveBusy?'Envoi…':'Envoyer l’invitation'} ${icon('right')}</button></form>`)}${panel('Suivi des invitations',liveLoaded&&!liveError?String(liveInvites.length)+' invitation(s) enregistrée(s)':'Synchronisation avec le backend',rows)}</div>`;
+ }
+ function connectedSettings(){
+   const dark=document.documentElement.dataset.theme==='dark';
+   return intro('Paramètres de la plateforme','Préférences de votre compte Superadmin.')
+    +`<section class="sa-settings-grid" aria-label="Paramètres de la console">
+      <article class="panel"><p class="settings-kicker">Compte</p><h2 class="settings-title">Profil Superadmin</h2><p class="settings-subtitle">Votre accès privilégié à G-Connect.</p><div class="settings-profile-row"><span class="avatar">SA</span><div><strong>Superadmin G-Connect</strong><small>Session vérifiée</small></div></div><div class="settings-property"><span>Type de compte</span><strong>Superadmin</strong></div><div class="settings-property"><span>Double authentification</span><strong>Active</strong></div></article>
+      <article class="panel"><p class="settings-kicker">Personnalisation</p><h2 class="settings-title">Apparence</h2><p class="settings-subtitle">Choisissez votre thème.</p><div class="settings-appearance-choices" role="group" aria-label="Choix du thème"><button type="button" data-preview-theme="light" aria-pressed="${!dark}">Clair</button><button type="button" data-preview-theme="dark" aria-pressed="${dark}">Sombre</button></div></article>
+      <article class="panel"><p class="settings-kicker">Notifications</p><h2 class="settings-title">Alertes</h2><p class="settings-subtitle">Aucune notification réelle n’est actuellement chargée.</p></article>
+      <article class="panel"><p class="settings-kicker">Sécurité</p><h2 class="settings-title">Session</h2><p class="settings-subtitle">Vos droits sont validés par le backend.</p><button type="button" class="smallbtn" id="live-logout-settings">Se déconnecter</button></article></section>`;
+ }
+ pages.dashboard=connectedDashboard;
+ pages.etablissements=()=>connectedDirectory('etablissements');
+ pages.entreprises=()=>connectedDirectory('entreprises');
+ pages.utilisateurs=()=>connectedEmpty('Comptes et identités','Étudiants, alumni, administrateurs et recruteurs.',[['Comptes','users'],['Professionnels','building'],['Superadmins','shield'],['Comptes mobiles','users']]);
+ pages.invitations=connectedInvitesPage;
+ pages.contenus=()=>connectedEmpty('Offres & contenus','Publications, emplois, stages et événements de la communauté.',[['Publications','file'],['Opportunités','briefcase'],['Événements','clock'],['Modération','shield']]);
+ pages.moderation=()=>connectedEmpty('Modération & conformité','Suivi des signalements et décisions de modération.',[['À traiter','flag'],['Résolus','check'],['Contrôles','shield'],['Alertes','clock']]);
+ pages.imports=()=>connectedEmpty('Imports & opérations groupées','Suivi des données importées et des traitements.',[['Imports','upload'],['Lignes intégrées','check'],['Anomalies','flag'],['Établissements','school']]);
+ pages.statistiques=()=>connectedEmpty('Statistiques globales','Des chiffres réels seront affichés lorsque les API seront raccordées.',[['Croissance','chart'],['Entreprises','building'],['Établissements','school'],['Comptes','users']])+'<div class="notice">Les courbes et barres ci-dessous sont des illustrations animées uniquement : ce ne sont pas des statistiques de G-Connect.</div>'+trendChart()+chart();
+ pages.audit=()=>connectedEmpty('Journal d’audit','Consultation sécurisée des événements sensibles.',[['Événements','history'],['Invitations','mail'],['Modérations','flag'],['Connexions','shield']]);
+ pages.sessions=()=>connectedEmpty('Sessions & sécurité','Contrôles des accès et authentifications.',[['Sessions','devices'],['MFA','shield'],['Historique','history'],['Alertes','flag']]);
+ pages.parametres=connectedSettings;
+ pages.facturation=()=>connectedEmpty('Factures & paiements','Aucune transaction n’est générée dans cette interface.',[['Factures','receipt'],['Paiements','billing'],['En attente','clock'],['Historique','history']]);
+
+ // Institution-specific content, rendered inside the SAME E18-approved shell.
+ const institutionalStat=value=>Number.isFinite(value)&&value>=0?String(value):'—';
+
+ function institutionStatCard(title,value,description,symbol){
+   return '<article class="panel kpi"><div class="kpi-top"><span class="kpi-icon">'+icon(symbol)+'</span><span class="e20-stat-chip">Campus</span></div>'
+     +'<div><small>'+title+'</small><strong>'+institutionalStat(value)+'</strong></div><div><em>'+description+'</em></div></article>';
+ }
+ function institutionCommunityBars(stats){
+   const student=stats.users?.students,alumni=stats.users?.alumni;
+   const valid=value=>Number.isFinite(value)&&value>=0;
+   if(!valid(student)||!valid(alumni))return '<div class="panel-body"><p class="empty">Répartition indisponible pour le moment.</p></div>';
+   const total=student+alumni;
+   if(!total)return '<div class="panel-body"><p class="empty">Aucun étudiant ou alumni rattaché actuellement.</p></div>';
+   return '<div class="e20-bars">'+[['Étudiants',student],['Alumni',alumni]].map(([label,count])=>{
+     const share=Math.round(count/total*100);
+     return '<div class="e20-bar-item"><div class="e20-bar-heading"><strong>'+label+'</strong><span>'+count+' · '+share+' %</span></div>'
+       +'<div class="e20-track" aria-hidden="true"><div class="e20-fill" style="width:'+share+'%"></div></div></div>';
+   }).join('')+'</div>';
+ }
+ function institutionSignupChart(stats){
+   const counts=new Map();
+   for(const point of Array.isArray(stats.signups_last_30_days)?stats.signups_last_30_days:[]){
+     if(typeof point?.date==='string' && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(point.date) &&
+       Number.isSafeInteger(point.count)&&point.count>=0)counts.set(point.date,point.count);
+   }
+   const today=new Date(),base=Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate());
+   const days=Array.from({length:30},(_,index)=>{
+     const date=new Date(base-(29-index)*86400000),key=date.toISOString().slice(0,10);
+     return {count:counts.get(key)||0,label:date.toLocaleDateString('fr-FR',{day:'numeric',month:'short',timeZone:'UTC'})};
+   });
+   const total=days.reduce((sum,day)=>sum+day.count,0),peak=Math.max(1,...days.map(day=>day.count));
+   const points=days.map((day,index)=>({x:48+index*624/29,y:197-day.count/peak*150,count:day.count,label:day.label}));
+   const line=points.map((point,index)=>(index?'L':'M')+point.x.toFixed(1)+' '+point.y.toFixed(1)).join(' ');
+   const grid=[0,.5,1].map(ratio=>{
+     const y=197-ratio*150;
+     return '<line class="e20-graph-grid" x1="48" y1="'+y+'" x2="672" y2="'+y+'"/>'
+       +'<text class="e20-graph-label" x="37" y="'+(y+4)+'" text-anchor="end">'+Math.round(peak*ratio)+'</text>';
+   }).join('');
+   const labels=[0,7,14,21,29].map(index=>
+     '<text class="e20-graph-label" x="'+points[index].x.toFixed(1)+'" y="222" text-anchor="middle">'+days[index].label+'</text>'
+   ).join('');
+   const dots=points.filter(point=>point.count>0).map(point=>
+     '<circle class="e20-graph-dot" cx="'+point.x.toFixed(1)+'" cy="'+point.y.toFixed(1)+'" r="5"><title>'+point.label+' : '+point.count+' compte(s)</title></circle>'
+   ).join('');
+   return '<div class="e20-chart-body"><div class="e20-chart-legend"><span>Comptes des membres actuellement rattachés · 30 jours</span><strong>'+total+' nouveau(x)</strong></div>'
+     +'<svg viewBox="0 0 720 245" role="img" aria-label="Courbe des comptes créés chaque jour au cours des 30 derniers jours">'
+     +'<defs><linearGradient id="e20-signups-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3761ff" stop-opacity=".22"/><stop offset="1" stop-color="#3761ff" stop-opacity=".015"/></linearGradient></defs>'
+     +grid+'<path d="'+line+' L672 197 L48 197 Z" fill="url(#e20-signups-fill)"/>'
+     +'<path class="e20-graph-line" d="'+line+'"/>'+dots+labels+'</svg>'
+     +'<p class="e20-chart-note">'+(total?'Inscriptions des comptes actuellement rattachés à votre campus.':'Aucune création de compte parmi vos membres rattachés sur cette période.')+'</p>'
+     +'<details class="e20-chart-data"><summary>Consulter les valeurs par jour</summary><ol>'
+     +days.map(day=>'<li>'+day.label+' : '+day.count+'</li>').join('')+'</ol></details></div>';
+ }
+ function institutionDonut(stats){
+   const students=stats.users?.students,alumni=stats.users?.alumni;
+   const known=Number.isFinite(students)&&students>=0&&Number.isFinite(alumni)&&alumni>=0;
+   const total=known?students+alumni:0,share=total?Math.round(students/total*100):0;
+   const ring=total?'conic-gradient(#3761ff 0% '+share+'%,#7abafb '+share+'% 100%)':'conic-gradient(#e6edfa 0% 100%)';
+   return '<div class="e20-donut-wrap"><div class="e20-donut" style="background:'+ring+'">'
+     +'<div class="e20-donut-label"><strong>'+(known?total:'—')+'</strong><small>Membres</small></div></div>'
+     +'<div class="e20-donut-legend"><div><i class="e20-dot" style="background:#3761ff"></i>Étudiants<b>'+institutionalStat(students)+'</b></div>'
+     +'<div><i class="e20-dot" style="background:#7abafb"></i>Alumni<b>'+institutionalStat(alumni)+'</b></div></div></div>'
+     +(!total?'<p class="e20-chart-note" style="text-align:center;margin:0 0 17px">'+(known?'Aucun membre rattaché actuellement.':'Répartition indisponible pour le moment.')+'</p>':'');
+ }
+ function institutionActivityBars(stats){
+   const items=[['Événements',stats.posts?.events],['Opportunités',stats.posts?.opportunities],['Projets',stats.posts?.projects]];
+   const peak=Math.max(1,...items.map(([,value])=>Number.isFinite(value)&&value>=0?value:0));
+   return '<div class="e20-bars">'+items.map(([label,count])=>{
+     const width=Number.isFinite(count)&&count>=0?Math.round(count/peak*100):0;
+     return '<div class="e20-bar-item"><div class="e20-bar-heading"><strong>'+label+'</strong><span>'+institutionalStat(count)+'</span></div>'
+       +'<div class="e20-track" aria-hidden="true"><div class="e20-fill" style="width:'+width+'%"></div></div></div>';
+   }).join('')+'</div>';
+ }
+
+ function institutionDashboard(){
+   const stats=account.stats||{},students=stats.users?.students,alumni=stats.users?.alumni;
+   const name=safe(stats.institution_name||'Mon établissement');
+   const members=Number.isFinite(students)&&students>=0&&Number.isFinite(alumni)&&alumni>=0?students+alumni:null;
+   const hero='<section class="e20-campus-hero" aria-label="Votre établissement">'
+     +'<div class="e20-campus-copy"><span class="e20-campus-kicker">ESPACE ÉTABLISSEMENT</span>'
+     +'<h2>Votre campus.<br><span>Une communauté qui avance.</span></h2>'
+     +'<p>Retrouvez vos membres, les promotions et les activités de '+name+' au même endroit.</p>'
+     +'<div class="e20-campus-actions"><button type="button" class="e20-campus-primary" data-route="members">Voir la communauté '+icon('right')+'</button>'
+     +'<button type="button" class="e20-campus-secondary" data-route="statistics">Explorer les statistiques '+icon('chart')+'</button></div></div>'
+     +'<div class="e20-campus-art" aria-hidden="true"><div class="e20-campus-orbit">'
+     +'<div class="e20-campus-center"><img src="/assets/logo_icon.png" alt="">G-Connect</div>'
+     +'<span class="e20-orbit-tag">'+icon('users')+' Étudiants</span><span class="e20-orbit-tag">'+icon('school')+' Alumni</span>'
+     +'<span class="e20-orbit-tag">'+icon('file')+' Événements</span><span class="e20-orbit-tag">'+icon('chart')+' Promotions</span></div></div></section>';
+   const activity='<div class="panel-body">'
+     +'<div class="e20-row"><span><strong class="e20-row-label">Promotions</strong><small class="e20-mini-sub">Parcours proposés</small></span><strong class="e20-row-value">'+institutionalStat(stats.promotions_count)+'</strong></div>'
+     +'<div class="e20-row"><span><strong class="e20-row-label">Événements</strong><small class="e20-mini-sub">Activités publiées</small></span><strong class="e20-row-value">'+institutionalStat(stats.posts?.events)+'</strong></div>'
+     +'<div class="e20-row"><span><strong class="e20-row-label">Interactions</strong><small class="e20-mini-sub">Réactions et commentaires</small></span><strong class="e20-row-value">'
+     +(Number.isFinite(stats.engagement?.reactions)&&Number.isFinite(stats.engagement?.comments)?stats.engagement.reactions+stats.engagement.comments:'—')
+     +'</strong></div></div>';
+   return intro('Vue d’ensemble','Bienvenue dans votre espace, '+name+'.')+hero
+     +'<div class="e20-section-head"><h2>Indicateurs clés</h2><span class="e20-stat-chip">Votre établissement</span></div>'
+     +'<div class="grid metrics">'
+     +institutionStatCard('Membres',members,'Étudiants et alumni','users')
+     +institutionStatCard('Promotions',stats.promotions_count,'Filières et années','school')
+     +institutionStatCard('Événements',stats.posts?.events,'Vie du campus','file')
+     +institutionStatCard('Publications',stats.posts?.total,'Contenus du campus','chart')
+     +'</div>'
+     +'<div class="grid sec-layout">'
+     +panel('Votre communauté','Répartition actuelle',institutionCommunityBars(stats))
+     +panel('Activité du campus','Promotions et événements',activity)
+     +'</div>';
+ }
+ function institutionStatistics(){
+   const stats=account.stats||{},students=stats.users?.students,alumni=stats.users?.alumni;
+   const name=safe(stats.institution_name||'Mon établissement');
+   return intro('Statistiques de l’établissement','Indicateurs et activité de '+name+'.')
+     +'<div class="grid metrics">'
+     +institutionStatCard('Étudiants',students,'Membres rattachés','users')
+     +institutionStatCard('Alumni',alumni,'Diplômés rattachés','school')
+     +institutionStatCard('Promotions',stats.promotions_count,'Filières et années','school')
+     +institutionStatCard('Événements',stats.posts?.events,'Vie du campus','file')
+     +'</div>'
+     +'<div class="grid sec-layout">'
+     +panel('Évolution des inscriptions','Comptes créés au cours des 30 derniers jours',institutionSignupChart(stats))
+     +panel('Répartition de la communauté','Étudiants et alumni',institutionDonut(stats))
+     +'</div>'
+     +'<div class="grid sec-layout" style="margin-top:17px">'
+     +panel('Publications du campus','Catégories de contenus',institutionActivityBars(stats))
+     +panel('Engagement','Activités des membres',
+       '<div class="panel-body">'
+       +'<div class="e20-row"><span class="e20-row-label">Réactions</span><strong class="e20-row-value">'+institutionalStat(stats.engagement?.reactions)+'</strong></div>'
+       +'<div class="e20-row"><span class="e20-row-label">Commentaires</span><strong class="e20-row-value">'+institutionalStat(stats.engagement?.comments)+'</strong></div>'
+       +'<div class="e20-row"><span class="e20-row-label">Publications</span><strong class="e20-row-value">'+institutionalStat(stats.posts?.total)+'</strong></div>'
+       +'</div>')
+     +'</div>';
+ }
+
+ // Enterprise reads only company-scoped figures delivered by its WebToken endpoint.
+ const enterpriseStats=()=>account.stats||{};
+ const enterpriseNumber=value=>Number.isFinite(value)&&value>=0?value:0;
+ function enterpriseCard(label,value,hint,symbol){
+   return '<article class="panel kpi"><div class="kpi-top"><span class="kpi-icon">'+icon(symbol)+'</span><span class="e20-stat-chip">Entreprise</span></div>'
+     +'<div><small>'+label+'</small><strong>'+institutionalStat(value)+'</strong></div><div><em>'+hint+'</em></div></article>';
+ }
+ function enterpriseOfferRows(stats){
+   const recent=Array.isArray(stats.opportunities?.recent)?stats.opportunities.recent:[];
+   if(!recent.length)return '<div class="panel-body"><p class="empty">Aucune offre publiée pour le moment.</p></div>';
+   return '<div class="panel-body">'+recent.map(offer=>
+     '<div class="e20-row"><span><strong class="e20-row-label">'+safe(offer.title)+'</strong>'
+     +'<small class="e20-mini-sub">'+safe(offer.category||'Opportunité')+' · '+(offer.status==='open'?'Ouverte':'Fermée')+'</small></span>'
+     +'<strong class="e20-row-value">'+institutionalStat(offer.applications)+'</strong></div>'
+   ).join('')+'</div>';
+ }
+ function enterpriseApplicationBars(stats){
+   const codes=[['Soumises','submitted'],['Consultées','viewed'],['Présélectionnées','shortlisted'],
+     ['Entretiens','interview'],['Acceptées','accepted'],['Refusées','rejected']];
+   const counts=stats.applications?.by_status||{};
+   const high=Math.max(1,...codes.map(([,key])=>enterpriseNumber(counts[key])));
+   return '<div class="e20-bars">'+codes.map(([label,key])=>{
+     const value=enterpriseNumber(counts[key]),width=Math.round(value/high*100);
+     return '<div class="e20-bar-item"><div class="e20-bar-heading"><strong>'+label+'</strong><span>'+value+'</span></div>'
+       +'<div class="e20-track" aria-hidden="true"><div class="e20-fill" style="width:'+width+'%"></div></div></div>';
+   }).join('')+'</div>';
+ }
+ function enterpriseTrend(stats){
+   const offers=new Map(),applications=new Map();
+   for(const [rows,target] of [[stats.offers_last_30_days,offers],[stats.applications_last_30_days,applications]]){
+     for(const entry of Array.isArray(rows)?rows:[]){
+       if(typeof entry?.date==='string' && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(entry.date)
+          &&Number.isSafeInteger(entry.count)&&entry.count>=0)target.set(entry.date,entry.count);
+     }
+   }
+   const today=new Date(),start=Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate());
+   const days=Array.from({length:30},(_,i)=>{
+     const day=new Date(start-(29-i)*86400000),key=day.toISOString().slice(0,10);
+     return {label:day.toLocaleDateString('fr-FR',{day:'numeric',month:'short',timeZone:'UTC'}),
+       offers:offers.get(key)||0,applications:applications.get(key)||0};
+   });
+   const peak=Math.max(1,...days.flatMap(d=>[d.offers,d.applications]));
+   const series=(key,color)=>'<path d="'+days.map((day,i)=>{
+     const x=48+i*624/29,y=197-day[key]/peak*150;
+     return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+   }).join(' ')+'" fill="none" stroke="'+color+'" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>';
+   const grid=[0,.5,1].map(v=>'<line class="e20-graph-grid" x1="48" y1="'+(197-v*150)+'" x2="672" y2="'+(197-v*150)+'"/>'
+     +'<text class="e20-graph-label" text-anchor="end" x="38" y="'+(201-v*150)+'">'+Math.round(peak*v)+'</text>').join('');
+   const labels=[0,7,14,21,29].map(i=>'<text class="e20-graph-label" x="'+(48+i*624/29)+'" y="224" text-anchor="middle">'+days[i].label+'</text>').join('');
+   const total=key=>days.reduce((acc,day)=>acc+day[key],0);
+   return '<div class="e20-chart-body"><div class="e20-chart-legend">'
+     +'<span><i style="display:inline-block;width:9px;height:9px;background:#3761ff;border-radius:50%;margin-right:6px"></i>Offres · '+total('offers')+'</span>'
+     +'<span><i style="display:inline-block;width:9px;height:9px;background:#20a7b9;border-radius:50%;margin-right:6px"></i>Candidatures · '+total('applications')+'</span>'
+     +'</div><svg viewBox="0 0 720 245" role="img" aria-label="Évolution quotidienne des offres et candidatures sur 30 jours">'
+     +grid+series('offers','#3761ff')+series('applications','#20a7b9')+labels+'</svg>'
+     +'<p class="e20-chart-note">'+(total('offers')+total('applications')===0?'Aucune nouvelle activité sur les 30 derniers jours.':'Évolution réelle de vos offres et candidatures.')+'</p>'
+     +'<details class="e20-chart-data"><summary>Voir les valeurs par jour</summary><ol>'+days.map(day=>
+       '<li>'+day.label+' : '+day.offers+' offre(s), '+day.applications+' candidature(s)</li>').join('')+'</ol></details></div>';
+ }
+ function enterpriseOfferDonut(stats){
+   const opened=stats.opportunities?.open,closed=stats.opportunities?.closed;
+   const total=enterpriseNumber(opened)+enterpriseNumber(closed);
+   const share=total?Math.round(enterpriseNumber(opened)/total*100):0;
+   const ring=total?'conic-gradient(#3761ff 0% '+share+'%,#7abafb '+share+'% 100%)':'conic-gradient(#e6edfa 0% 100%)';
+   return '<div class="e20-donut-wrap"><div class="e20-donut" style="background:'+ring+'"><div class="e20-donut-label">'
+     +'<strong>'+total+'</strong><small>Offres</small></div></div><div class="e20-donut-legend">'
+     +'<div><i class="e20-dot" style="background:#3761ff"></i>Ouvertes<b>'+institutionalStat(opened)+'</b></div>'
+     +'<div><i class="e20-dot" style="background:#7abafb"></i>Fermées<b>'+institutionalStat(closed)+'</b></div></div></div>';
+ }
+ function enterpriseDashboard(){
+   const stats=enterpriseStats(),name=safe(stats.company_name||'Mon entreprise');
+   return intro('Vue d’ensemble','Bienvenue dans l’espace de '+name+'.')
+     +'<section class="e20-campus-hero e21-company-hero" aria-label="Votre entreprise"><div class="e20-campus-copy">'
+     +'<span class="e20-campus-kicker">ESPACE ENTREPRISE</span><h2>Vos opportunités.<br><span>Les talents de demain.</span></h2>'
+     +'<p>Suivez vos offres, vos candidatures et votre activité sur G-Connect.</p>'
+     +'<div class="e20-campus-actions"><button type="button" class="e20-campus-primary" data-route="offers">Mes offres '+icon('right')+'</button>'
+     +'<button type="button" class="e20-campus-secondary" data-route="applications">Voir les candidatures '+icon('users')+'</button></div></div>'
+     +'<div class="e20-campus-art" aria-hidden="true"><div class="e20-campus-orbit"><div class="e20-campus-center">'
+     +'<img src="/assets/logo_icon.png" alt="">G-Connect</div>'
+     +'<span class="e20-orbit-tag">'+icon('briefcase')+' Offres</span>'
+     +'<span class="e20-orbit-tag">'+icon('users')+' Talents</span>'
+     +'<span class="e20-orbit-tag">'+icon('chart')+' Candidatures</span>'
+     +'<span class="e20-orbit-tag">'+icon('check')+' Suivi</span></div></div></section>'
+     +'<div class="e20-section-head"><h2>Indicateurs clés</h2><span class="e20-stat-chip">'+name+'</span></div>'
+     +'<div class="grid metrics">'
+     +enterpriseCard('Offres',stats.opportunities?.total,'Vos opportunités','briefcase')
+     +enterpriseCard('Offres ouvertes',stats.opportunities?.open,'Recrutement en cours','check')
+     +enterpriseCard('Candidatures',stats.applications?.total,'Dossiers reçus','users')
+     +enterpriseCard('Publications',stats.posts?.total,'Votre présence sur le réseau','file')
+     +'</div><div class="grid sec-layout">'
+     +panel('Offres récentes','Nombre de candidatures par offre',enterpriseOfferRows(stats))
+     +panel('Suivi des candidatures','Répartition par étape',enterpriseApplicationBars(stats))
+     +'</div>';
+ }
+ function enterpriseOffers(){
+   const s=enterpriseStats();
+   return intro('Mes offres','Retrouvez les opportunités associées à '+safe(s.company_name||'votre entreprise')+'.')
+     +'<div class="grid metrics">'
+     +enterpriseCard('Total',s.opportunities?.total,'Offres associées','briefcase')
+     +enterpriseCard('Ouvertes',s.opportunities?.open,'Recrutements actifs','check')
+     +enterpriseCard('Fermées',s.opportunities?.closed,'Recrutements clôturés','clock')
+     +enterpriseCard('Brouillons',s.posts?.drafts,'Publications non finalisées','file')
+     +'</div>'
+     +panel('Dernières offres','Les huit plus récentes · nombre de candidatures',enterpriseOfferRows(s));
+ }
+ function enterpriseApplications(){
+   const s=enterpriseStats();
+   return intro('Candidatures','Suivez les réponses reçues sur vos opportunités.')
+     +'<div class="grid metrics">'
+     +enterpriseCard('Reçues',s.applications?.total,'Toutes vos offres','users')
+     +enterpriseCard('Présélectionnées',s.applications?.by_status?.shortlisted||0,'Candidats retenus','check')
+     +enterpriseCard('Entretiens',s.applications?.by_status?.interview||0,'Entretiens à organiser','clock')
+     +enterpriseCard('Acceptées',s.applications?.by_status?.accepted||0,'Candidatures validées','shield')
+     +'</div><div class="grid sec-layout">'
+     +panel('Étapes des candidatures','Données de votre entreprise',enterpriseApplicationBars(s))
+     +panel('Évolution','30 derniers jours',enterpriseTrend(s))+'</div>';
+ }
+ function enterpriseStatistics(){
+   const s=enterpriseStats();
+   return intro('Statistiques de l’entreprise','Indicateurs réels pour '+safe(s.company_name||'votre entreprise')+'.')
+     +'<div class="grid metrics">'
+     +enterpriseCard('Offres',s.opportunities?.total,'Offres rattachées','briefcase')
+     +enterpriseCard('Candidatures',s.applications?.total,'Réponses reçues','users')
+     +enterpriseCard('Vues',s.engagement?.views,'Sur vos publications','chart')
+     +enterpriseCard('Interactions',enterpriseNumber(s.engagement?.reactions)+enterpriseNumber(s.engagement?.comments),'Réactions et commentaires','file')
+     +'</div><div class="grid sec-layout">'
+     +panel('Évolution des offres et candidatures','Activité quotidienne · 30 jours',enterpriseTrend(s))
+     +panel('Statut des offres','Ouvertes et fermées',enterpriseOfferDonut(s))
+     +'</div><div class="grid sec-layout" style="margin-top:17px">'
+     +panel('Parcours des candidatures','Étapes du recrutement',enterpriseApplicationBars(s))
+     +panel('Activité du compte','Interactivité de vos publications',
+       '<div class="panel-body">'
+       +'<div class="e20-row"><span class="e20-row-label">Réactions</span><strong class="e20-row-value">'+institutionalStat(s.engagement?.reactions)+'</strong></div>'
+       +'<div class="e20-row"><span class="e20-row-label">Commentaires</span><strong class="e20-row-value">'+institutionalStat(s.engagement?.comments)+'</strong></div>'
+       +'<div class="e20-row"><span class="e20-row-label">Événements</span><strong class="e20-row-value">'+institutionalStat(s.posts?.events)+'</strong></div>'
+       +'</div>')+'</div>';
+ }
+ function enterpriseSettings(){
+   const s=enterpriseStats(),email=safe(account.profile?.email||''),name=safe(s.company_name||'Entreprise');
+   const dark=document.documentElement.dataset.theme==='dark';
+   return intro('Paramètres de l’entreprise','Informations et sécurité de votre espace professionnel.')
+     +'<section class="sa-settings-grid"><article class="panel"><p class="settings-kicker">Entreprise</p>'
+     +'<h2 class="settings-title">'+name+'</h2><p class="settings-subtitle">'+email+'</p>'
+     +'<div class="settings-property"><span>Secteur</span><strong>'+safe(s.sector||'Non renseigné')+'</strong></div>'
+     +'<div class="settings-property"><span>Site web</span><strong>'+safe(s.website||'Non renseigné')+'</strong></div></article>'
+     +'<article class="panel"><p class="settings-kicker">Personnalisation</p><h2 class="settings-title">Apparence</h2>'
+     +'<div class="settings-appearance-choices" role="group" aria-label="Choix du thème">'
+     +'<button type="button" data-preview-theme="light" aria-pressed="'+(!dark)+'">Clair</button>'
+     +'<button type="button" data-preview-theme="dark" aria-pressed="'+dark+'">Sombre</button></div></article>'
+     +'<article class="panel"><p class="settings-kicker">Sécurité</p><h2 class="settings-title">Compte protégé</h2>'
+     +'<p class="settings-subtitle">Double authentification activée</p>'
+     +'<button type="button" class="smallbtn" id="live-logout-settings">Se déconnecter</button></article></section>';
+ }
+
+ function institutionModule(title,description,glyph){
+   return intro(title,description)+panel('Votre espace','Accès professionnel',`<div class="empty-state">${icon(glyph)}<strong>À venir</strong><p>Cette fonctionnalité sera disponible après son activation.</p></div>`);
+ }
+ function institutionSettings(){
+   const name=safe(account.stats?.institution_name||'Mon établissement');
+   const email=safe(account.profile?.email||'Compte établissement');
+   const dark=document.documentElement.dataset.theme==='dark';
+   return intro('Paramètres de l’établissement','Compte et préférences de votre espace.')
+     +`<section class="sa-settings-grid">
+       <article class="panel"><p class="settings-kicker">Compte</p><h2 class="settings-title">${name}</h2><p class="settings-subtitle">${email}</p><div class="settings-property"><span>Type de compte</span><strong>Établissement</strong></div><div class="settings-property"><span>Double authentification</span><strong>Active</strong></div></article>
+       <article class="panel"><p class="settings-kicker">Personnalisation</p><h2 class="settings-title">Apparence</h2><div class="settings-appearance-choices" role="group" aria-label="Choix du thème"><button type="button" data-preview-theme="light" aria-pressed="${!dark}">Clair</button><button type="button" data-preview-theme="dark" aria-pressed="${dark}">Sombre</button></div></article>
+       <article class="panel"><p class="settings-kicker">Sécurité</p><h2 class="settings-title">Session</h2><p class="settings-subtitle">Vos droits sont validés par le backend.</p><button type="button" class="smallbtn" id="live-logout-settings">Se déconnecter</button></article></section>`;
+ }
+ if(isInstitutionAdmin){
+   pages.dashboard=institutionDashboard;
+   for(const [id,title,desc,glyph] of [
+     ['promotions','Promotions & filières','Organisez les promotions et parcours de votre établissement.','school'],
+     ['members','Étudiants & Alumni','Retrouvez la communauté de votre établissement.','users'],
+     ['events','Événements & annonces','Animez et informez votre communauté.','file'],
+     ['team','Équipe administrative','Gérez les accès de votre établissement.','shield'],
+     ['subscription','Abonnement & factures','Consultez les services de votre établissement.','billing']
+   ])pages[id]=()=>institutionModule(title,desc,glyph);
+   pages.statistics=institutionStatistics;
+   pages.settings=institutionSettings;
+ }
+
+ if(isEnterpriseAdmin){
+   enterpriseE24=window.GConnectEnterpriseE24({
+     api:accountApi,safe,intro,notify,refresh:()=>render(),
+   });
+   pages.dashboard=enterpriseDashboard;
+   Object.assign(pages,enterpriseE24.pages);
+   pages.statistics=enterpriseStatistics;
+   pages.settings=enterpriseSettings;
+   document.addEventListener('click',event=>{
+     const control=event.target.closest?.('[data-e24]');
+     if(control)void enterpriseE24.act(control);
+   });
+   document.addEventListener('change',event=>{
+     if(event.target?.matches?.('[data-e24-status]'))void enterpriseE24.changeStatus(event.target);
+   });
+   document.addEventListener('submit',event=>{
+     if(!event.target?.matches?.('[data-e24-form]'))return;
+     event.preventDefault();
+     if(event.target.reportValidity())void enterpriseE24.submit(event.target);
+   });
+ }
+ const billingE22=window.GConnectSubscriptionsE22({
+   api:accountApi,admin:isPlatformAdmin,safe,intro,panel,notify,
+   route:()=>view,render:()=>render(),
+ });
+ if(isPlatformAdmin){
+   academicE31=window.GConnectInstitutionDirectoryE31({
+     api:accountApi,safe,icon,notify,go:goto,render:()=>render(),
+     isVisible:()=>view==='etablissements',
+   });
+   pages.etablissements=()=>academicE31.page();
+   corporateE32=window.GConnectEnterprisesE32({
+     api:accountApi,safe,icon,go:goto,render:()=>render(),
+     isVisible:()=>view==='entreprises',
+   });
+   pages.entreprises=()=>corporateE32.page();
+   peopleE34=window.GConnectUsersE34({
+     api:accountApi,safe,icon,notify,go:goto,render:()=>render(),
+     isVisible:()=>view==='utilisateurs',
+   });
+   pages.utilisateurs=()=>peopleE34.page();
+   document.addEventListener('click',event=>{
+     const button=event.target.closest?.('[data-e34-action]');
+     if(button)peopleE34.action(button);
+   });
+   document.addEventListener('change',event=>{
+     if(event.target?.matches?.('[data-e34-filter]'))peopleE34.onFilter(event.target);
+   });
+   document.addEventListener('input',event=>{
+     if(event.target?.matches?.('[data-e34-search]'))peopleE34.onSearch(event.target);
+   });
+
+   document.addEventListener('click',event=>{
+     const button=event.target.closest?.('[data-e32-action]');
+     if(button)corporateE32.action(button);
+   });
+   document.addEventListener('change',event=>{
+     if(event.target?.matches?.('[data-e32-filter]'))corporateE32.onFilter(event.target);
+   });
+   document.addEventListener('input',event=>{
+     if(event.target?.matches?.('[data-e32-search]'))corporateE32.onSearch(event.target);
+   });
+
+   document.addEventListener('click',event=>{
+     const button=event.target.closest?.('[data-e31-action]');
+     if(button)academicE31.action(button);
+   });
+   document.addEventListener('change',event=>{
+     if(event.target?.matches?.('[data-e31-filter]'))academicE31.onFilter(event.target);
+   });
+   document.addEventListener('input',event=>{
+     if(event.target?.matches?.('[data-e31-search]'))academicE31.onSearch(event.target);
+   });
+ }
+ if(isPlatformAdmin){
+   pages.abonnements=()=>billingE22.adminPage();
+   // Finance is a read-only register of verified external checkout records, never a synthetic invoice ledger.
+   invoiceE38=window.GConnectInvoicingE38({
+     api:accountApi,safe,render:()=>render(),isVisible:()=>view==='facturation',
+     verifiedRows:()=>financeE36?.rows()||[],
+     refreshPayments:()=>financeE36?.action({dataset:{e36Action:'refresh'}}),
+   });
+   financeE36=window.GConnectFinanceE36({
+     api:accountApi,safe,icon,render:()=>render(),isVisible:()=>view==='facturation',
+     invoicing:invoiceE38,
+   });
+   pages.facturation=()=>financeE36.page();
+   document.addEventListener('click',event=>{
+     const button=event.target.closest?.('[data-e36-action]');
+     if(button)financeE36.action(button);
+   });
+   document.addEventListener('change',event=>{
+     if(event.target?.matches?.('[data-e36-filter]'))financeE36.onFilter(event.target);
+   });
+   document.addEventListener('input',event=>{
+     if(event.target?.matches?.('[data-e36-search]'))financeE36.onSearch(event.target);
+   });
+ }else{
+   clientInvoiceE38=window.GConnectInvoicingE38({
+     api:accountApi,safe,render:()=>render(),isVisible:()=>view==='subscription',
+     admin:false,
+   });
+   pages.subscription=()=>billingE22.clientPage()+clientInvoiceE38.section();
+ }
+ document.addEventListener('click',event=>{
+   const button=event.target.closest?.('[data-e38-action]');
+   if(button)(isPlatformAdmin?invoiceE38:clientInvoiceE38)?.action(button);
+ });
+ document.addEventListener('submit',event=>{
+   if(!event.target.matches?.('[data-e38-form]'))return;
+   event.preventDefault();
+   if(isPlatformAdmin)invoiceE38?.submit(event.target);
+ });
+ async function refreshLive(){
+   if(!liveApi.isConnected()){window.parent.postMessage({type:'gconnect-admin-expired'},location.origin);return;}
+   const seq=++liveSeq;liveError='';liveLoaded=false;render();
+   try{
+     const response=await liveApi.listInvitations();
+     if(seq!==liveSeq)return;
+     liveInvites=Array.isArray(response)?response:Array.isArray(response?.results)?response.results:[];
+     liveLoaded=true;
+   }catch(err){
+     if(seq!==liveSeq)return;
+     if(/session.*expir/i.test(err.message||'')){window.parent.postMessage({type:'gconnect-admin-expired'},location.origin);return;}
+     liveLoaded=true;liveError='Les invitations ne sont pas accessibles : '+(err.message||'erreur du service.');
+   }
+   render();
+ }
+ async function submitLive(form){
+   if(liveBusy)return;
+   const data=new FormData(form),institution=Number(data.get('institution_id')),email=String(data.get('email')||'').trim();
+   if(!Number.isSafeInteger(institution)||institution<1)return;
+   liveBusy=true;liveNotice='';render();
+   try{
+     await liveApi.sendInvitation(email,institution);
+     liveNotice='Invitation envoyée par le backend.';
+     await refreshLive();
+   }catch(err){liveNotice='Invitation non envoyée : '+(err.message||'erreur serveur.');}
+   finally{liveBusy=false;render();}
+ }
+ async function revokeLive(id){
+   if(liveBusy||!Number.isSafeInteger(id)||id<=0)return;
+   if(!window.confirm('Révoquer cette invitation ? Cette action est définitive.'))return;
+   liveBusy=true;liveNotice='';render();
+   try{await liveApi.revokeInvitation(id);liveNotice='Invitation révoquée.';await refreshLive();}
+   catch(err){liveNotice='Révocation impossible : '+(err.message||'erreur serveur.');}
+   finally{liveBusy=false;render();}
+ }
+ document.addEventListener('submit',event=>{
+   if(event.target?.id!=='live-invite-form')return;
+   event.preventDefault();
+   if(!event.target.reportValidity())return;
+   void submitLive(event.target);
+ });
+ document.addEventListener('click',event=>{
+   const button=event.target.closest('[data-live-revoke],#live-refresh,#live-logout-settings,#live-logout-profile');
+   if(!button)return;
+   if(button.id==='live-refresh')void refreshLive();
+   else if(button.dataset.liveRevoke)void revokeLive(Number(button.dataset.liveRevoke));
+   else window.parent.postMessage({type:'gconnect-admin-logout'},location.origin);
+ });
+ document.addEventListener('submit',event=>{
+   if(!event.target?.matches?.('[data-sub-form]'))return;
+   event.preventDefault();
+   if(!event.target.reportValidity())return;
+   void billingE22.submit(event.target);
+ });
+ document.addEventListener('click',event=>{
+   const control=event.target.closest?.('[data-sub-action]');
+   if(control)void billingE22.action(control);
+ });
+ if(isPlatformAdmin)void refreshLive();
+ if(!isRecruiter)void billingE22.load();
+})();
+if(isInstitutionAdmin){
+ document.querySelector('.sidebar').setAttribute('aria-label','Navigation Établissement');
+ document.querySelector('.sa-sidebar-identity strong').textContent='Espace Établissement';
+ document.querySelector('.sa-sidebar-avatar').textContent='ET';
+ document.querySelector('.profile-label').textContent='Établissement';
+ document.querySelectorAll('.top-actions .avatar,.profile-popover-head .avatar').forEach(el=>el.textContent='ET');
+ document.querySelector('.profile-trigger').setAttribute('aria-label','Ouvrir le menu Établissement');
+ const captions=document.querySelectorAll('.nav-label');
+ ['Mon établissement','Accès et services','Gestion & paramètres'].forEach((label,i)=>{if(captions[i])captions[i].textContent=label;});
+}
+
+if(isEnterpriseAdmin){
+ document.querySelector('.sidebar').setAttribute('aria-label','Navigation Entreprise');
+ document.querySelector('.sa-sidebar-identity strong').textContent=String(account.stats.company_name||'Mon entreprise');
+ document.querySelector('.sa-sidebar-avatar').textContent='EN';
+ document.querySelector('.profile-label').textContent='Entreprise';
+ document.querySelectorAll('.top-actions .avatar,.profile-popover-head .avatar').forEach(el=>el.textContent='EN');
+ document.querySelector('.profile-trigger').setAttribute('aria-label','Ouvrir le menu Entreprise');
+ const captions=document.querySelectorAll('.nav-label');
+ ['Mon entreprise','Gestion des accès','Gestion & paramètres'].forEach((label,i)=>{if(captions[i])captions[i].textContent=label;});
+}
+/* A single secure profile destination supersedes legacy theme switch controls. */
+function professionalSettingsOverview(){
+  const role=activeProfessionalLabel();
+  const org=activeOrganisationLabel();
+  return intro('Profil & paramètres','Informations du compte et préférences de votre espace sécurisé.')
+    +'<section class="sa-settings-grid e28-settings-cards">'
+    +'<article class="panel"><div class="panel-body">'
+    +'<p class="settings-kicker">IDENTITÉ</p><h2 class="settings-title">Mon profil</h2>'
+    +'<p class="settings-subtitle">'+safe(org)+'</p>'
+    +'<div class="settings-property"><span>Adresse e-mail</span><strong>'+safe(professionalState.email||'—')+'</strong></div>'
+    +'<div class="settings-property"><span>Type de compte</span><strong>'+safe(role)+'</strong></div>'
+    +'<button type="button" class="e28-settings-open" data-open-professional-profile>Ouvrir le profil et modifier ma photo →</button>'
+    +'</div></article><article class="panel"><div class="panel-body">'
+    +'<p class="settings-kicker">SÉCURITÉ</p><h2 class="settings-title">Accès protégé</h2>'
+    +'<p class="settings-subtitle">L’authentification renforcée reste obligatoire.</p>'
+    +'<div class="settings-property"><span>Session professionnelle</span><strong>Vérifiée</strong></div>'
+    +'<div class="settings-property"><span>Double authentification</span><strong>Activée</strong></div>'
+    +'<p class="settings-note">Votre profil et vos préférences sont accessibles depuis le menu du compte en haut à droite.</p>'
+    +'</div></article></section>';
+}
+pages.settings=professionalSettingsOverview;
+pages.parametres=professionalSettingsOverview;
+document.addEventListener('click',event=>{
+  if(event.target.closest?.('[data-open-professional-profile]'))$('profile-open').click();
+});
+/* E63: Personal Studio for the Superadmin settings route.
+   Preserve the shared E28 profile/photo/password modal for all three roles.
+   Keep the existing browser-local motion control as the sole preference writer. */
+if(isPlatformAdmin){
+  settingsE63=window.GConnectSettingsE63({
+    api:accountApi,
+    safe,
+    profile:()=>professionalState,
+    validPhoto:safeProfileImage,
+    motion:()=>motionPreference.value,
+    setMotion:value=>{
+      motionPreference.value=value;
+      motionPreference.dispatchEvent(new Event('change',{bubbles:true}));
+    },
+    openProfile:tab=>{
+      $('profile-open').click();
+      profileTab(tab);
+    },
+    openAbout:()=> $('about-open').click(),
+    go:route=>goto(route),
+    render:()=>render(),
+    isVisible:()=>view==='parametres',
+  });
+  pages.parametres=settingsE63.page;
+  document.addEventListener('click',event=>{
+    const button=event.target.closest?.('[data-e63-action],[data-e63-motion]');
+    if(button)settingsE63.action(button);
+  });
+}
+/* E62: isolated Security Observatory for the Superadmin.
+   Scope limited to the sessions view; all existing identity and navigation retained. */
+if(isPlatformAdmin){
+  securityE62=window.GConnectSecurityE62({
+    api:accountApi,safe,render:()=>render(),isVisible:()=>view==='sessions',
+  });
+  pages.sessions=securityE62.page;
+  document.addEventListener('click',event=>{
+    const hit=event.target.closest?.('[data-e62-days],[data-e62-action],[data-e62-detail],[data-e62-revoke],[data-e62-submit]');
+    if(hit)securityE62.action(hit);
+  });
+  document.addEventListener('input',event=>{
+    if(event.target.matches?.('[data-e62-confirm-input]'))securityE62.onInput(event.target);
+  });
+}
+/* E61: Standalone, read-only Superadmin audit archive.
+   Retains existing E19 shell and all previous Premium modules. */
+if(isPlatformAdmin){
+  auditE61=window.GConnectAuditE61({
+    api:accountApi,safe,render:()=>render(),isVisible:()=>view==='audit',
+  });
+  pages.audit=auditE61.page;
+  document.addEventListener('click',event=>{
+    const entry=event.target.closest?.('[data-e61-days],[data-e61-category],[data-e61-item],[data-e61-action]');
+    if(entry)auditE61.action(entry);
+  });
+  document.addEventListener('change',event=>{
+    if(event.target.matches?.('[data-e61-filter]'))auditE61.filter(event.target);
+  });
+  document.addEventListener('input',event=>{
+    if(event.target.matches?.('[data-e61-search]'))auditE61.search(event.target);
+  });
+}
+/* E60 replaces ONLY the Superadmin statistics placeholder, removing demo charts.
+   Separate Premium V2 data identity, existing E19 navigation untouched. */
+if(isPlatformAdmin){
+  statisticsE60=window.GConnectStatisticsE60({
+    api:accountApi,safe,render:()=>render(),isVisible:()=>view==='statistiques',
+  });
+  pages.statistiques=statisticsE60.page;
+  document.addEventListener('click',event=>{
+    const target=event.target.closest?.('[data-e60-period],[data-e60-action],[data-e60-detail]');
+    if(target)statisticsE60.action(target);
+  });
+}
+/* E59 replaces ONLY the Superadmin moderation placeholder.
+   Independent Premium V2 styling, MFA-protected real reports and decisions. */
+if(isPlatformAdmin){
+  moderationE59=window.GConnectModerationE59({
+    api:accountApi,safe,render:()=>render(),isVisible:()=>view==='moderation',
+  });
+  pages.moderation=moderationE59.page;
+  document.addEventListener('click',event=>{
+    const entry=event.target.closest?.('[data-e59-action],[data-e59-detail]');
+    if(entry)moderationE59.action(entry);
+    const modal=event.target.closest?.('[data-e59-modal-action],[data-e59-modal-decision]');
+    if(modal)moderationE59.modalAction(modal);
+  });
+  document.addEventListener('change',event=>{
+    if(event.target.matches?.('[data-e59-filter]'))moderationE59.onFilter(event.target);
+    if(event.target.matches?.('[data-e59-approval]'))moderationE59.checkApproval();
+  });
+  document.addEventListener('input',event=>{
+    if(event.target.matches?.('[data-e59-search]'))moderationE59.onSearch(event.target);
+    if(event.target.matches?.('[data-e59-reason]'))moderationE59.checkApproval();
+  });
+}
+/* E58 integrates a supervised, preview-first import studio only on the Imports tab.
+   The existing E19 navigation and other modules stay untouched. */
+if(isPlatformAdmin){
+  importsE58=window.GConnectImportsE58({
+    api:accountApi,safe,render:()=>render(),
+    isVisible:()=>view==='imports',
+  });
+  pages.imports=importsE58.page;
+  document.addEventListener('click',event=>{
+    const target=event.target.closest?.('[data-e58-type],[data-e58-action]');
+    if(target)importsE58.action(target);
+  });
+  document.addEventListener('change',event=>{
+    if(event.target.matches?.('[data-e58-file],[data-e58-school],[data-e58-filter],[data-e58-confirm]'))
+      importsE58.onChange(event.target);
+  });
+  document.addEventListener('input',event=>{
+    if(event.target.matches?.('[data-e58-school-query]'))importsE58.onInput(event.target);
+  });
+}
+/* E57 adds a self-contained, MFA-only read model to the existing Offers & Contents tab.
+   No other Superadmin module, enterprise or institution view is replaced. */
+if(isPlatformAdmin){
+  contentsE57=window.GConnectContentsE57({
+    api:accountApi,safe,render:()=>render(),go:goto,
+    isVisible:()=>view==='contenus',
+  });
+  pages.contenus=contentsE57.page;
+  document.addEventListener('click',event=>{
+    const element=event.target.closest?.('[data-e57-action],[data-e57-type],[data-e57-detail]');
+    if(element)contentsE57.action(element);
+  });
+  document.addEventListener('change',event=>{
+    if(event.target.matches?.('[data-e57-filter]'))contentsE57.onFilter(event.target);
+  });
+  document.addEventListener('input',event=>{
+    if(event.target.matches?.('[data-e57-search]'))contentsE57.onSearch(event.target);
+  });
+}
+/* E54 keeps the already-approved shell and swaps only connected invitation pages. */
+if(isPlatformAdmin||isEnterpriseAdmin){
+  invitationsE54=window.GConnectInvitationsE54({
+    api:accountApi,safe,intro,panel,render:()=>render(),
+    role:accountRole,isVisible:()=>isPlatformAdmin?view==='invitations':view==='team',
+  });
+  if(isPlatformAdmin)pages.invitations=invitationsE54.page;
+  if(isEnterpriseAdmin)pages.team=invitationsE54.page;
+}
+if(isRecruiter){
+  recruiterE54=window.GConnectRecruiterE54({
+    api:accountApi,safe,intro,panel,render:()=>render(),go:goto,
+    isVisible:()=>['dashboard','offers','applications'].includes(view),
+  });
+  Object.assign(pages,recruiterE54.pages);
+}
+const initial=location.hash.slice(1);if(pages[initial]&&allowedRoutes.has(initial))view=initial;render();
+renderProfessionalIdentity(professionalState);
+void loadProfessionalProfile();
+})();
+</script>
+</body>
+</html>

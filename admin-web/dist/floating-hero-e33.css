@@ -1,0 +1,200 @@
+/*
+ * G-Connect E33 · Floating identity treatment
+ * Replaces the two oversized "dashboard-banner" blocks without touching
+ * business data, routes, content cards, modal behavior, or the site shell.
+ * Each circle remains the recognizable icon constellation from E31/E32.
+ */
+
+.e31-page .e31-hero,
+.e32-page .e32-hero {
+  min-height: 250px;
+  padding: 13px 16px 15px 14px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+  gap: clamp(20px, 3.4vw, 48px);
+}
+
+.e31-page .e31-hero::before,
+.e32-page .e32-hero::before {
+  content: none;
+}
+
+.e31-page .e31-hero-copy,
+.e32-page .e32-hero-content {
+  max-width: 760px;
+}
+
+/* Academic network: a soft water-color atmosphere around the drawing only. */
+.e31-page .e31-hero {
+  grid-template-columns: minmax(0, 1.12fr) minmax(310px, .78fr);
+}
+.e31-page .e31-campus-visual {
+  width: min(100%, 400px);
+  min-height: 251px;
+  justify-self: center;
+}
+.e31-page .e31-campus-visual::before {
+  content: "";
+  position: absolute;
+  inset: -15px -15px -15px -15px;
+  z-index: -2;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(154, 224, 215, .29) 0%,
+    rgba(176, 226, 229, .17) 42%,
+    rgba(176, 226, 229, 0) 73%);
+}
+.e31-page .e31-hero h1 {
+  margin-top: 17px;
+  font-size: clamp(27px, 2.25vw, 40px);
+  line-height: 1.2;
+}
+.e31-page .e31-hero p { max-width: 550px; }
+.e31-page .e31-hero-actions { margin-top: 20px; }
+.e31-page .e31-eyebrow {
+  border: 1px solid rgba(77, 178, 178, .08);
+  background: rgba(221, 248, 245, .66);
+}
+.e31-page .e31-campus-orbit.orbit-one { border-color: rgba(73, 179, 185, .46); }
+.e31-page .e31-campus-orbit.orbit-two { border-color: rgba(82, 166, 196, .24); }
+.e31-page .e31-campus-core {
+  background: rgba(255, 255, 255, .93);
+  box-shadow: 0 13px 37px rgba(32, 145, 161, .10);
+}
+.e31-page .e31-campus-node {
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 8px 20px rgba(41, 110, 147, .09);
+}
+
+/* Corporate network: ink titles and violet orbital art on the page itself. */
+.e32-page .e32-hero {
+  grid-template-columns: minmax(0, 1.12fr) minmax(310px, .78fr);
+}
+.e32-page .e32-kicker {
+  background: rgba(237, 236, 255, .82);
+  color: #6a61b4;
+  border: 1px solid rgba(129, 118, 210, .15);
+}
+.e32-page .e32-hero h1 {
+  color: #283d75;
+  font-size: clamp(27px, 2.25vw, 40px);
+  line-height: 1.2;
+  margin-top: 17px;
+}
+.e32-page .e32-hero h1 em { color: #7260c7; }
+.e32-page .e32-hero p {
+  color: #7b8cae;
+  max-width: 550px;
+  line-height: 1.8;
+}
+.e32-page .e32-hero-buttons { margin-top: 20px; }
+.e32-page .e32-primary {
+  color: #fff;
+  background: linear-gradient(110deg, #4d5fd2, #8167dc);
+  border: 1px solid rgba(79, 83, 188, .17);
+  box-shadow: 0 9px 18px rgba(70, 81, 175, .15);
+}
+.e32-page .e32-primary:hover { background: linear-gradient(110deg, #4455c1, #7057c9); }
+.e32-page .e32-hero-secondary {
+  color: #655f9c;
+  background: rgba(255, 255, 255, .65);
+  border: 1px solid #dcdff6;
+}
+.e32-page .e32-hero-secondary:hover { background: #fff; }
+
+.e32-page .e32-network-art {
+  width: min(100%, 400px);
+  min-height: 251px;
+  justify-self: center;
+}
+.e32-page .e32-network-art::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -15px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(179, 168, 244, .27),
+    rgba(191, 194, 247, .14) 45%,
+    transparent 74%);
+}
+.e32-page .e32-network-ring {
+  border-color: rgba(114, 100, 197, .35);
+}
+.e32-page .e32-network-ring.e32-ring-two {
+  border-color: rgba(114, 120, 202, .18);
+}
+.e32-page .e32-network-central {
+  width: 132px;
+  height: 132px;
+  border-radius: 32px;
+  color: #665dbe;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 14px 38px rgba(84, 73, 164, .11);
+}
+.e32-page .e32-network-central > span { display: none; }
+.e32-page .e32-network-central svg { width: 58px; height: 58px; }
+.e32-page .e32-network-item {
+  width: 53px;
+  height: 53px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 17px;
+  color: #6864c2;
+  background: rgba(255, 255, 255, .97);
+  border-color: #e7e5fb;
+  box-shadow: 0 9px 21px rgba(83, 79, 154, .10);
+}
+.e32-page .e32-network-item svg { width: 24px; height: 24px; }
+.e32-page .e32-network-item > span { display: none; }
+.e32-page .e32-network-bottom { color: #8a8cc4; }
+
+/* Remove redundant vertical air while preserving the KPI and directory cards. */
+.e31-page .e31-insight,
+.e32-page .e32-insights { margin-top: 14px; }
+.e31-page .e31-workspace,
+.e32-page .e32-portfolio { margin-top: 26px; }
+
+@media (max-width: 1100px) {
+  .e31-page .e31-hero,
+  .e32-page .e32-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(255px, .77fr);
+    padding: 12px 2px;
+    gap: 16px;
+  }
+  .e31-page .e31-campus-visual,
+  .e32-page .e32-network-art { transform: scale(.88); transform-origin: center; }
+}
+
+@media (max-width: 900px) {
+  /* Small screens prioritize functions; the same art is preserved on desktop. */
+  .e31-page .e31-hero,
+  .e32-page .e32-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 17px 1px 8px;
+    gap: 0;
+  }
+  .e31-page .e31-campus-visual,
+  .e32-page .e32-network-art { display: none; }
+  .e31-page .e31-insight,
+  .e32-page .e32-insights { margin-top: 25px; }
+}
+
+@media (max-width: 480px) {
+  .e31-page .e31-hero h1,
+  .e32-page .e32-hero h1 { font-size: clamp(26px, 7.3vw, 32px); }
+  .e31-page .e31-hero-actions,
+  .e32-page .e32-hero-buttons { gap: 9px; }
+  .e31-page .e31-hero-actions button,
+  .e32-page .e32-hero-buttons button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .e31-page .e31-campus-core,
+  .e32-page .e32-network-central { animation: none; }
+}

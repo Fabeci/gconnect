@@ -1,0 +1,156 @@
+/* E16: one composition for every administrative authentication step.
+   Scoped to the auth shell: dashboard tokens and community pages stay independent. */
+body:has(.auth-admin){margin:0;background:var(--canvas)}
+.auth-admin{
+  --auth-ink:var(--ink);
+  --auth-muted:var(--ink-muted,#53627b);
+  --auth-link:var(--link,#294fd9);
+  --auth-surface:rgba(255,255,255,.86);
+  --auth-field:#f8faff;
+  --auth-border:#c7d3e6;
+  --auth-divider:#e0e7f3;
+  --auth-soft:#eef3ff;
+  --auth-error:#982d40;
+  --auth-error-bg:#fff2f4;
+  --auth-error-border:#edc3cb;
+  --auth-ring:rgba(55,97,255,.13);
+  min-height:100svh;
+  min-height:100dvh;
+  color:var(--auth-ink);
+  font:500 14px/1.65 var(--font-ui);
+  background:radial-gradient(ellipse at 15% 0%,rgba(55,97,255,.065),transparent 52%),
+    radial-gradient(ellipse at 95% 95%,rgba(76,139,204,.055),transparent 50%),var(--canvas);
+}
+html[data-theme="dark"] .auth-admin{
+  /* Same slate surfaces as the establishment dashboard's E9/E12 dark theme. */
+  --auth-ink:var(--ink);
+  --auth-muted:var(--ink-muted);
+  --auth-link:#a9c0ff;
+  --auth-surface:linear-gradient(145deg,rgba(42,62,92,.94),rgba(33,51,78,.92));
+  --auth-field:#1c2d46;
+  --auth-border:#526580;
+  --auth-divider:rgba(164,188,227,.18);
+  --auth-soft:rgba(135,168,255,.09);
+  --auth-error:#ffb9c4;
+  --auth-error-bg:#442c3b;
+  --auth-error-border:#875266;
+  --auth-ring:rgba(156,183,255,.2);
+  color-scheme:dark;
+}
+.auth-admin .auth-layout{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  min-height:100svh;
+  min-height:100dvh;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:32px 24px;
+}
+.auth-admin .auth-card{
+  width:100%;
+  max-width:464px;
+  padding:36px 40px 28px;
+  border:1px solid var(--auth-divider);
+  border-radius:28px;
+  background:var(--auth-surface);
+  color:var(--auth-ink);
+  box-shadow:0 16px 56px rgba(24,48,89,.065),0 2px 8px rgba(24,48,89,.025);
+  backdrop-filter:blur(16px);
+  animation:auth-admin-enter 460ms cubic-bezier(.16,1,.3,1) both;
+}
+.auth-admin .auth-brand-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:30px}
+.auth-admin .auth-brand{display:inline-flex;align-items:center;min-height:44px;border-radius:8px}
+.auth-admin .auth-brand img{display:block;width:139px;height:auto;object-fit:contain}
+html[data-theme="dark"] .auth-admin .auth-brand img{filter:brightness(0) invert(1)}
+.auth-admin .auth-theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;flex:none;padding:0;border:1px solid transparent;
+  border-radius:14px;background:transparent;color:var(--auth-muted);cursor:pointer;
+}
+.auth-admin .auth-theme-toggle:hover{background:var(--auth-soft);border-color:var(--auth-divider);color:var(--auth-link)}
+.auth-admin .auth-theme-icon{width:19px;height:19px;transition:transform 240ms ease}
+.auth-admin .auth-theme-toggle:hover .auth-theme-icon{transform:rotate(-12deg)}
+.auth-admin .auth-theme-text{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.auth-admin .auth-kicker{margin:0 0 8px;color:var(--auth-link);font-size:12px;line-height:1.5;font-weight:750;letter-spacing:.025em;text-transform:none}
+.auth-admin h1{margin:0 0 10px;color:var(--auth-ink);font-size:30px;font-weight:750;line-height:1.25;letter-spacing:-.035em;text-wrap:balance}
+.auth-admin .auth-description{margin:0 0 28px;color:var(--auth-muted);font-size:14px;line-height:1.7}
+.auth-admin .auth-step{animation:auth-admin-enter 320ms cubic-bezier(.16,1,.3,1) both;overflow-wrap:anywhere}
+.auth-admin .auth-form{display:grid;gap:18px;margin:0}
+.auth-admin .auth-field{gap:8px;font-size:13px;line-height:1.5;font-weight:650;color:var(--auth-ink)}
+.auth-admin .auth-field input,.auth-admin .auth-field select{
+  width:100%;min-width:0;min-height:50px;padding:13px 15px;
+  border:1px solid var(--auth-border);border-radius:16px;
+  background:var(--auth-field);color:var(--auth-ink);font:500 14px/1.5 var(--font-ui);
+  box-shadow:none;scroll-margin-block:24px;
+}
+.auth-admin .auth-field input::placeholder{color:var(--auth-muted);opacity:.85}
+.auth-admin .auth-field input:hover,.auth-admin .auth-password:hover{border-color:var(--auth-link)}
+.auth-admin .auth-field input:focus{outline:none;border-color:var(--auth-link);box-shadow:0 0 0 4px var(--auth-ring)}
+.auth-admin .auth-password{display:flex;align-items:center;min-width:0;border:1px solid var(--auth-border);border-radius:16px;background:var(--auth-field)}
+.auth-admin .auth-password input{flex:1;width:0;border:0;border-radius:16px;background:transparent;min-height:48px}
+.auth-admin .auth-password input:focus{outline:none;box-shadow:none}
+.auth-admin .auth-password:focus-within{border-color:var(--auth-link);box-shadow:0 0 0 4px var(--auth-ring)}
+.auth-admin .auth-password button{min-height:44px;padding:8px 10px;margin-right:4px;border-radius:12px;color:var(--auth-link);font:650 12px/1.5 var(--font-ui)}
+.auth-admin .auth-password button:hover{background:var(--auth-soft)}
+.auth-admin .auth-field input[aria-invalid=true],.auth-admin .auth-password:has([aria-invalid=true]){border-color:var(--auth-error);background:var(--auth-error-bg)}
+.auth-admin .auth-links{justify-content:flex-end;margin-top:-12px;margin-bottom:-6px}
+.auth-admin .auth-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:0;border-radius:8px;padding:8px 0;color:var(--auth-link);font:650 13px/1.55 var(--font-ui);text-decoration:none;white-space:normal;text-align:left}
+.auth-admin .auth-link:hover{text-decoration:underline;text-underline-offset:4px}
+.auth-admin .auth-step>.auth-link{margin-top:16px;margin-right:16px}
+.auth-admin .btn.primary{
+  min-height:50px;height:auto;padding:13px 18px;border:1px solid var(--brand-hover);border-radius:16px;
+  background:var(--brand-hover);color:#fff;font:700 14px/1.5 var(--font-ui);
+  box-shadow:0 6px 16px rgba(55,97,255,.14);gap:12px;white-space:normal;
+}
+.auth-admin .btn.primary:hover:not(:disabled){background:#2344c8;transform:translateY(-2px);box-shadow:0 9px 22px rgba(55,97,255,.22)}
+.auth-admin .btn.primary:active:not(:disabled){transform:translateY(0) scale(.99)}
+.auth-admin .btn.primary>span{transition:transform 180ms ease}
+.auth-admin .btn.primary:hover>span{transform:translateX(3px)}
+.auth-admin button:disabled{cursor:wait;opacity:.7}
+.auth-admin form[aria-busy=true] .btn.primary>span{font-size:0;width:16px;height:16px;border:2px solid #ffffff55;border-top-color:#fff;border-radius:50%;animation:auth-admin-spin 700ms linear infinite}
+.auth-admin .auth-divider{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0 8px;margin:24px 0 0;padding:18px 0 0;border-top:1px solid var(--auth-divider);font-size:12px;line-height:1.7;color:var(--auth-muted);text-align:center}
+.auth-admin .auth-divider .auth-link{padding:4px 0}
+.auth-admin .auth-hint{margin:16px 0;color:var(--auth-muted);font-size:12px;line-height:1.7}
+.auth-admin .auth-form .auth-hint{margin:-6px 0 0}
+.auth-admin .auth-alert,.auth-admin .auth-status{padding:14px 16px;margin:18px 0 0;border:1px solid var(--auth-divider);border-radius:14px;font-size:13px;line-height:1.65;animation:auth-admin-message 220ms ease both;overflow-wrap:anywhere}
+.auth-admin .auth-status{background:var(--auth-soft);color:var(--auth-ink)}
+.auth-admin .auth-alert{background:var(--auth-error-bg);border-color:var(--auth-error-border);color:var(--auth-error)}
+.auth-admin .auth-status:empty,.auth-admin .auth-alert:empty{display:none}
+.auth-admin .auth-session{margin:0 0 24px;padding:16px;background:var(--auth-soft);border:1px solid var(--auth-divider);border-radius:14px;color:var(--auth-ink)}
+.auth-admin .auth-session span{color:var(--auth-muted);font-size:13px}
+.auth-admin .auth-mfa-secret strong{font-size:12px;font-weight:650}
+.auth-admin .auth-mfa-secret code{background:var(--auth-field);color:var(--auth-ink);border-color:var(--auth-border);border-radius:12px;font-size:14px;letter-spacing:.04em}
+.auth-admin .auth-recovery{grid-template-columns:1fr;gap:8px;padding:12px;margin:0 0 20px;background:var(--auth-soft);border:1px solid var(--auth-divider);border-radius:16px}
+.auth-admin .auth-recovery code{padding:10px 6px;background:var(--auth-field);color:var(--auth-ink);border-radius:10px;font-size:13px}
+.auth-admin .auth-section-title{font-size:17px;color:var(--auth-ink)}
+.auth-admin .auth-invites{border-color:var(--auth-divider);border-radius:14px}
+.auth-admin .auth-invites li{border-color:var(--auth-divider)}
+.auth-admin .auth-invites small{color:var(--auth-muted)}
+.auth-admin .auth-check{background:var(--auth-soft);color:var(--auth-link)}
+.auth-admin .auth-footer{display:block;margin:0;padding:0;color:var(--auth-muted);font-size:11px;text-align:center}
+.auth-admin :focus-visible{outline:3px solid var(--auth-link);outline-offset:4px}
+.auth-admin h1:focus{outline:none}
+.auth-admin,.auth-admin .auth-card,.auth-admin input,.auth-admin .auth-password,.auth-admin button,.auth-admin .auth-link,.auth-admin .auth-status,.auth-admin .auth-alert{
+  transition:background-color 220ms ease,color 220ms ease,border-color 180ms ease,box-shadow 220ms ease,transform 220ms ease;
+}
+.auth-admin .auth-form>.auth-field{animation:auth-admin-enter 360ms cubic-bezier(.16,1,.3,1) 50ms both}
+.auth-admin .auth-form>.auth-field:nth-child(2){animation-delay:90ms}
+@keyframes auth-admin-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes auth-admin-message{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes auth-admin-spin{to{transform:rotate(360deg)}}
+@media(max-width:600px){
+  .auth-admin .auth-layout{padding:28px 16px;gap:20px}
+  .auth-admin .auth-card{padding:28px 24px 24px;border-radius:26px}
+  .auth-admin .auth-brand-row{margin-bottom:26px}
+  .auth-admin h1{font-size:25px}
+  /* Avoid automatic focus zoom in mobile Safari. */
+  .auth-admin .auth-field input,.auth-admin .auth-field select{font-size:16px}
+  .auth-admin .auth-description{margin-bottom:24px}
+  .auth-admin .auth-grid{grid-template-columns:1fr}
+}
+@media(max-height:640px){.auth-admin .auth-layout{justify-content:flex-start;padding-top:24px;padding-bottom:24px}}
+@media(prefers-reduced-motion:reduce){.auth-admin *,.auth-admin *::before,.auth-admin *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

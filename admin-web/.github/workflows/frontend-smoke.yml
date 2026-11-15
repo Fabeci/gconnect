@@ -1,0 +1,33 @@
+name: Frontend smoke tests
+
+on:
+  push:
+    branches: [main, 'feat/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier la syntaxe
+        run: node --check dist/app.js
+      - name: Vérifier E54 invitations
+        run: |
+          node --check dist/invitations-e54.js
+          node --check dist/recruiter-e54.js
+          node --check dist/entreprise-activation.js
+          node --check dist/etablissement-api.js
+          node --test tests/invitations-e54.test.mjs
+      - name: Tester l'interface
+        run: node --test tests/frontend.test.mjs
+      - name: Tester les abonnements et la reprise de session locale
+        run: |
+          node --check scripts/serve-professional-portals.cjs
+          node --test tests/three-portals-routes.test.mjs tests/subscriptions-e22.test.mjs tests/admin-e19-unified-shell.test.mjs tests/professional-shell-e28.test.mjs tests/professional-shell-e29.test.mjs tests/professional-shell-e30.test.mjs tests/institutions-e31.test.mjs tests/institutions-e31-runtime.test.mjs tests/enterprises-e32.test.mjs tests/floating-hero-e33.test.mjs tests/users-e34.test.mjs tests/users-e35.test.mjs tests/finance-e36.test.mjs tests/invoices-e38.test.mjs

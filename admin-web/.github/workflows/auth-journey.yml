@@ -1,0 +1,67 @@
+name: Parcours auth — responsive et accessibilité
+on:
+  push:
+    branches: ['feat/auth-*', 'feat/e54-*']
+  pull_request:
+    paths:
+      - 'dist/auth*'
+      - 'dist/invitations-e54.*'
+      - 'dist/contents-e57.*'
+      - 'dist/imports-e58.*'
+      - 'dist/moderation-e59.*'
+      - 'dist/statistics-e60.*'
+      - 'dist/audit-e61.*'
+      - 'dist/security-e62.*'
+      - 'dist/settings-e63.*'
+      - 'scripts/verify-e63-settings-visual.cjs'
+      - 'scripts/verify-e62-security-visual.cjs'
+      - 'scripts/verify-e61-audit-visual.cjs'
+      - 'scripts/verify-e60-statistics-visual.cjs'
+      - 'scripts/verify-e59-moderation-visual.cjs'
+      - 'scripts/verify-e58-imports-visual.cjs'
+      - 'scripts/verify-e57-contents-visual.cjs'
+      - 'scripts/verify-e55-invitations-visual.cjs'
+      - 'dist/etablissement*'
+      - 'scripts/verify-auth.cjs'
+      - 'tests/etablissement-api.test.mjs'
+      - 'package*.json'
+      - '.github/workflows/auth-journey.yml'
+permissions:
+  contents: read
+jobs:
+  auth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - run: npm run test:auth
+      - name: Vérifier E54.4 invitation Entreprise sur le portail réel
+        run: node scripts/verify-e54-enterprise-activation.cjs
+      - name: Contrôler le rendu transparent et les animations E55 dans Chromium
+        run: node scripts/verify-e55-invitations-visual.cjs
+      - name: Contrôler les offres réelles, le rendu éditorial et les modales E57
+        run: node scripts/verify-e57-contents-visual.cjs
+      - name: Contrôler l’atelier Imports E58, l’aperçu signé et l’accessibilité mobile
+        run: node scripts/verify-e58-imports-visual.cjs
+      - name: Contrôler l'identité Premium E59, les signalements et la confirmation sécurisée
+        run: node scripts/verify-e59-moderation-visual.cjs
+      - name: Contrôler les statistiques réelles E60, les courbes, les modales et les contrastes mobiles
+        run: node scripts/verify-e60-statistics-visual.cjs
+      - name: Contrôler le journal E61, les catégories sensibles et les fiches accessibles
+        run: node scripts/verify-e61-audit-visual.cjs
+      - name: Contrôler les sessions E62, la MFA, le bouton confirmé et la sécurité responsive
+        run: node scripts/verify-e62-security-visual.cjs
+      - name: Contrôler le profil E63, les préférences, les modales existantes et l’accessibilité responsive
+        run: node scripts/verify-e63-settings-visual.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: auth-responsive-accessibility
+          path: artifacts/auth/

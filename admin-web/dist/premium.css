@@ -1,0 +1,65 @@
+/* Local hero photograph: /assets/hero-gconnect.jpg; final theme in tokens.css and campus.css. */
+/* G-Connect Premium — accueil éditorial, photographie et surfaces plus douces */
+.shell{background:radial-gradient(circle at 8% 5%,#e6edff,transparent 34%),radial-gradient(circle at 85% 78%,#eff0ff,transparent 36%),#f7f8fc}
+.sidebar{border-radius:34px;background:#ffffffba;box-shadow:0 18px 56px #2646900b}
+.searchbox,.nav-btn,.icon-btn{border-radius:16px}
+.hero{min-height:370px;border-radius:38px;background:linear-gradient(120deg,#ffffffc9,#e9efffb3);box-shadow:0 24px 60px #2d4d9530}
+.hero-copy{padding:51px 48px;max-width:645px}
+.hero h1{font-size:clamp(31px,3.2vw,47px);line-height:1.15;letter-spacing:-1.8px}
+.hero p{max-width:415px;color:#ebf1ff}
+.hero .btn{height:40px;padding:0 16px;border-radius:999px;font-size:11px}
+.hero-art,.hero-orb{display:none}
+.stats{display:none}
+.dash-grid{display:block}
+.dash-grid>div:nth-child(2){display:none}
+.dash-grid .op-card:nth-child(n+3){display:none}
+.section-head{margin-top:34px}
+.section-head h2{font-size:23px}
+.op-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.op-card{min-height:142px;position:relative;border:1px solid #eef1f8;border-radius:29px;padding:24px;gap:15px;align-items:flex-start;background:#fff;box-shadow:0 11px 35px #3652800b}
+.op-card:hover{box-shadow:0 18px 40px #3652801b;transform:translateY(-4px)}
+.company{width:51px;height:51px;border-radius:19px;font-size:17px}
+.op-main h3{font:800 15px/1.35 Manrope,sans-serif;margin:3px 0 8px;letter-spacing:-.25px}
+.op-main p{line-height:1.5;font-size:11px}
+.tag{border-radius:999px;padding:5px 11px}
+.apply{align-self:flex-end;white-space:nowrap;border:1px solid #dce5ff;border-radius:999px;background:#f0f4ff;padding:8px 13px;font-size:10px}
+.wide-banner{border-radius:28px;background:linear-gradient(110deg,#e3eaff,#f5f2ff);padding:23px 29px;margin-top:24px}
+.wide-banner .btn{height:38px;padding:0 15px;border-radius:999px}
+.wide-banner h3{font-size:16px}
+.page:has(.hero) .wide-banner{display:none}
+@media(max-width:1100px){.op-list{grid-template-columns:1fr}.hero-copy{max-width:570px}}
+@media(max-width:720px){.hero{min-height:420px;border-radius:30px;background-position:center,right center}.hero-copy{padding:42px 27px}.hero h1{font-size:32px}.hero p{font-size:13px;max-width:320px}.op-card{border-radius:25px;min-height:152px;padding:20px;flex-wrap:wrap}.op-main{flex-basis:calc(100% - 70px)}.apply{margin-left:65px;margin-top:-2px}.section-head{margin-top:27px}.section-head h2{font-size:21px}}
+
+/* V0.3 — surfaces satinées, profondeur douce, sans monogrammes carrés */
+:root{background:#edf2ff}
+body{background:#edf2ff}
+.shell{background:
+  radial-gradient(ellipse 36% 27% at 3% 3%,rgba(114,151,255,.27),transparent 100%),
+  radial-gradient(ellipse 38% 34% at 87% 77%,rgba(174,167,255,.20),transparent 100%),
+  radial-gradient(ellipse 28% 20% at 62% 10%,rgba(222,235,255,.56),transparent 100%),
+  linear-gradient(145deg,#f0f4ff 0%,#f7f9ff 45%,#edf3ff 100%);
+  background-attachment:fixed}
+.sidebar{
+  background:linear-gradient(145deg,rgba(255,255,255,.67),rgba(238,244,255,.49));
+  border:1px solid rgba(255,255,255,.92);
+  box-shadow:0 22px 58px rgba(36,64,133,.11),inset 0 1px rgba(255,255,255,.95);
+  backdrop-filter:blur(28px) saturate(145%);-webkit-backdrop-filter:blur(28px) saturate(145%);
+  border-radius:36px}
+.searchbox{background:rgba(231,238,253,.68);border:1px solid rgba(255,255,255,.68)}
+.nav-btn:not(.active):hover{background:rgba(55,97,255,.08)}
+.top-actions .round,.panel,.people-card,.op-card{
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(246,249,255,.74));
+  border:1px solid rgba(255,255,255,.94);
+  box-shadow:0 13px 37px rgba(52,77,133,.09),inset 0 1px rgba(255,255,255,.9)}
+.op-card{padding:23px 25px;min-height:146px;align-items:center;gap:0;border-radius:32px}
+.op-card .company{display:none!important}
+.op-card .op-main{padding-right:15px;min-width:0}
+.op-card .op-main h3{font-size:15px;letter-spacing:-.35px}
+.op-card .op-main p{font-size:11px;color:#7888a5}
+.op-card .apply{align-self:center;border-radius:999px;padding:9px 13px}
+.tag{background:#e9efff;color:#315ed4}
+.tag.green{background:#dff5ee;color:#218967}
+.hero{border:1px solid rgba(255,255,255,.35)}
+.section-head h2{color:#1b2b52}
+.text-link{white-space:nowrap}
+@media(max-width:720px){.shell{background-attachment:scroll}.op-card{align-items:flex-start;min-height:157px}.op-card .op-main{flex-basis:100%;padding-right:0}.op-card .apply{margin-left:0;margin-top:12px}.sidebar{border-radius:30px}}

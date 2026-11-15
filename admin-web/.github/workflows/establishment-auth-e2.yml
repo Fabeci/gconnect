@@ -1,0 +1,35 @@
+name: E2 — Authentification Établissement
+
+on:
+  push:
+    branches:
+      - 'feat/etablissement-*'
+    paths:
+      - 'dist/etablissement*'
+      - 'tests/etablissement*'
+      - '.github/workflows/establishment-auth-e2.yml'
+  pull_request:
+    paths:
+      - 'dist/etablissement*'
+      - 'tests/etablissement*'
+      - '.github/workflows/establishment-auth-e2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  authentication:
+    name: Contrats API et protection des vues
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntaxe du client API et des vues
+        run: |
+          node --check dist/etablissement-api.js
+          node --check dist/etablissement.js
+      - name: Tests Établissement E1 et E2
+        run: node --test tests/etablissement-api.test.mjs tests/etablissement-auth-e2.test.mjs tests/etablissement.test.mjs

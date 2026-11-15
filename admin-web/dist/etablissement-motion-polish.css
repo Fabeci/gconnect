@@ -1,0 +1,121 @@
+/* G-Connect Établissement: micro-interactions inspired by the separate
+   Superadmin UI and the supplied mobile theme-transition reference.
+   No UI/layout replacement, no framework, no data or auth changes. */
+html[data-space="etablissement"] {
+  --ea-polish-ease: cubic-bezier(.2,.78,.2,1);
+  --ea-polish-duration: 260ms;
+}
+
+/* Lucide-style outlines: same icon language as the Superadmin variant. */
+html[data-space="etablissement"] .ea-icon {
+  flex-shrink: 0;
+  transform-origin: center;
+  transition: transform var(--ea-polish-duration) var(--ea-polish-ease);
+}
+html[data-space="etablissement"] .ea-nav-item {
+  transform: translateZ(0);
+  transition: color .22s ease, background .22s ease,
+              box-shadow .26s ease, transform .26s var(--ea-polish-ease);
+}
+html[data-space="etablissement"] .ea-nav-item.active {
+  box-shadow: inset 3px 0 0 var(--brand), 0 5px 14px -12px var(--brand);
+}
+html[data-space="etablissement"] .ea-nav-item:focus-visible,
+html[data-space="etablissement"] .ea-button:focus-visible,
+html[data-space="etablissement"] .ea-icon-button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  html[data-space="etablissement"] .ea-nav-item:not(.active):hover {
+    transform: translateX(3px);
+  }
+  html[data-space="etablissement"] .ea-nav-item:hover .ea-icon,
+  html[data-space="etablissement"] .ea-icon-button:hover .ea-icon {
+    transform: scale(1.12) rotate(-4deg);
+  }
+  html[data-space="etablissement"] .ea-button:hover .ea-icon,
+  html[data-space="etablissement"] .ea-text-button:hover .ea-icon {
+    transform: translateX(3px);
+  }
+  html[data-space="etablissement"] .ea-step:hover .ea-icon {
+    transform: translateX(4px);
+  }
+  html[data-space="etablissement"] .ea-card.is-visible:hover {
+    border-color: var(--brand-ring);
+    box-shadow: var(--shadow-md), 0 12px 30px -28px var(--brand);
+  }
+  html[data-space="etablissement"] .ea-metric.is-visible:hover .ea-metric-icon {
+    transform: translateY(-2px) scale(1.04);
+  }
+}
+
+/* Gentle sequential reveal across real dashboard pages. */
+html[data-space="etablissement"] .ea-main > .ea-hero,
+html[data-space="etablissement"] .ea-main > .ea-page-intro {
+  animation: ea-polish-enter 420ms var(--ea-polish-ease) backwards;
+}
+html[data-space="etablissement"] .ea-metric-icon,
+html[data-space="etablissement"] .ea-role-icon,
+html[data-space="etablissement"] .ea-draft-symbol {
+  transition: transform 300ms var(--ea-polish-ease),
+              background-color 300ms ease;
+}
+html[data-space="etablissement"] .ea-top,
+html[data-space="etablissement"] .ea-sidebar {
+  transition-property: background-color, border-color, box-shadow, transform;
+  transition-duration: 320ms;
+  transition-timing-function: var(--ea-polish-ease);
+}
+html[data-space="etablissement"] .ea-hero .hero-photo {
+  transform: scale(1);
+  transition: transform 750ms var(--ea-polish-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  html[data-space="etablissement"] .ea-hero:hover .hero-photo {
+    transform: scale(1.025);
+  }
+}
+/* Native View Transitions on Chromium; CSS theme tokens still work on Firefox. */
+@supports (view-transition-name: root) {
+  html[data-space="etablissement"]::view-transition-old(root) {
+    animation: ea-theme-out 220ms ease-in both;
+  }
+  html[data-space="etablissement"]::view-transition-new(root) {
+    animation: ea-theme-in 390ms var(--ea-polish-ease) both;
+  }
+}
+@keyframes ea-polish-enter {
+  from { opacity: 0; transform: translateY(11px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ea-theme-out {
+  to { opacity: .35; }
+}
+@keyframes ea-theme-in {
+  from { opacity: .3; transform: scale(.995); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Accessible, inexpensive and responsive: no animation with reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-space="etablissement"] *,
+  html[data-space="etablissement"] *::before,
+  html[data-space="etablissement"] *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-space="etablissement"][data-reduced-motion="true"] *,
+html[data-space="etablissement"][data-reduced-motion="true"] *::before,
+html[data-space="etablissement"][data-reduced-motion="true"] *::after {
+  animation-duration: .01ms !important;
+  transition-duration: .01ms !important;
+  scroll-behavior: auto !important;
+}
+@media (max-width: 900px) {
+  html[data-space="etablissement"] .ea-nav-item:not(.active):hover {
+    transform: none;
+  }
+}
