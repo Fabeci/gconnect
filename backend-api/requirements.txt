@@ -1,0 +1,69 @@
+# ── Core ────────────────────────────────────────────────────────────────────
+Django==5.2.4
+asgiref==3.9.1
+sqlparse==0.5.3
+
+# ── REST API ─────────────────────────────────────────────────────────────────
+djangorestframework==3.16.0
+drf-nested-routers==0.94.2
+drf-yasg==1.21.15
+uritemplate==4.2.0
+inflection==0.5.1
+
+# ── Filtrage & recherche ──────────────────────────────────────────────────────
+django-filter==25.2
+
+# ── CORS ─────────────────────────────────────────────────────────────────────
+django-cors-headers==4.9.0
+
+# ── Extensions Django ─────────────────────────────────────────────────────────
+django-extensions==4.1
+django-autoslug==1.9.9
+
+# ── Géographie ────────────────────────────────────────────────────────────────
+django-cities-light==3.10.1
+Unidecode==1.4.0
+progressbar2==4.5.0
+python-utils==3.9.1
+
+# ── Base de données ───────────────────────────────────────────────────────────
+psycopg2-binary==2.9.10
+
+# ── Médias & fichiers ─────────────────────────────────────────────────────────
+Pillow==11.3.0
+openpyxl==3.1.5
+et-xmlfile==2.0.0
+
+# ── OAuth social ──────────────────────────────────────────────────────────────
+google-auth==2.40.3
+google-auth-httplib2==0.2.0
+cachetools==5.5.0
+
+# ── HTTP & divers ─────────────────────────────────────────────────────────────
+requests==2.34.2
+urllib3==2.7.0
+certifi==2026.7.22
+charset-normalizer==3.4.9
+idna==3.18
+PyYAML==6.0.3
+packaging==26.2
+pytz==2025.2
+tzdata==2025.2
+typing-extensions==4.14.1
+
+# ── Production (optionnel) ────────────────────────────────────────────────────
+# gunicorn>=21.0           # WSGI server
+
+# ── WebSocket (Django Channels) ───────────────────────────────────────────────
+channels>=4.0.0            # ASGI + WebSocket
+daphne>=4.0.0              # Serveur ASGI (remplace WSGI pour ws://)
+# channels-redis>=4.0.0   # Décommenter si Redis est disponible (prod multi-process)
+
+# ── Push Notifications (FCM) ──────────────────────────────────────────────────
+firebase-admin>=6.0        # Activé si FIREBASE_CREDENTIALS_PATH est défini dans .env
+                           # Installer : pip install firebase-admin
+                           # Configurer : FIREBASE_CREDENTIALS_PATH=/chemin/vers/serviceAccountKey.json
+
+# E38 · PDF officiel généré côté serveur et vérification du rendu en CI
+reportlab>=4.2,<5
+pypdf>=5,<7

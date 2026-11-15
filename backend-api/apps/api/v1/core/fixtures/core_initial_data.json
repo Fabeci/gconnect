@@ -1,0 +1,184 @@
+[
+  {
+    "model": "core.skill",
+    "pk": 1,
+    "fields": {
+      "name": "Programmation"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 2,
+    "fields": {
+      "name": "Gestion de projet"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 3,
+    "fields": {
+      "name": "Communication"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 4,
+    "fields": {
+      "name": "Analyse de données"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 5,
+    "fields": {
+      "name": "Design UX/UI"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 6,
+    "fields": {
+      "name": "Administration système"
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 7,
+    "fields": {
+      "name": "Marketing digital"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 1,
+    "fields": {
+      "name": "Travail à distance"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 2,
+    "fields": {
+      "name": "Travail en équipe"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 3,
+    "fields": {
+      "name": "Horaires flexibles"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 4,
+    "fields": {
+      "name": "Développement durable"
+    }
+  },
+  {
+    "model": "core.preference",
+    "pk": 5,
+    "fields": {
+      "name": "Innovation"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 1,
+    "fields": {
+      "name": "Technologie"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 2,
+    "fields": {
+      "name": "Santé"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 3,
+    "fields": {
+      "name": "Finance"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 4,
+    "fields": {
+      "name": "Éducation"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 5,
+    "fields": {
+      "name": "Marketing"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 6,
+    "fields": {
+      "name": "Agriculture"
+    }
+  },
+  {
+    "model": "core.sector",
+    "pk": 7,
+    "fields": {
+      "name": "Énergie"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 1,
+    "fields": {
+      "name": "Intelligence artificielle"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 2,
+    "fields": {
+      "name": "Blockchain"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 3,
+    "fields": {
+      "name": "Énergies renouvelables"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 4,
+    "fields": {
+      "name": "Entrepreneuriat"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 5,
+    "fields": {
+      "name": "Culture"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 6,
+    "fields": {
+      "name": "Data Science"
+    }
+  },
+  {
+    "model": "core.interest",
+    "pk": 7,
+    "fields": {
+      "name": "Cyber sécurité"
+    }
+  }
+]

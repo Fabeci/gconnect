@@ -1,0 +1,91 @@
+"""
+G-Connect - Pagination & Filters
+Configuration de pagination et filtres personnalisés
+"""
+
+from rest_framework.pagination import PageNumberPagination
+from django_filters import rest_framework as filters
+from apps.api.v1.posts.models import Post, Opportunity, Event
+
+
+# ==================== PAGINATION ====================
+
+class StandardResultsSetPagination(PageNumberPagination):
+    """Pagination standard : 20 éléments par page"""
+    page_size = 20
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+class LargeResultsSetPagination(PageNumberPagination):
+    """Pagination large : 50 éléments par page"""
+    page_size = 50
+    page_size_query_param = 'page_size'
+    max_page_size = 200
+
+
+class SmallResultsSetPagination(PageNumberPagination):
+    """Pagination petite : 10 éléments par page"""
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 50
+
+
+# ==================== FILTERS ====================
+
+class PostFilter(filters.FilterSet):
+    """Filtres pour les posts"""
+    title = filters.CharFilter(lookup_expr='icontains')
+    content = filters.CharFilter(lookup_expr='icontains')
+    post_type = filters.ChoiceFilter(choices=Post.PostType.choices)
+    audience = filters.ChoiceFilter(choices=Post.Audience.choices)
+    author = filters.NumberFilter(field_name='author__id')
+    institution = filters.NumberFilter(field_name='institution__id')
+    is_pinned = filters.BooleanFilter()
+    is_archived = filters.BooleanFilter()
+    created_after = filters.DateTimeFilter(field_name='created_at', lookup_expr='gte')
+    created_before = filters.DateTimeFilter(field_name='created_at', lookup_expr='lte')
+    
+    class Meta:
+        model = Post
+        fields = [
+            'post_type', 'audience', 'author', 'institution',
+            'is_pinned', 'is_archived'
+        ]
+
+
+class OpportunityFilter(filters.FilterSet):
+    """Filtres pour les opportunités"""
+    category = filters.ChoiceFilter(choices=Opportunity.Category.choices)
+    status = filters.ChoiceFilter(choices=Opportunity.Status.choices)
+    work_mode = filters.ChoiceFilter(choices=Opportunity.WorkMode.choices)
+    contract_type = filters.ChoiceFilter(choices=Opportunity.ContractType.choices)
+    location_city = filters.CharFilter(lookup_expr='icontains')
+    location_country = filters.CharFilter(lookup_expr='icontains')
+    enterprise = filters.NumberFilter(field_name='enterprise__id')
+    salary_min_gte = filters.NumberFilter(field_name='salary_min', lookup_expr='gte')
+    salary_max_lte = filters.NumberFilter(field_name='salary_max', lookup_expr='lte')
+    deadline_after = filters.DateFilter(field_name='deadline', lookup_expr='gte')
+    deadline_before = filters.DateFilter(field_name='deadline', lookup_expr='lte')
+    
+    class Meta:
+        model = Opportunity
+        fields = [
+            'category', 'status', 'work_mode', 'contract_type',
+            'location_city', 'location_country', 'enterprise'
+        ]
+
+
+class EventFilter(filters.FilterSet):
+    """Filtres pour les événements"""
+    is_online = filters.BooleanFilter()
+    city = filters.CharFilter(lookup_expr='icontains')
+    country = filters.CharFilter(lookup_expr='icontains')
+    starts_after = filters.DateTimeFilter(field_name='starts_at', lookup_expr='gte')
+    starts_before = filters.DateTimeFilter(field_name='starts_at', lookup_expr='lte')
+    ends_after = filters.DateTimeFilter(field_name='ends_at', lookup_expr='gte')
+    ends_before = filters.DateTimeFilter(field_name='ends_at', lookup_expr='lte')
+    
+    class Meta:
+        model = Event
+        fields = ['is_online', 'city', 'country']
