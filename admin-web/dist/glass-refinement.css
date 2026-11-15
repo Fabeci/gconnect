@@ -1,0 +1,191 @@
+/* Finishing layer: keeps the original Glass V2 components and layout available. */
+:root {
+  --text-base:14px; --text-lg:16px; --text-xl:19px; --text-2xl:24px;
+  --text-3xl:30px; --text-4xl:36px; --text-5xl:40px;
+  --duration-fast:180ms; --duration-slow:280ms; --duration-slower:280ms;
+  --duration-entrance:280ms; --stagger:30ms;
+  --brand-glow:rgba(55,97,255,.14); --ink-subtle:#596b84;
+  --radius-3xl:30px; --radius-2xl:24px; --radius-xl:16px;
+}
+:root[data-theme="light"] {
+  color-scheme:light; --ink:#17243b; --ink-muted:#475569; --ink-subtle:#596b84;
+  --canvas:#f2f5fc; --canvas-deep:#e8eef9;
+  --surface:rgba(255,255,255,.72); --surface-strong:rgba(255,255,255,.94);
+  --surface-subtle:rgba(255,255,255,.45); --glass-1:rgba(255,255,255,.65);
+  --glass-2:rgba(255,255,255,.42); --glass-3:rgba(255,255,255,.22);
+  --glass-border:rgba(110,134,174,.14); --glass-border-strong:rgba(110,134,174,.24);
+  --glass-shadow:rgba(28,49,88,.04); --glass-shadow-strong:rgba(28,49,88,.07);
+  --glass-shadow-float:rgba(28,49,88,.09); --shadow-inner:inset 0 1px rgba(255,255,255,.65);
+  --accent-text:#2b50df;
+}
+:root[data-theme="dark"] {
+  color-scheme:dark; --ink:#f0f5ff; --ink-muted:#c0cee2; --ink-subtle:#a0b2cb;
+  --canvas:#16243b; --canvas-deep:#20334e;
+  --surface:rgba(43,62,88,.78); --surface-strong:rgba(44,63,90,.96);
+  --surface-subtle:rgba(37,56,82,.6); --glass-1:rgba(43,64,94,.66);
+  --glass-2:rgba(33,51,78,.55); --glass-3:rgba(65,86,117,.25);
+  --glass-border:rgba(180,202,235,.1); --glass-border-strong:rgba(180,202,235,.19);
+  --glass-shadow:rgba(5,14,30,.1); --glass-shadow-strong:rgba(5,14,30,.15);
+  --glass-shadow-float:rgba(5,14,30,.2); --shadow-inner:inset 0 1px rgba(255,255,255,.04);
+  --accent-text:#a6bcff; --success:#66d5be;
+}
+button,input,select,textarea {font-family:inherit}
+button {font-size:inherit}
+svg {flex-shrink:0}
+.ambient-glow {opacity:.13; width:420px; height:420px}
+.ambient-glow:nth-child(3) {opacity:.1}
+.particle {opacity:.12}
+.shell {padding:16px; gap:24px}
+.content {min-width:0; max-width:1500px; padding:0 0 32px}
+.sidebar {width:235px; top:16px; height:calc(100dvh - 32px); padding:16px 12px; overflow:visible; box-shadow:var(--shadow-md); z-index:30}
+.brand {height:42px; padding:0 6px; margin:0 0 14px; gap:8px}
+.brand .full-logo,.brand .compact-logo {display:none!important}
+.brand::before {content:'VOTRE ESPACE'; font-size:10px; font-weight:800; letter-spacing:.13em; color:var(--ink-subtle)}
+.icon-btn {display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; flex-shrink:0; padding:0; border:1px solid var(--glass-border); border-radius:50%; background:var(--glass-2); color:var(--ink-muted); cursor:pointer}
+.collapse-trigger {transform:rotate(180deg)}
+.collapse-trigger:hover {transform:rotate(180deg); background:var(--surface-strong)}
+.shell.collapsed .collapse-trigger {transform:rotate(0)}
+.mobile-toggle {display:none}
+.searchbox {margin:0 0 12px; border-radius:12px; height:38px; flex-shrink:0}
+.searchbox button {left:4px; padding:6px; display:flex}
+.searchbox input {font-size:13px; padding:9px 10px 9px 38px}
+.nav {gap:3px; flex:0 0 auto}
+.nav-label {padding:10px 12px 8px; font-size:10px}
+.nav-btn {width:100%; min-height:42px; padding:10px 12px; gap:10px; border-radius:13px}
+.nav-btn span {font-size:13px}
+.nav-btn:hover {transform:none}
+.nav-btn.active {color:var(--accent-text)}
+.profile-small {gap:8px; padding:10px 4px 0}
+.profile-small strong,.profile-small small {display:block; white-space:normal; font-size:11px}
+.profile-small .avatar {width:32px; height:32px}
+.shell.collapsed .sidebar {width:76px; padding:16px 10px}
+.shell.collapsed .brand {padding:0; justify-content:center}
+.shell.collapsed .brand::before {display:none}
+.shell.collapsed .collapse-trigger {margin:0}
+.shell.collapsed .nav-btn {gap:0; padding:10px}
+.shell.collapsed .searchbox input {visibility:hidden; padding:0}
+.shell.collapsed .searchbox button {left:50%; transform:translate(-50%,-50%)}
+.shell.collapsed .profile-small {padding:10px 0}
+.topbar {height:68px; top:16px; margin-bottom:20px; padding:0 18px; border-radius:20px; gap:16px}
+.mobile-brand {width:148px; max-height:42px; object-fit:contain; flex-shrink:0}
+.breadcrumb {font-size:12px; margin-left:12px}
+.top-actions {gap:10px; flex-shrink:0}
+.round {width:36px; height:36px}
+.member-pill {padding:4px 10px 4px 4px; gap:8px}
+.avatar {display:flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--brand-soft); color:var(--accent-text); border-radius:50%; font-weight:800}
+.hero {height:400px; min-height:0; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:0; box-shadow:var(--shadow-md)}
+.hero-copy {padding:28px 32px; max-width:none; min-width:0}
+.hero h1 {font-size:clamp(32px,2.8vw,40px); line-height:1.18; letter-spacing:-.035em; margin-bottom:16px; text-wrap:balance}
+.hero h1 br {display:block}
+.hero p {font-size:14px; line-height:1.7; margin-bottom:22px; max-width:440px}
+.eyebrow {font-size:10px; letter-spacing:.1em; padding:6px 10px; margin-bottom:16px; color:var(--accent-text); max-width:100%}
+.hero-photo {height:400px; min-height:0; object-position:50% 30%}
+.hero .actions {gap:10px}
+.btn {min-height:40px; padding:10px 16px; font-size:13px; border-radius:13px; white-space:normal}
+.btn.primary {background:var(--brand); box-shadow:0 3px 10px var(--brand-glow)}
+.btn:hover,.round:hover,.op-card:hover,.people-card:hover,.glass-hover:hover {transform:none; box-shadow:var(--shadow-md)}
+.btn.magnetic {transition:background 180ms,box-shadow 180ms}
+.demo-note {margin:12px 0 24px}
+.dash-grid {grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr); gap:24px}
+.section-head {gap:12px; flex-wrap:wrap; margin-bottom:16px}
+.section-head h2 {font-size:20px}
+.section-head p {font-size:13px}
+.text-link {font-size:12px; color:var(--accent-text)}
+.op-list {grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr)); gap:16px}
+.dash-grid .op-list {grid-template-columns:1fr}
+.op-card {padding:18px; gap:14px; border-radius:22px; box-shadow:var(--shadow-sm)}
+.op-card-header {gap:12px}
+.company-badge {width:44px; height:44px; border-radius:13px; font-size:16px; box-shadow:var(--shadow-sm)}
+.op-main h3 {font-size:15px; margin-bottom:6px}
+.op-meta {font-size:12px; gap:4px 10px}
+.op-tags {margin-top:10px; gap:6px}
+.tag {border:0; color:var(--accent-text); padding:3px 9px}
+.op-footer {padding-top:10px}
+.cards-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:18px}
+.people-card {padding:24px 20px; display:flex; flex-direction:column; align-items:center; box-shadow:var(--shadow-sm)}
+.people-card .avatar {width:60px; height:60px; font-size:18px; box-shadow:var(--shadow-sm)}
+.people-card h3 {font-size:18px}
+.people-card p {font-size:13px; margin-bottom:18px}
+.people-card .btn {width:auto; margin-top:auto}
+.panel {padding:22px; box-shadow:var(--shadow-sm)}
+.panel h3 {font-size:17px; margin-bottom:16px}
+.event {gap:14px; padding:14px 0}
+.date-tile {width:48px; padding:10px 0; border:0; border-radius:13px}
+.date-tile strong,.date-tile small {color:var(--accent-text)}
+.date-tile strong {font-size:22px}
+.wide-banner {padding:24px; margin-top:24px; gap:16px}
+.intro {padding:12px 0 20px}
+.intro h1 {font-size:32px; text-wrap:balance}
+.intro p {font-size:14px; line-height:1.7}
+.search-large {margin:0 0 16px}
+.search-large input {padding:13px 16px 13px 46px; font-size:14px; border-radius:14px}
+.search-large svg {left:16px; width:18px}
+.filters {margin:0 0 20px}
+.chip {min-height:38px; padding:0 16px}
+.auth-panel {padding:26px; margin:0 auto; max-width:640px; box-shadow:var(--shadow-sm)}
+.auth-panel h2 {font-size:20px}
+.form-field {margin-bottom:16px}
+.form-field input,.form-field select {border-radius:12px; padding:11px 14px}
+.empty {padding:36px 16px; border:0; background:transparent}
+.empty svg {width:40px; height:40px; margin-bottom:16px}
+.reveal {transform:translateY(8px)}
+@media(min-width:901px) and (max-width:1150px) {
+  .shell {gap:18px} .hero-copy {padding:24px} .hero h1 {font-size:32px}
+  .hero {grid-template-columns:1.3fr 1fr; height:420px} .hero-photo {height:420px}
+  .breadcrumb {display:none} .dash-grid {grid-template-columns:1fr}
+}
+@media(max-width:900px) {
+  .shell {padding:16px; gap:0} .content {padding:0 0 28px}
+  .mobile-toggle {display:inline-flex}
+  .sidebar,.shell.collapsed .sidebar {position:fixed; top:12px; left:12px; width:260px; max-width:calc(100vw - 32px); height:calc(100dvh - 24px); padding:16px 12px; border-radius:24px; transform:translateX(calc(-100% - 24px)); z-index:40; background:var(--surface-strong); overflow-y:auto}
+  .shell.mobile-open .sidebar {transform:translateX(0)}
+  .mobile-backdrop {z-index:35}
+  .shell.collapsed .brand::before {display:block}
+  .shell.collapsed .brand {justify-content:space-between}
+  .shell.collapsed .searchbox input {visibility:visible; padding:9px 10px 9px 38px}
+  .shell.collapsed .searchbox button {left:4px; transform:translateY(-50%)}
+  .shell.collapsed .nav-btn {gap:10px; padding:10px 12px}
+  .topbar {position:sticky; top:12px; height:64px; border-radius:18px; padding:0 12px; margin-bottom:18px}
+  .breadcrumb {display:none}
+  .hero {height:400px; grid-template-columns:1.25fr 1fr; border-radius:26px}
+  .hero-copy {padding:24px} .hero h1 {font-size:34px}
+  .hero-photo {height:400px; max-height:none; border-radius:0}
+  .dash-grid {grid-template-columns:1fr}
+}
+@media(max-width:600px) {
+  .shell {padding:12px} .topbar {gap:8px; padding:0 8px; height:64px}
+  .mobile-brand {width:124px} .top-actions {gap:6px} .member-pill {padding:0; border:0; background:transparent}
+  .member-pill span {display:none} .member-pill .avatar {width:30px; height:30px}
+  .topbar>div:first-child {gap:6px!important} .round {width:32px; height:32px}
+  .hero {height:auto; display:flex; flex-direction:column; border-radius:24px}
+  .hero-copy {padding:24px 20px; order:0}
+  .hero h1 {font-size:30px; line-height:1.2} .hero p {font-size:14px; margin-bottom:18px}
+  .hero .eyebrow {font-size:9px; letter-spacing:.04em; padding:6px 8px}
+  .hero-photo {height:240px; max-height:240px; object-position:50% 30%; border-radius:0}
+  .hero-overlay {border-radius:24px}
+  .intro h1 {font-size:27px; overflow-wrap:anywhere}
+  .intro {padding:8px 0 18px}
+  .op-card,.panel,.people-card {padding:18px}
+  .section-head h2 {font-size:19px} .section-head {align-items:flex-start}
+  .auth-panel {padding:20px; margin:0} .auth-panel h2 {font-size:18px}
+  .auth-panel>.btn {width:auto!important}
+  .wide-banner {align-items:flex-start; text-align:left; padding:20px}
+  .wide-banner .btn {width:auto}
+  .empty {padding:24px 0}
+  .fine {color:var(--ink-muted)}
+  .form-field input {font-size:16px}
+}
+:root[data-reduced-motion="true"] *, :root[data-reduced-motion="true"] *::before, :root[data-reduced-motion="true"] *::after {animation:none!important; transition:none!important; scroll-behavior:auto!important}
+:root[data-reduced-motion="true"] .reveal {opacity:1; transform:none}
+/* Final optical adjustments after Chromium review. */
+.text-link {background:transparent; border:0; cursor:pointer; text-align:left}
+.text-link:hover {gap:var(--space-1)}
+.text-link:hover svg {transform:none}
+.section-head {margin:0 0 16px; padding:0}
+.shell::before {opacity:.3}
+.ambient-bg::before {opacity:.55}
+.hero-photo {object-position:50% 12%}
+@media(max-width:600px) {.hero-photo {object-position:50% 5%}}
+.sidebar::before {border-radius:inherit}
+:root[data-theme="dark"] .mobile-brand {filter:brightness(1.65) saturate(.8)}
+@media(min-width:901px) {.hero-photo {object-position:50% 0}}

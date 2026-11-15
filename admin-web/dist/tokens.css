@@ -1,0 +1,11 @@
+/* Modern Blue Glass — shared design tokens */
+@font-face{font-family:Manrope;src:url('/assets/fonts/manrope-variable.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}
+:root{--brand:#3761FF;--brand-hover:#294FE0;--link:#294FD9;--canvas:#F5F7FC;--surface:rgba(255,255,255,.68);--ink:#17243D;--muted:#53627B;--line:#dbe3f2;--blue-soft:#E9EFFF;--success:#176849;--font-ui:Manrope,system-ui,sans-serif;--font-editorial:var(--font-ui);--radius-control:14px;--radius-card:24px;--radius-panel:32px;--shadow-surface:0 10px 32px #283f6a08;--shadow-float:0 20px 60px #283f6a12,inset 0 1px 0 #fff;--motion-fast:160ms;--motion-panel:280ms;font-family:var(--font-ui);color:var(--ink);background:var(--canvas);font-synthesis:none}
+body{font:500 15px/1.6 var(--font-ui);background:var(--canvas);color:var(--ink)}
+button,input,select,textarea{font:inherit}h1,h2,h3{color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--link);outline-offset:4px}
+.btn{min-height:44px;height:auto;padding:11px 17px;border-radius:var(--radius-control);font:700 14px/1.4 var(--font-ui);transition:background .18s,box-shadow .18s,transform .18s}
+.btn.primary{background:var(--brand);color:#fff;box-shadow:0 6px 16px #3761ff20}.btn.primary:hover{background:var(--brand-hover)}
+.text-link{color:var(--link);font:700 14px/1.5 var(--font-ui);min-height:44px;padding:8px 0;white-space:normal}.text-link:hover{text-decoration:underline;text-underline-offset:4px}
+.skip-link{position:fixed;top:8px;left:16px;padding:12px 20px;background:var(--ink);color:#fff;border-radius:12px;z-index:200;transform:translateY(-150%)}.skip-link:focus{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

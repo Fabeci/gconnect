@@ -1,0 +1,35 @@
+name: Vérifications interface Établissement
+
+on:
+  push:
+    branches:
+      - feat/gconnect-establishment-portal-ui
+    paths:
+      - 'dist/etablissement.*'
+      - 'tests/etablissement.test.mjs'
+      - '.github/workflows/establishment-ui-check.yml'
+  pull_request:
+    paths:
+      - 'dist/etablissement.*'
+      - 'tests/etablissement.test.mjs'
+      - '.github/workflows/establishment-ui-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verification:
+    name: Syntaxe et tests interface
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier la syntaxe JS
+        run: node --check dist/etablissement.js
+      - name: Exécuter les tests établissement
+        run: node --test tests/etablissement.test.mjs

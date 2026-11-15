@@ -1,0 +1,76 @@
+/* E31 · Modules each have a specific visual signature, but inherit one shell.
+   Institution directory has a custom layout in institutions-e31.css. */
+html[data-space="superadmin"]{--e31-accent:#3761ff;--e31-soft:#edf2ff;--e31-stroke:#dbe5ff;--e31-ink:#284a89}
+html[data-space="superadmin"][data-module="dashboard"]{--e31-accent:#3761ff;--e31-soft:#eaf1ff;--e31-stroke:#d5e4ff;--e31-ink:#3258ac}
+html[data-space="superadmin"][data-module="entreprises"]{--e31-accent:#575fdc;--e31-soft:#f0f0ff;--e31-stroke:#e4e1fc;--e31-ink:#494daf}
+html[data-space="superadmin"][data-module="recruteurs"]{--e31-accent:#bc7b38;--e31-soft:#fff5e7;--e31-stroke:#f6e6ce;--e31-ink:#8e623d}
+html[data-space="superadmin"][data-module="utilisateurs"]{--e31-accent:#8466cb;--e31-soft:#f6f0ff;--e31-stroke:#ede0ff;--e31-ink:#67509c}
+html[data-space="superadmin"][data-module="abonnements"],
+html[data-space="superadmin"][data-module="subscription"]{--e31-accent:#3469d5;--e31-soft:#eaf3ff;--e31-stroke:#d6e5ff;--e31-ink:#2f58a2}
+html[data-space="superadmin"][data-module="facturation"]{--e31-accent:#1b8e84;--e31-soft:#eaf8f5;--e31-stroke:#d2ede7;--e31-ink:#2c746e}
+html[data-space="superadmin"][data-module="invitations"]{--e31-accent:#277fae;--e31-soft:#ebf8fd;--e31-stroke:#d6ebf8;--e31-ink:#35698c}
+html[data-space="superadmin"][data-module="contenus"]{--e31-accent:#ba6e7f;--e31-soft:#fff0f3;--e31-stroke:#f6e0e6;--e31-ink:#9e5f74}
+html[data-space="superadmin"][data-module="moderation"]{--e31-accent:#ad5e68;--e31-soft:#fff0f1;--e31-stroke:#f3dce0;--e31-ink:#8b525b}
+html[data-space="superadmin"][data-module="imports"]{--e31-accent:#3b8aa6;--e31-soft:#e9f8fb;--e31-stroke:#d7edf5;--e31-ink:#347187}
+html[data-space="superadmin"][data-module="statistiques"],
+html[data-space="superadmin"][data-module="statistics"]{--e31-accent:#2c8c99;--e31-soft:#e8f8fb;--e31-stroke:#d1eef2;--e31-ink:#23717f}
+html[data-space="superadmin"][data-module="audit"]{--e31-accent:#576f9d;--e31-soft:#eff3fb;--e31-stroke:#dbe5f3;--e31-ink:#45638e}
+html[data-space="superadmin"][data-module="sessions"]{--e31-accent:#5164c6;--e31-soft:#eef0ff;--e31-stroke:#dce0fc;--e31-ink:#4153a0}
+html[data-space="superadmin"][data-module="parametres"],
+html[data-space="superadmin"][data-module="settings"]{--e31-accent:#637c9f;--e31-soft:#f0f5fb;--e31-stroke:#dde6f2;--e31-ink:#4d6485}
+html[data-space="superadmin"][data-module="team"]{--e31-accent:#487cb9;--e31-soft:#ebf5ff;--e31-stroke:#dbe9fa;--e31-ink:#426f9d}
+html[data-space="superadmin"][data-module="offers"],
+html[data-space="superadmin"][data-module="publications"]{--e31-accent:#586bb1;--e31-soft:#f0f1ff;--e31-stroke:#dee2f6;--e31-ink:#45589d}
+html[data-space="superadmin"][data-module="applications"]{--e31-accent:#9870be;--e31-soft:#f7efff;--e31-stroke:#ece0f8;--e31-ink:#7b5599}
+html[data-space="superadmin"][data-module="promotions"],
+html[data-space="superadmin"][data-module="members"],
+html[data-space="superadmin"][data-module="events"]{--e31-accent:#1d9492;--e31-soft:#e9f8f5;--e31-stroke:#d3efea;--e31-ink:#227b7b}
+/* Route identity is local to content, never to the persistent header or navigation. */
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .panel{
+  border-color:var(--e31-stroke);box-shadow:0 11px 25px rgba(31,62,124,.035);
+}
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .panel-title{
+  position:relative;border-bottom-color:var(--e31-stroke);
+  background:linear-gradient(115deg,var(--e31-soft),rgba(255,255,255,.1) 78%);
+}
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .panel-title:before{
+  content:"";position:absolute;top:11px;bottom:11px;left:0;width:3px;border-radius:0 7px 7px 0;background:var(--e31-accent);opacity:.73;
+}
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .kpi-icon{
+  color:var(--e31-accent);background:var(--e31-soft);
+}
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .kpi{
+  border-color:var(--e31-stroke);background:linear-gradient(145deg,#fff,var(--e31-soft));
+}
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .sa-section-kicker,
+html[data-space="superadmin"]:not([data-module="dashboard"]):not([data-module="etablissements"]) #view .settings-kicker{
+  color:var(--e31-accent);
+}
+/* Individually purposeful layout signatures instead of one generic dashboard. */
+html[data-space="superadmin"][data-module="facturation"] #view .panel-title{
+  background:linear-gradient(95deg,#eaf7f4,#f9fcff 72%);
+  border-bottom:1px solid #d9eee9;
+}
+html[data-space="superadmin"][data-module="audit"] #view .panel-title{
+  background:linear-gradient(95deg,#eaf0fb,#f9fbff);
+  border-left:4px solid #6e84b3;
+}
+html[data-space="superadmin"][data-module="invitations"] #view .panel-title{
+  background:linear-gradient(120deg,#e5f8fc,#f9fbff);
+}
+html[data-space="superadmin"][data-module="moderation"] #view .panel-title{
+  background:linear-gradient(120deg,#fff0f1,#fff);
+}
+html[data-space="superadmin"][data-module="statistiques"] #view .kpi,
+html[data-space="superadmin"][data-module="statistics"] #view .kpi{
+  border-bottom:3px solid var(--e31-accent);
+}
+html[data-space="superadmin"][data-module="contenus"] #view .panel{
+  border-radius:24px 24px 15px 15px;
+}
+html[data-space="superadmin"][data-module="recruteurs"] #view .panel-title{
+  background:linear-gradient(120deg,#fff3df,#fbfcff);
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-space="superadmin"] #view .panel,html[data-space="superadmin"] #view .kpi{transition:none}
+}

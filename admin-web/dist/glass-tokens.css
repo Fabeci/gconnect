@@ -1,0 +1,210 @@
+/* G-Connect Glassmorphism Premium — Design Tokens v2.0 */
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/manrope-variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  /* === Brand === */
+  --brand: #3761FF;
+  --brand-hover: #294FE0;
+  --brand-glow: rgba(55, 97, 255, 0.4);
+  --brand-soft: rgba(55, 97, 255, 0.12);
+  --brand-ring: rgba(55, 97, 255, 0.25);
+
+  /* === Semantic Colors === */
+  --ink: #0F172A;
+  --ink-muted: #475569;
+  --ink-subtle: #94A3B8;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.88);
+  --surface-subtle: rgba(255, 255, 255, 0.45);
+  --canvas: #F0F4FF;
+  --canvas-deep: #E8EEFA;
+
+  /* === Glass Layers === */
+  --glass-1: rgba(255, 255, 255, 0.55);
+  --glass-2: rgba(255, 255, 255, 0.38);
+  --glass-3: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-border-strong: rgba(255, 255, 255, 0.85);
+  --glass-shadow: rgba(15, 23, 42, 0.06);
+  --glass-shadow-strong: rgba(15, 23, 42, 0.1);
+  --glass-shadow-float: rgba(15, 23, 42, 0.14);
+
+  /* === Accent === */
+  --success: #0D9488;
+  --success-soft: rgba(13, 148, 136, 0.12);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245, 158, 11, 0.12);
+  --danger: #DC2626;
+  --danger-soft: rgba(220, 38, 38, 0.12);
+
+  /* === Typography === */
+  --font-ui: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 17px;
+  --text-xl: 21px;
+  --text-2xl: 26px;
+  --text-3xl: 34px;
+  --text-4xl: 44px;
+  --text-5xl: 56px;
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+
+  /* === Spacing === */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* === Radius === */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-3xl: 40px;
+  --radius-full: 999px;
+
+  /* === Shadows (Layered Depth) === */
+  --shadow-xs: 0 1px 2px var(--glass-shadow);
+  --shadow-sm: 0 4px 12px var(--glass-shadow);
+  --shadow-md: 0 8px 24px var(--glass-shadow);
+  --shadow-lg: 0 16px 40px var(--glass-shadow-strong);
+  --shadow-xl: 0 24px 56px var(--glass-shadow-float);
+  --shadow-2xl: 0 32px 80px var(--glass-shadow-float);
+  --shadow-inner: inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3);
+  --shadow-glow: 0 0 0 1px var(--brand-ring), 0 8px 32px var(--brand-glow);
+
+  /* === Blur === */
+  --blur-sm: blur(8px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+  --blur-xl: blur(32px);
+  --blur-2xl: blur(48px);
+
+  /* === Motion === */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --duration-instant: 80ms;
+  --duration-fast: 140ms;
+  --duration-normal: 220ms;
+  --duration-slow: 320ms;
+  --duration-slower: 480ms;
+  --duration-entrance: 600ms;
+  --stagger: 60ms;
+
+  /* === Z-Layers === */
+  --z-bg: 0;
+  --z-bg-ambient: 1;
+  --z-content: 10;
+  --z-sticky: 20;
+  --z-dropdown: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+  --z-tooltip: 60;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #F8FAFC;
+    --ink-muted: #CBD5E1;
+    --ink-subtle: #64748B;
+    --surface: rgba(15, 23, 42, 0.72);
+    --surface-strong: rgba(15, 23, 42, 0.88);
+    --surface-subtle: rgba(15, 23, 42, 0.45);
+    --canvas: #0A0F1A;
+    --canvas-deep: #0F172A;
+    --glass-1: rgba(15, 23, 42, 0.55);
+    --glass-2: rgba(15, 23, 42, 0.38);
+    --glass-3: rgba(15, 23, 42, 0.22);
+    --glass-border: rgba(148, 163, 184, 0.18);
+    --glass-border-strong: rgba(148, 163, 184, 0.3);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --glass-shadow-strong: rgba(0, 0, 0, 0.4);
+    --glass-shadow-float: rgba(0, 0, 0, 0.5);
+    --shadow-inner: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(255,255,255,0.03);
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-ui);
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: 500;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-2);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-1);
+  background-clip: content-box;
+}

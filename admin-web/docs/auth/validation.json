@@ -1,0 +1,28 @@
+{
+  "axeAudits": 36,
+  "viewports": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "flows": [
+    "roles",
+    "invalid login",
+    "login",
+    "logout",
+    "logout failure",
+    "recovery SMS",
+    "student signup",
+    "alumni multipart signup",
+    "email OTP",
+    "resend cooldown",
+    "institution dashboard",
+    "superadmin session",
+    "reload",
+    "invitation unavailable",
+    "keyboard",
+    "reduced motion"
+  ],
+  "consoleErrors": []
+}

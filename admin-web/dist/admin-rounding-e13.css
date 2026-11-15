@@ -1,0 +1,304 @@
+/* G-Connect E13 — generous, consistent rounding on both professional consoles.
+   Loaded last on purpose. Radius hierarchy follows component size, not one
+   blanket rule that would distort avatars, native toggles or chart lines. */
+html[data-space="etablissement"],
+html[data-space="superadmin"]{
+  --gc-r-shell:38px;
+  --gc-r-hero:42px;
+  --gc-r-surface:32px;
+  --gc-r-card:29px;
+  --gc-r-inset:24px;
+  --gc-r-nav:21px;
+  --gc-r-control:19px;
+  --gc-r-pill:999px;
+}
+
+/* Établissement — outer shell, hero, global navigation and topbar. */
+html[data-space="etablissement"] .ea-sidebar,
+html[data-space="etablissement"] .ea-shell.is-collapsed .ea-sidebar{
+  border-radius:var(--gc-r-shell);
+}
+html[data-space="etablissement"] .ea-top{
+  border-radius:var(--gc-r-surface);
+}
+html[data-space="etablissement"] .ea-hero,
+html[data-space="etablissement"] .ea-hero-refined{
+  border-radius:var(--gc-r-hero);
+}
+html[data-space="etablissement"] .ea-search,
+html[data-space="etablissement"] .ea-search-pill,
+html[data-space="etablissement"] .ea-search-compact,
+html[data-space="etablissement"] .ea-sidebar-search{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="etablissement"] .ea-nav-item{
+  border-radius:var(--gc-r-nav);
+}
+html[data-space="etablissement"] .ea-nav-item::before{border-radius:inherit}
+html[data-space="etablissement"] .ea-top-menu-wrap .ea-top-popover,
+html[data-space="etablissement"] .ea-profile-popover,
+html[data-space="etablissement"] .ea-notification-popover{
+  border-radius:var(--gc-r-card);
+}
+html[data-space="etablissement"] .ea-profile-trigger{
+  border-radius:var(--gc-r-nav);
+}
+html[data-space="etablissement"] .ea-header-tool,
+html[data-space="etablissement"] .ea-icon-button,
+html[data-space="etablissement"] .ea-collapse,
+html[data-space="etablissement"] .ea-mobile-open{
+  border-radius:var(--gc-r-control);
+}
+
+/* Établissement — all content panels, nested cards and authenticated pages. */
+html[data-space="etablissement"] .ea-card,
+html[data-space="etablissement"] .ea-panel,
+html[data-space="etablissement"] .ea-workspace .ea-panel,
+html[data-space="etablissement"] .ea-grid>.ea-card,
+html[data-space="etablissement"] .ea-role,
+html[data-space="etablissement"] .ea-plan,
+html[data-space="etablissement"] .ea-settings-grid>.panel,
+html[data-space="etablissement"] .ea-settings-stack>.panel,
+html[data-space="etablissement"] .ea-community-chart,
+html[data-space="etablissement"] .ea-auth-card{
+  border-radius:var(--gc-r-card);
+}
+html[data-space="etablissement"] .ea-hero-art,
+html[data-space="etablissement"] .ea-hero-art-label,
+html[data-space="etablissement"] .ea-side-panel,
+html[data-space="etablissement"] .ea-feature-row,
+html[data-space="etablissement"] .ea-auth-story,
+html[data-space="etablissement"] .ea-auth-story-image{
+  border-radius:var(--gc-r-surface);
+}
+html[data-space="etablissement"] .ea-auth-story-image img{
+  border-radius:inherit;
+}
+html[data-space="etablissement"] .ea-draft,
+html[data-space="etablissement"] .ea-step,
+html[data-space="etablissement"] .ea-empty-state,
+html[data-space="etablissement"] .ea-alert,
+html[data-space="etablissement"] .ea-inline-notice,
+html[data-space="etablissement"] .ea-quick button,
+html[data-space="etablissement"] .ea-identity,
+html[data-space="etablissement"] .ea-profile-preview,
+html[data-space="etablissement"] .ea-chart-placeholder,
+html[data-space="etablissement"] .ea-settings-footnote{
+  border-radius:var(--gc-r-inset);
+}
+html[data-space="etablissement"] .ea-step:hover,
+html[data-space="etablissement"] .ea-draft:hover{
+  border-radius:var(--gc-r-inset);
+}
+html[data-space="etablissement"] .ea-metric-icon,
+html[data-space="etablissement"] .ea-empty-icon,
+html[data-space="etablissement"] .ea-draft-symbol,
+html[data-space="etablissement"] .ea-role-icon,
+html[data-space="etablissement"] .ea-large-monogram,
+html[data-space="etablissement"] .ea-auth-lock{
+  border-radius:var(--gc-r-inset);
+}
+
+/* Établissement — all controls, form fields, notification rows and chips. */
+html[data-space="etablissement"] .ea-button,
+html[data-space="etablissement"] .ea-popover-link,
+html[data-space="etablissement"] .ea-logout,
+html[data-space="etablissement"] .ea-auth-submit,
+html[data-space="etablissement"] .ea-auth-password>button,
+html[data-space="etablissement"] .ea-theme-options .ea-button{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="etablissement"] input:not([type="checkbox"]):not([type="radio"]),
+html[data-space="etablissement"] select,
+html[data-space="etablissement"] textarea,
+html[data-space="etablissement"] .ea-field input,
+html[data-space="etablissement"] .ea-field select,
+html[data-space="etablissement"] .ea-auth-form .ea-field input,
+html[data-space="etablissement"] .ea-top-popover .ea-theme{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="etablissement"] .ea-chip,
+html[data-space="etablissement"] .ea-state-pill,
+html[data-space="etablissement"] .ea-preview-label,
+html[data-space="etablissement"] .ea-soft-label,
+html[data-space="etablissement"] .ea-hero .ea-eyebrow,
+html[data-space="etablissement"] .ea-page-intro .ea-eyebrow,
+html[data-space="etablissement"] .ea-auth-eyebrow{
+  border-radius:var(--gc-r-pill);
+}
+html[data-space="etablissement"] .ea-avatar,
+html[data-space="etablissement"] .ea-top-avatar,
+html[data-space="etablissement"] .ea-settings-avatar{
+  border-radius:50%;
+}
+html[data-space="etablissement"] .ea-settings-toggle-row .ea-switch input{
+  border-radius:var(--gc-r-pill);
+}
+html[data-space="etablissement"] .ea-settings-toggle-row .ea-switch input::after{
+  border-radius:50%;
+}
+html[data-space="etablissement"] .ea-chart-bar{
+  border-radius:19px 19px 7px 7px;
+}
+html[data-space="etablissement"] .ea-settings-property,
+html[data-space="etablissement"] .ea-settings-toggle-row{
+  border-radius:var(--gc-r-control);
+}
+
+/* Superadmin — fixed sidebar (including collapsed) and top command bar. */
+html[data-space="superadmin"] .sidebar{
+  border-radius:var(--gc-r-shell);
+}
+html[data-space="superadmin"] .topbar{
+  border-radius:var(--gc-r-surface);
+}
+html[data-space="superadmin"] .nav-btn{
+  border-radius:var(--gc-r-nav);
+}
+html[data-space="superadmin"] .nav-btn::before{
+  border-radius:inherit;
+}
+html[data-space="superadmin"] .sidebar-search,
+html[data-space="superadmin"] .topbar-search-pill,
+html[data-space="superadmin"] .collapse-toggle,
+html[data-space="superadmin"] .icon-btn,
+html[data-space="superadmin"] .topbar-tool{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="superadmin"] .profile-trigger,
+html[data-space="superadmin"] .profile-menu-link{
+  border-radius:var(--gc-r-nav);
+}
+html[data-space="superadmin"] .topbar-popover{
+  border-radius:var(--gc-r-card);
+}
+html[data-space="superadmin"] .brand-mark{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="superadmin"] .brand-mark img{
+  border-radius:inherit;
+}
+html[data-space="superadmin"] .nav-foot{
+  border-radius:var(--gc-r-inset);
+}
+
+/* Superadmin — every major surface, including billing and settings. */
+html[data-space="superadmin"] #view .panel,
+html[data-space="superadmin"] #view .kpi,
+html[data-space="superadmin"] #view .billing-tier,
+html[data-space="superadmin"] #view .billing-step,
+html[data-space="superadmin"] #view .billing-head,
+html[data-space="superadmin"] #view .billing-placeholder,
+html[data-space="superadmin"] #view .sa-settings-grid>.panel,
+html[data-space="superadmin"] #view .import-tile,
+html[data-space="superadmin"] #view .empty-state{
+  border-radius:var(--gc-r-card);
+}
+html[data-space="superadmin"] #view .hero,
+html[data-space="superadmin"] #view .campus-hero,
+html[data-space="superadmin"] #view .hero-network,
+html[data-space="superadmin"] #view .hero-picture{
+  border-radius:var(--gc-r-hero);
+}
+html[data-space="superadmin"] #view .command-link,
+html[data-space="superadmin"] #view .quick,
+html[data-space="superadmin"] #view .queue-item,
+html[data-space="superadmin"] #view .notice,
+html[data-space="superadmin"] #view .notification-empty,
+html[data-space="superadmin"] #view .table-scroll,
+html[data-space="superadmin"] #view .monogram,
+html[data-space="superadmin"] #view .settings-note,
+html[data-space="superadmin"] #view .settings-property,
+html[data-space="superadmin"] .notification-empty-icon{
+  border-radius:var(--gc-r-inset);
+}
+html[data-space="superadmin"] #view .kpi-icon,
+html[data-space="superadmin"] #view .bubble,
+html[data-space="superadmin"] #view .command-symbol,
+html[data-space="superadmin"] #view .import-symbol{
+  border-radius:var(--gc-r-inset);
+}
+
+/* Superadmin — controls, nested forms, badges and graphs. */
+html[data-space="superadmin"] button.action,
+html[data-space="superadmin"] #view button.action,
+html[data-space="superadmin"] #view button.smallbtn,
+html[data-space="superadmin"] #view button.quick,
+html[data-space="superadmin"] #view button.switch,
+html[data-space="superadmin"] #view .settings-appearance-choices button,
+html[data-space="superadmin"] #view .filter-btn,
+html[data-space="superadmin"] #view .tab,
+html[data-space="superadmin"] .profile-menu-link{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="superadmin"] #view input:not([type="checkbox"]):not([type="radio"]),
+html[data-space="superadmin"] #view select,
+html[data-space="superadmin"] #view textarea,
+html[data-space="superadmin"] .profile-preference select,
+html[data-space="superadmin"] .sidebar-search input,
+html[data-space="superadmin"] #view .filters input,
+html[data-space="superadmin"] #view .filters select,
+html[data-space="superadmin"] #view .field input,
+html[data-space="superadmin"] #view .field select{
+  border-radius:var(--gc-r-control);
+}
+html[data-space="superadmin"] #view .badge,
+html[data-space="superadmin"] .preview-pill,
+html[data-space="superadmin"] .popover-minor,
+html[data-space="superadmin"] #view .hero-tag,
+html[data-space="superadmin"] #view .pill,
+html[data-space="superadmin"] #view .chip{
+  border-radius:var(--gc-r-pill);
+}
+html[data-space="superadmin"] #view .chart .bar{
+  border-radius:18px 18px 7px 7px;
+}
+html[data-space="superadmin"] #view .legend i{
+  border-radius:var(--gc-r-pill);
+}
+html[data-space="superadmin"] .toggle,
+html[data-space="superadmin"] .toggle::before{
+  border-radius:var(--gc-r-pill);
+}
+html[data-space="superadmin"] .avatar,
+html[data-space="superadmin"] .sa-sidebar-avatar{
+  border-radius:50%;
+}
+html[data-space="superadmin"] .toast{
+  border-radius:var(--gc-r-inset);
+}
+
+/* Keep popovers visible: generous corners must not clip the menu.
+   Reduce radii proportionally on narrow screens to preserve content. */
+html[data-space="etablissement"] .ea-top,
+html[data-space="superadmin"] .topbar{
+  overflow:visible;
+}
+@media(max-width:900px){
+  html[data-space="etablissement"],
+  html[data-space="superadmin"]{
+    --gc-r-shell:32px;
+    --gc-r-hero:34px;
+    --gc-r-surface:28px;
+    --gc-r-card:25px;
+    --gc-r-inset:21px;
+    --gc-r-nav:19px;
+    --gc-r-control:17px;
+  }
+}
+@media(max-width:600px){
+  html[data-space="etablissement"],
+  html[data-space="superadmin"]{
+    --gc-r-shell:29px;
+    --gc-r-hero:30px;
+    --gc-r-surface:25px;
+    --gc-r-card:23px;
+    --gc-r-inset:19px;
+    --gc-r-nav:17px;
+    --gc-r-control:16px;
+  }
+  html[data-space="etablissement"] .ea-auth-card,
+  html[data-space="superadmin"] #view .panel{
+    border-radius:var(--gc-r-card);
+  }
+}

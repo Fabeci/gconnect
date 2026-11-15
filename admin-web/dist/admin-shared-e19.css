@@ -1,0 +1,103 @@
+/* E19 — authenticated privileged stage gets a full-viewport frame.
+   All approved sidebar/topbar/card/theme rules stay in the original preview styles,
+   isolated inside the frame to avoid changing the E16 sign-in screen. */
+body:has(#gconnect-approved-admin-frame){margin:0;overflow:hidden}
+#gc-establishment-app:has(#gconnect-approved-admin-frame),
+#gc-establishment-app .sa-live-shell,
+#gc-establishment-app #sa-live-root{width:100%;max-width:none;min-height:100dvh;height:100dvh;margin:0;padding:0;border:0;box-shadow:none}
+#gc-establishment-app .sa-live-shell{display:block}
+#gconnect-approved-admin-frame{display:block;width:100%;height:100dvh;border:0;background:#f2f5fc}
+
+
+/* E21: quiet campus photography behind the shared privileged sign-in.
+   Reuses the existing G-Connect hero asset; no external request or JS.
+   The photo is blended into the canvas, not placed over the form. */
+.auth-admin{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:linear-gradient(120deg,#e7eeff 0%,#eef3ff 50%,#e7f0fb 100%);
+}
+.auth-admin::before,
+.auth-admin::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.auth-admin::before{
+  background-image:
+    linear-gradient(90deg,
+      rgba(231,239,253,.25) 0%,
+      rgba(235,242,255,.42) 31%,
+      rgba(237,243,255,.88) 58%,
+      rgba(238,244,255,.96) 100%),
+    url("/assets/hero-gconnect.jpg");
+  background-repeat:no-repeat;
+  background-size:cover,auto 112%;
+  background-position:center,left 6%;
+  filter:saturate(.86);
+  transform:scale(1.035);
+  animation:e21-admin-photo-drift 24s ease-in-out infinite alternate;
+}
+.auth-admin::after{
+  background:
+    radial-gradient(circle at 83% 15%,rgba(55,97,255,.14),transparent 34%),
+    radial-gradient(circle at 89% 82%,rgba(107,189,255,.17),transparent 32%),
+    linear-gradient(0deg,rgba(241,246,255,.20),transparent 36%);
+}
+.auth-admin .auth-layout{position:relative;z-index:1}
+.auth-admin .auth-card{
+  background:rgba(255,255,255,.93);
+  border-color:rgba(255,255,255,.82);
+  box-shadow:0 24px 68px rgba(31,57,109,.15),0 2px 14px rgba(31,57,109,.055);
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+}
+html[data-theme="dark"] .auth-admin{
+  background:linear-gradient(120deg,#101b34,#162643 62%,#16223c);
+}
+html[data-theme="dark"] .auth-admin::before{
+  background-image:
+    linear-gradient(90deg,
+      rgba(12,22,42,.47) 0%,
+      rgba(14,25,47,.62) 34%,
+      rgba(17,29,52,.94) 65%,
+      rgba(19,31,54,.97) 100%),
+    url("/assets/hero-gconnect.jpg");
+  filter:saturate(.77);
+}
+html[data-theme="dark"] .auth-admin::after{
+  background:
+    radial-gradient(circle at 82% 15%,rgba(73,112,244,.18),transparent 36%),
+    radial-gradient(circle at 82% 85%,rgba(56,140,225,.10),transparent 33%);
+}
+html[data-theme="dark"] .auth-admin .auth-card{
+  background:linear-gradient(150deg,rgba(43,60,88,.95),rgba(28,43,68,.96));
+  border-color:rgba(151,179,225,.2);
+  box-shadow:0 26px 72px rgba(0,5,19,.38);
+}
+@keyframes e21-admin-photo-drift{
+  from{transform:scale(1.035) translate3d(0,0,0)}
+  to{transform:scale(1.065) translate3d(-.35%,.15%,0)}
+}
+@media(max-width:700px){
+  .auth-admin::before{
+    background-image:
+      linear-gradient(rgba(236,242,255,.76),rgba(236,243,255,.88)),
+      url("/assets/hero-gconnect.jpg");
+    background-size:cover,auto 105%;
+    background-position:center,left top;
+    filter:saturate(.75);
+  }
+  .auth-admin .auth-card{background:rgba(255,255,255,.97)}
+  html[data-theme="dark"] .auth-admin::before{
+    background-image:
+      linear-gradient(rgba(13,23,44,.78),rgba(17,29,52,.91)),
+      url("/assets/hero-gconnect.jpg");
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .auth-admin::before{animation:none;transform:none}
+}

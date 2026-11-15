@@ -1,0 +1,33 @@
+{
+  "name": "g-connect",
+  "version": "1.0.0",
+  "description": "Plateforme web reliant étudiants, alumni, établissements et entreprises.",
+  "main": "diagnose.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:auth": "node scripts/verify-auth.cjs",
+    "test:auth:e16": "node scripts/verify-auth-e16.cjs",
+    "test:auth:live": "node scripts/verify-auth-live.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taogoulahtihamy-gif/g-connect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taogoulahtihamy-gif/g-connect/issues"
+  },
+  "homepage": "https://github.com/taogoulahtihamy-gif/g-connect#readme",
+  "dependencies": {
+    "playwright": "^1.64.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0"
+  }
+}

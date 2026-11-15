@@ -1,0 +1,42 @@
+/* Establishment sidebar branding: reuse the official G-Connect G icon.
+   Kept separate from the animation/layout files currently being edited locally. */
+html[data-space="etablissement"] .ea-head::before {
+  content: none;
+  display: none !important;
+}
+
+html[data-space="etablissement"] .ea-head .ea-logo {
+  display: none !important;
+}
+
+html[data-space="etablissement"] .ea-head .ea-logo-small {
+  display: block !important;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  object-fit: contain;
+}
+
+html[data-space="etablissement"] .ea-head {
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* A 76px sidebar cannot fit a 38px logo and a 38px toggle side by side.
+   Keep both visible and keyboard-operable by stacking them on desktop. */
+@media (min-width: 901px) {
+  html[data-space="etablissement"] .ea-shell.is-collapsed .ea-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    min-height: 84px;
+    padding: 0;
+    gap: 8px;
+  }
+
+  html[data-space="etablissement"] .ea-shell.is-collapsed .ea-head .ea-logo-small {
+    display: block !important;
+  }
+}

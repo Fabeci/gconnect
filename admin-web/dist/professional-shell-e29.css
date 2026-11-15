@@ -1,0 +1,143 @@
+/* E29 · Final identity and security refinements shared by all three roles. */
+/* Sidebar: only the official G icon, never the full wordmark. */
+html[data-space="superadmin"] .sidebar .brand {
+  display:flex;flex-direction:row;align-items:center;justify-content:flex-start;
+  gap:12px;min-height:57px;margin:0 8px 23px;padding:0 4px;
+}
+html[data-space="superadmin"] .sidebar .sidebar-monogram{
+  display:block;width:49px;height:49px;max-width:49px;flex:0 0 49px;
+  object-fit:contain;object-position:center;background:transparent;border:0;filter:none;
+}
+html[data-space="superadmin"] .sidebar .brand .collapse-toggle{
+  margin-left:auto;grid-column:auto;grid-row:auto;flex:0 0 28px;align-self:center;
+}
+html[data-space="superadmin"] .sidebar-collapsed .sidebar .brand{
+  display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 0 19px;
+}
+html[data-space="superadmin"] .sidebar-collapsed .sidebar .sidebar-monogram{
+  width:43px;height:43px;max-width:43px;flex:0 0 43px;
+}
+html[data-space="superadmin"] .sidebar-collapsed .sidebar .brand .collapse-toggle{margin:0}
+/* Two restrained glass search fields, visually transparent with a visible underline. */
+html[data-space="superadmin"] .sidebar .sidebar-search{
+  background:rgba(248,251,255,.08);border:0;border-bottom:2px solid rgba(95,126,191,.45);
+  border-radius:7px 7px 3px 3px;box-shadow:none;
+  padding:8px 10px 10px;margin-bottom:21px;
+  color:#7892bc;backdrop-filter:none;transition:border-color .18s ease,background .18s ease;
+}
+html[data-space="superadmin"] .sidebar .sidebar-search input{background:transparent;color:#28456e}
+html[data-space="superadmin"] .sidebar .sidebar-search input::placeholder{color:#899abb;opacity:.95}
+html[data-space="superadmin"] .sidebar .sidebar-search:hover,
+html[data-space="superadmin"] .sidebar .sidebar-search:focus-within{
+  background:rgba(246,250,255,.25);outline:0;border-bottom-color:#3761ff;
+}
+html[data-space="superadmin"] .topbar-search-pill{
+  background:rgba(250,252,255,.09);border:0;border-bottom:2px solid rgba(95,126,191,.44);
+  border-radius:6px 6px 2px 2px;box-shadow:none;
+  min-width:190px;min-height:38px;padding:0 6px 5px 8px;
+  color:#8196b7;margin-left:clamp(14px,2.6vw,38px);
+  transition:background .18s ease,border-color .18s ease;
+}
+html[data-space="superadmin"] .topbar-search-pill:hover,
+html[data-space="superadmin"] .topbar-search-pill:focus-visible{
+  background:rgba(247,250,255,.26);border-bottom-color:#3761ff;outline:none;
+  box-shadow:0 3px 0 -2px #3761ff;
+}
+html[data-space="superadmin"] .topbar-search-pill kbd{
+  background:rgba(234,240,255,.45);border-color:transparent;color:#8296bd;
+}
+/* Date now comes before search, in the middle/right-center of the header. */
+html[data-space="superadmin"] #topbar-date{
+  margin-left:0;margin-right:0;padding:2px 0 2px 8px;
+  border-left:0;border-right:0;min-width:max-content;
+  color:#5977a7;order:0;
+}
+html[data-space="superadmin"] #topbar-search-toggle{order:1}
+html[data-space="superadmin"] .top-actions{order:2}
+html[data-space="superadmin"] .profile-popover{min-width:215px}
+html[data-space="superadmin"] .profile-popover #about-open{
+  border-top:1px solid rgba(215,225,247,.54);
+}
+html[data-space="superadmin"] .profile-popover #live-logout-profile{
+  margin-top:3px;
+}
+/* Password change is an actual form, not a visual-only preference. */
+.professional-password-form{
+  display:flex;flex-direction:column;gap:8px;
+  margin-top:25px;padding-top:21px;border-top:1px solid #e0e7f8;
+}
+.professional-password-form .profile-form-heading{margin-bottom:5px}
+.professional-password-form .profile-form-heading p{margin-bottom:4px}
+.professional-password-form label{
+  display:block;margin-top:4px;
+  font:750 11px Manrope,sans-serif;color:#4b6596;
+}
+.professional-password-control{
+  display:flex;align-items:center;gap:0;min-height:42px;overflow:hidden;
+  border-radius:12px;border:1px solid #dbe5f9;background:#f8faff;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.professional-password-control:focus-within{
+  border-color:#6b91f5;box-shadow:0 0 0 3px rgba(55,97,255,.09);
+}
+.professional-password-control input{
+  width:100%;min-width:0;flex:1;border:0;outline:0;background:transparent;
+  color:#253b68;padding:11px 12px;font:500 12px Manrope,sans-serif;
+}
+.professional-password-control button{
+  flex:none;border:0;background:transparent;color:#4265b0;
+  padding:10px 12px;font:700 10px Manrope,sans-serif;cursor:pointer;
+}
+.professional-password-control button:hover{color:#3761ff;background:#eef3ff}
+.profile-password-hint{
+  font:500 10px/1.5 Manrope,sans-serif;color:#8397b8;margin:5px 0 0;
+}
+.professional-password-form .profile-form-footer{margin-top:4px}
+.professional-password-form .profile-modal-feedback{white-space:normal;overflow-wrap:anywhere}
+.professional-about-dialog{width:min(580px,calc(100vw - 32px))}
+.professional-about-dialog .profile-modal-glyph{overflow:hidden}
+.professional-about-dialog .profile-modal-glyph img{width:37px;height:37px;object-fit:contain}
+.professional-about-content{padding:26px 31px 24px;background:rgba(255,255,255,.8)}
+.professional-about-logo{width:160px;height:42px;object-fit:contain;object-position:left}
+.professional-about-content h3{font:800 19px/1.35 Manrope,sans-serif;color:#183d7b;margin:15px 0 10px}
+.professional-about-content>p{font:500 12px/1.8 Manrope,sans-serif;color:#788cab;margin:0}
+.professional-about-facts{
+  margin-top:21px;display:flex;flex-direction:column;gap:0;
+  background:#f0f5ff;border:1px solid #dfebff;border-radius:16px;padding:4px 17px;
+}
+.professional-about-facts>div{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:13px 0;border-bottom:1px solid #e1eafa;
+}
+.professional-about-facts>div:last-child{border-bottom:none}
+.professional-about-facts span{font:600 11px Manrope,sans-serif;color:#8497b7}
+.professional-about-facts strong{
+  font:750 11px/1.45 Manrope,sans-serif;color:#365993;text-align:right;overflow-wrap:anywhere;
+}
+.professional-about-content .professional-about-footer{
+  margin-top:22px;color:#9cacca;font:600 11px Manrope,sans-serif;text-align:center;
+}
+@media(max-width:950px){
+  html[data-space="superadmin"] #topbar-date{font-size:10px}
+  html[data-space="superadmin"] .topbar-search-pill{min-width:165px;margin-left:10px}
+}
+@media(max-width:850px){
+  html[data-space="superadmin"] .sidebar .brand,
+  html[data-space="superadmin"] .sidebar-collapsed .sidebar .brand{
+    display:flex;flex-direction:row;justify-content:flex-start;margin:0 7px 22px;
+  }
+  html[data-space="superadmin"] .sidebar-collapsed .sidebar .sidebar-monogram{width:49px;height:49px;max-width:49px}
+  html[data-space="superadmin"] #topbar-date{display:none}
+}
+@media(max-width:600px){
+  .professional-about-content{padding:20px}
+  .professional-about-content h3{font-size:16px}
+  .professional-about-facts>div{align-items:flex-start;flex-direction:column;gap:5px}
+  .professional-about-facts strong{text-align:left}
+  .professional-password-form .profile-form-footer .profile-modal-primary{width:100%}
+  html[data-space="superadmin"] .topbar-search-pill{min-width:140px}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-space="superadmin"] .topbar-search-pill,
+  html[data-space="superadmin"] .sidebar .sidebar-search{transition:none}
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr" data-space="entreprise" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3761FF">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Activer mon compte Entreprise · G-Connect</title>
+<link rel="icon" href="/assets/logo_icon.png">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/entreprise-activation.css?v=e54-1">
+<script src="/etablissement-api.js?v=e54-1"></script>
+<script src="/entreprise-activation.js?v=e54-1"></script>
+</head>
+<body>
+<main class="ea-page" id="main">
+  <div class="ea-backdrop" aria-hidden="true"></div>
+  <section class="ea-card" aria-labelledby="ea-title">
+    <div class="ea-brand"><img src="/assets/logo_icon.png" alt="" width="45" height="45"><span><strong>G-Connect</strong><small>ESPACE ENTREPRISE</small></span></div>
+    <p class="ea-eyebrow">ACCÈS PROFESSIONNEL SÉCURISÉ</p>
+    <h1 id="ea-title">Activez votre compte.</h1>
+    <p class="ea-intro">Un accès personnel à votre entreprise, protégé par une authentification renforcée.</p>
+    <div id="ea-feedback" class="ea-feedback" role="status" aria-live="polite">Validation de l'invitation…</div>
+    <div id="ea-summary" hidden></div>
+    <form id="ea-form" class="ea-form" hidden>
+      <label>Prénom<input name="first_name" autocomplete="given-name" maxlength="150" required></label>
+      <label>Nom<input name="last_name" autocomplete="family-name" maxlength="150" required></label>
+      <label>Mot de passe<input name="password" type="password" autocomplete="new-password" minlength="12" required></label>
+      <label>Confirmer le mot de passe<input name="confirm_password" type="password" autocomplete="new-password" minlength="12" required></label>
+      <button type="submit">Activer mon compte <span aria-hidden="true">→</span></button>
+      <p class="ea-footnote">Votre compte sera ensuite sécurisé par MFA lors de votre première connexion.</p>
+    </form>
+    <div id="ea-complete" hidden>
+      <a class="ea-button" href="/entreprise#login/entreprise">Se connecter à mon entreprise ↗</a>
+    </div>
+  </section>
+  <footer class="ea-footer">© 2026 G-Connect · Votre réseau, votre avenir</footer>
+</main>
+</body>
+</html>
